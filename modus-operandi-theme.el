@@ -1,1 +1,1 @@
-/home/raxod502/files/code/emacs/gnu-elpa-mirror/gnu-elpa/emacs/etc/themes/modus-operandi-theme.el
+/app/gnu-elpa/emacs/etc/themes/modus-operandi-theme.el
