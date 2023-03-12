@@ -3636,7 +3636,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + csv-mode
 + ctrlf
 + custom (what you get with {{{kbd(M-x customize)}}})
-- dashboard
++ dashboard
 + deadgrep
 + deft
 + devdocs
@@ -3715,6 +3715,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + ivy*
 + ivy-posframe
 + jira (org-jira)
++ jit-spell [Part of {{{development-version}}}]
 + journalctl-mode
 + js2-mode
 + julia
