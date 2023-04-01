@@ -1587,7 +1587,10 @@ FG and BG are the main colors."
     `(modus-themes-slant ((,c ,@(modus-themes--slant))))
     `(modus-themes-ui-variable-pitch ((,c ,@(modus-themes--variable-pitch-ui))))
 ;;;;; other custom faces
-    `(modus-themes-button ((,c :inherit variable-pitch :box ,border :background ,bg-button-active :foreground ,fg-button-active)))
+    `(modus-themes-button ((,c :inherit variable-pitch
+                               :box (:line-width 1 :color ,border :style released-button)
+                               :background ,bg-button-active
+                               :foreground ,fg-button-active)))
     `(modus-themes-key-binding ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
     `(modus-themes-prompt ((,c ,@(modus-themes--prompt fg-prompt bg-prompt))))
     `(modus-themes-reset-soft ((,c :background ,bg-main :foreground ,fg-main
@@ -1598,9 +1601,9 @@ FG and BG are the main colors."
     `(default ((,c :background ,bg-main :foreground ,fg-main)))
     `(cursor ((,c :background ,cursor)))
     `(fringe ((,c :background ,fringe :foreground ,fg-main)))
-    `(menu ((,c :background ,bg-tab-bar :foreground ,fg-main)))
-    `(scroll-bar ((,c :background ,fringe :foreground ,fg-dim)))
-    `(tool-bar ((,c :background ,bg-tab-bar :foreground ,fg-main)))
+    `(menu ((,c :background ,bg-dim :foreground ,fg-main)))
+    `(scroll-bar ((,c :background ,bg-dim :foreground ,fg-dim)))
+    `(tool-bar ((,c :background ,bg-dim :foreground ,fg-main)))
     `(vertical-border ((,c :foreground ,border)))
 ;;;;; basic and/or ungrouped styles
     `(bold ((,c :weight bold)))
