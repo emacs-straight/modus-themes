@@ -1177,8 +1177,8 @@ they are labeled as "do-it-yourself" or "DIY".
 
 This section shows how to refashion the themes by opting in to the
 stylistic presets we provide.  Those presets override the default
-color mappings to amplify or tone down the overall coloration of the
-them.
+color mappings to amplify, tone down, or refashion the overall
+coloration of the themes.
 
 To make almost all aspects of the themes less intense, use this:
 
@@ -1203,6 +1203,21 @@ On the opposite end of the stylistic spectrum, we have this
 The ~modus-themes-preset-overrides-intense~ makes many background
 colors accented instead of gray and increases coloration in a number
 of places.  Colors stand out more and are made easier to spot.
+
+#+vindex: modus-themes-preset-overrides-cooler
+#+vindex: modus-themes-preset-overrides-warmer
+For some stylistic variation try the "cooler" and "warmer" presets:
+
+#+begin_src emacs-lisp
+;; This:
+(setq modus-themes-common-palette-overrides modus-themes-preset-overrides-cooler)
+
+;; Or:
+(setq modus-themes-common-palette-overrides modus-themes-preset-overrides-warmer)
+#+end_src
+
+[ The "warmer" and "cooler" preset overrides are part of
+  {{{development-version}}}. ]
 
 Note that the user is not limited to those presets.  The system of
 overrides we provide makes it possible to tweak the value of each
@@ -3861,7 +3876,6 @@ have lots of extensions, so the "full support" may not be 100% true…
 + minimap
 + mode-line
 + mood-line
-+ moody
 + mpdel
 + mu4e
 + multiple-cursors
@@ -3895,7 +3909,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + powerline
 + prism ([[#h:a94272e0-99da-4149-9e80-11a7e67a2cf2][Note for prism.el]])
 + prescient
-+ proced
++ proced [Expanded as part of {{{development-version}}}.]
 + prodigy
 + pulse
 + pyim
@@ -3908,6 +3922,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + rg (rg.el)
 + ripgrep
 + rmail
++ rst-mode [Part of {{{development-version}}}.]
 + ruler-mode
 + sesman
 + shell-script-mode
@@ -5227,11 +5242,11 @@ The Modus themes are a collective effort.  Every bit of work matters.
 + Contributions to code or documentation :: Aleksei Gusev, Alex
   Griffin, Anders Johansson, Antonio Ruiz, Basil L.{{{space()}}}
   Contovounesios, Björn Lindström, Carlo Zancanaro, Christian Tietze,
-  Daniel Mendler, Eli Zaretskii, Fritz Grabo, Illia Ostapyshyn, Kévin
-  Le Gouguec, Koen van Greevenbroek, Kostadin Ninev, Madhavan
-  Krishnan, Manuel Giraud, Markus Beppler, Matthew Stevenson, Mauro
-  Aranda, Nacho Barrientos, Nicolas De Jaeghere, Paul David, Philip
-  Kaludercic, Pierre Téchoueyres, Rudolf Adamkovič, Sergey
+  Daniel Mendler, David Edmondson, Eli Zaretskii, Fritz Grabo, Illia
+  Ostapyshyn, Kévin Le Gouguec, Koen van Greevenbroek, Kostadin Ninev,
+  Madhavan Krishnan, Manuel Giraud, Markus Beppler, Matthew Stevenson,
+  Mauro Aranda, Nacho Barrientos, Nicolas De Jaeghere, Paul David,
+  Philip Kaludercic, Pierre Téchoueyres, Rudolf Adamkovič, Sergey
   Nichiporchik, Shreyas Ragavan, Stefan Kangas, Stephen Gildea, Steve
   Downey, Tomasz Hołubowicz, Utkarsh Singh, Vincent Murphy, Xinglu
   Chen, Yuanchen Xie, okamsn.
