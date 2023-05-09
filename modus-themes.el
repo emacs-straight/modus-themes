@@ -2060,7 +2060,6 @@ FG and BG are the main colors."
     `(consult-imenu-prefix ((,c :inherit shadow)))
     `(consult-line-number ((,c :inherit shadow)))
     `(consult-line-number-prefix ((,c :inherit shadow)))
-    `(consult-preview-cursor ((,c :background ,cursor :foreground ,bg-main)))
 ;;;;; corfu
     `(corfu-current ((,c :inherit modus-themes-completion-selected)))
     `(corfu-bar ((,c :background ,fg-dim)))
@@ -3838,6 +3837,8 @@ FG and BG are the main colors."
     `(vterm-color-yellow ((,c :background ,yellow-warmer :foreground ,yellow)))
 ;;;;; vundo
     `(vundo-highlight ((,c :inherit (bold vundo-node) :foreground ,red-intense)))
+    `(vundo-last-saved ((,c :inherit (bold vundo-node) :foreground ,cyan-intense)))
+    `(vundo-saved ((,c :inherit vundo-node :foreground ,cyan-intense)))
 ;;;;; wcheck-mode
     `(wcheck-default-face ((,c :foreground ,red :underline t)))
 ;;;;; web-mode
