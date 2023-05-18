@@ -76,9 +76,9 @@ standard).")
       (green-cooler    "#00c06f")
       (green-faint     "#88ca9f")
       (green-intense   "#44df44")
-      (yellow          "#d0bc00")
-      (yellow-warmer   "#fec43f")
-      (yellow-cooler   "#dfaf7a")
+      (yellow          "#cabf00")
+      (yellow-warmer   "#ffa00f")
+      (yellow-cooler   "#d8af7a")
       (yellow-faint    "#d2b580")
       (yellow-intense  "#efef00")
       (blue            "#2fafff")
@@ -222,12 +222,19 @@ standard).")
       (identifier yellow-faint)
 
       (err yellow-warmer)
-      (warning yellow-cooler)
+      (warning yellow)
       (info blue)
 
       (underline-err yellow-intense)
       (underline-warning magenta-faint)
       (underline-note cyan)
+
+      (bg-prominent-err bg-yellow-intense)
+      (fg-prominent-err fg-main)
+      (bg-prominent-warning bg-magenta-intense)
+      (fg-prominent-warning fg-main)
+      (bg-prominent-note bg-cyan-intense)
+      (fg-prominent-note fg-main)
 
 ;;;; Code mappings
 
@@ -314,6 +321,15 @@ standard).")
       (mail-subject yellow-warmer)
       (mail-other cyan-faint)
 
+;;;; Mark mappings
+
+      (bg-mark-delete bg-yellow-subtle)
+      (fg-mark-delete yellow)
+      (bg-mark-select bg-cyan-subtle)
+      (fg-mark-select cyan)
+      (bg-mark-other bg-magenta-subtle)
+      (fg-mark-other magenta-warmer)
+
 ;;;; Prompt mappings
 
       (fg-prompt blue)
@@ -343,6 +359,12 @@ standard).")
       (rainbow-6 yellow-faint)
       (rainbow-7 blue-faint)
       (rainbow-8 magenta-faint)
+
+;;;; Space mappings
+
+      (bg-space unspecified)
+      (fg-space border)
+      (bg-space-err bg-yellow-intense)
 
 ;;;; Heading mappings
 
