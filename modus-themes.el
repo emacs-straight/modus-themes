@@ -45,14 +45,15 @@
   "User options for the Modus themes.
 The Modus themes conform with the WCAG AAA standard for color
 contrast between background and foreground combinations (a
-minimum contrast of 7:1---the highest standard of its kind).  The
-themes also strive to empower users with red-green color
-deficiency: this is achieved through customization variables that
-replace all relevant instances of green with blue, as well as the
-overall design of the themes which relies mostly on colors that
-cover the blue-cyan-magenta side of the spectrum."
+minimum contrast of 7:1---the highest standard of its kind).
+
+The Modus themes collection includes themes that are optimized
+for people with red-green or blue-yellow color
+deficiency (deuteranopia or tritanopia, respectively)."
   :group 'faces
   :link '(info-link "(modus-themes) Top")
+  :link '(url-link :tag "Homepage" "https://protesilaos.com/emacs/modus-themes")
+  :link '(url-link :tag "Sample pictures" "https://protesilaos.com/emacs/modus-themes-pictures")
   :prefix "modus-themes-"
   :tag "Modus Themes")
 
@@ -60,6 +61,8 @@ cover the blue-cyan-magenta side of the spectrum."
   "Faces defined by the Modus themes."
   :group 'modus-themes
   :link '(info-link "(modus-themes) Top")
+  :link '(url-link :tag "Homepage" "https://protesilaos.com/emacs/modus-themes")
+  :link '(url-link :tag "Sample pictures" "https://protesilaos.com/emacs/modus-themes-pictures")
   :prefix "modus-themes-"
   :tag "Modus Themes Faces")
 
