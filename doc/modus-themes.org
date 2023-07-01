@@ -3875,7 +3875,6 @@ have lots of extensions, so the "full support" may not be 100% true…
 + counsel*
 + cperl-mode
 + crontab-mode
-+ css-mode
 + csv-mode
 + ctrlf
 + custom (what you get with {{{kbd(M-x customize)}}})
@@ -4048,7 +4047,6 @@ have lots of extensions, so the "full support" may not be 100% true…
 + suggest
 + switch-window
 + swiper
-+ sx
 + symbol-overlay
 + syslog-mode
 + tab-bar-mode
@@ -4109,6 +4107,7 @@ supported by the themes.
 + bufler
 + counsel-notmuch
 + counsel-org-capture-string
++ css-mode
 + dashboard (emacs-dashboard)
 + define-word
 + denote
