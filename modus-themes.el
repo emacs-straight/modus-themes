@@ -841,8 +841,6 @@ represents."
 
 (defvar modus-themes-preset-overrides-faint
   '((bg-completion       bg-inactive)
-    (bg-hover            bg-cyan-subtle)
-    (bg-hover-secondary  bg-magenta-subtle)
     (bg-hl-line          bg-dim)
     (bg-paren-match      bg-cyan-subtle)
     (bg-region           bg-active)
@@ -997,9 +995,9 @@ Info node `(modus-themes) Option for palette overrides'.")
 
     (prose-block red-faint)
     (prose-done green-intense)
-    (prose-metadata cyan-faint)
+    (prose-metadata magenta-faint)
     (prose-metadata-value blue-cooler)
-    (prose-table cyan)
+    (prose-table blue)
     (prose-todo red-intense)
 
     (fg-heading-0 blue-cooler)
@@ -3313,7 +3311,7 @@ FG and BG are the main colors."
     `(org-date ((,c :inherit modus-themes-fixed-pitch :foreground ,date-common)))
     `(org-date-selected ((,c :foreground ,date-common :inverse-video t)))
     `(org-document-info ((,c :foreground ,prose-metadata-value)))
-    `(org-document-info-keyword ((,c :foreground ,prose-metadata)))
+    `(org-document-info-keyword ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata)))
     `(org-document-title ((,c :inherit modus-themes-heading-0)))
     `(org-done ((,c :foreground ,prose-done)))
     `(org-drawer ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata)))
