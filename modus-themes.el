@@ -6,7 +6,7 @@
 ;; Maintainer: Modus-Themes Development <~protesilaos/modus-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/modus-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/modus-themes
-;; Version: 4.2.0
+;; Version: 4.3.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -2828,7 +2828,7 @@ FG and BG are the main colors."
 ;;;;; ivy-posframe
     `(ivy-posframe-border ((,c :background ,border)))
     `(ivy-posframe-cursor ((,c :background ,fg-main :foreground ,bg-main)))
-;;;;; japanese-holiday-saturday
+;;;;; japanese-holidays
     `(japanese-holiday-saturday ((,c :foreground ,date-holiday-other)))
 ;;;;; jira (org-jira)
     `(jiralib-comment-face ((,c :background ,bg-inactive)))
@@ -3193,6 +3193,8 @@ FG and BG are the main colors."
     `(nerd-icons-red-alt ((,c :foreground ,red-cooler)))
     `(nerd-icons-silver ((,c :foreground "gray50")))
     `(nerd-icons-yellow ((,c :foreground ,yellow)))
+;;;;; nerd-icons-completion
+    `(nerd-icons-completion-dir-face ((,c :foreground ,cyan-faint)))
 ;;;;; nerd-icons-dired
     `(nerd-icons-dired-dir-face ((,c :foreground ,cyan-faint)))
 ;;;;; nerd-icons-ibuffer
