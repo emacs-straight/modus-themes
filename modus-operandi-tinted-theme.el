@@ -6,6 +6,7 @@
 ;; Maintainer: Modus-Themes Development <~protesilaos/modus-themes@lists.sr.ht>
 ;; URL: https://git.sr.ht/~protesilaos/modus-themes
 ;; Mailing-List: https://lists.sr.ht/~protesilaos/modus-themes
+;; Keywords: faces, theme, accessibility
 
 ;; This file is part of GNU Emacs.
 
@@ -347,6 +348,7 @@ which corresponds to a minimum contrast in relative luminance of
       (prose-metadata fg-dim)
       (prose-metadata-value fg-alt)
       (prose-table fg-alt)
+      (prose-table-formula magenta-warmer)
       (prose-tag magenta-faint)
       (prose-todo red)
       (prose-verbatim magenta-warmer)
