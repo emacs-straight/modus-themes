@@ -126,12 +126,12 @@ which corresponds to a minimum contrast in relative luminance of
       (bg-magenta-subtle  "#ffddff")
       (bg-cyan-subtle     "#bfefff")
 
-      (bg-red-nuanced     "#ffe8f0")
-      (bg-green-nuanced   "#e0f5e0")
-      (bg-yellow-nuanced  "#f9ead0")
-      (bg-blue-nuanced    "#ebebff")
-      (bg-magenta-nuanced "#f6e7ff")
-      (bg-cyan-nuanced    "#e1f3fc")
+      (bg-red-nuanced     "#ffeced")
+      (bg-green-nuanced   "#e5f7e7")
+      (bg-yellow-nuanced  "#faf1d5")
+      (bg-blue-nuanced    "#f0f0ff")
+      (bg-magenta-nuanced "#f8eaf4")
+      (bg-cyan-nuanced    "#e6f3fa")
 
 ;;; Uncommon accent backgrounds
 
@@ -238,6 +238,11 @@ which corresponds to a minimum contrast in relative luminance of
       (fg-prominent-warning fg-main)
       (bg-prominent-note bg-cyan-intense)
       (fg-prominent-note fg-main)
+
+      (bg-active-argument bg-yellow-nuanced)
+      (fg-active-argument yellow-warmer)
+      (bg-active-value bg-cyan-nuanced)
+      (fg-active-value cyan-warmer)
 
 ;;;; Code mappings
 
