@@ -1655,7 +1655,7 @@ FG and BG are the main colors."
     `(vertical-border ((,c :foreground ,border)))
 ;;;;; basic and/or ungrouped styles
     `(appt-notification ((,c :inherit bold :foreground ,modeline-err)))
-    `(blink-matching-paren-highlight-offscreen ((,c :background ,bg-paren-match)))
+    `(blink-matching-paren-offscreen ((,c :background ,bg-paren-match)))
     `(bold ((,c :weight bold)))
     `(bold-italic ((,c :inherit (bold italic))))
     `(underline ((,c :underline ,fg-dim)))
@@ -1998,6 +1998,7 @@ FG and BG are the main colors."
     `(consult-imenu-prefix ((,c :inherit shadow)))
     `(consult-line-number ((,c :inherit shadow)))
     `(consult-line-number-prefix ((,c :inherit shadow)))
+    `(consult-preview-insertion ((,c :background ,bg-dim)))
 ;;;;; corfu
     `(corfu-current ((,c :inherit modus-themes-completion-selected)))
     `(corfu-bar ((,c :background ,fg-dim)))
