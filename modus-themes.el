@@ -1472,13 +1472,15 @@ Optional OL is the color of an overline."
 
 (defun modus-themes--org-block (fg bg)
   "Conditionally set the FG and BG of Org blocks."
-  (let ((gray (or (eq modus-themes-org-blocks 'gray-background)
-                  (eq modus-themes-org-blocks 'grayscale) ; for backward compatibility
-                  (eq modus-themes-org-blocks 'greyscale))))
-    (list :inherit 'modus-themes-fixed-pitch
-          :background (if gray bg 'unspecified)
-          :foreground (if gray 'unspecified fg)
-          :extend (if gray t 'unspecified))))
+  ;; NOTE 2024-02-03: We don't really need to specify the value of
+  ;; `modus-themes-org-blocks' here, since the only case where it
+  ;; really matters is if the user opts for the tinted backgrounds.
+  ;; This is done further done where we set the value of the user
+  ;; option `org-src-block-faces'.
+  (list :inherit 'modus-themes-fixed-pitch
+        :background (if modus-themes-org-blocks bg 'unspecified)
+        :foreground (if modus-themes-org-blocks 'unspecified fg)
+        :extend (if modus-themes-org-blocks t 'unspecified)))
 
 (defun modus-themes--completion-line (bg)
   "Styles for `modus-themes-completions' with BG as the background."
@@ -2060,6 +2062,22 @@ FG and BG are the main colors."
     `(deadgrep-meta-face ((,c :inherit shadow)))
     `(deadgrep-regexp-metachar-face ((,c :inherit font-lock-regexp-grouping-construct)))
     `(deadgrep-search-term-face ((,c :inherit success)))
+;;;;; debbugs
+    `(debbugs-gnu-archived ((,c :background ,bg-inactive :foreground ,fg-dim)))
+    `(debbugs-gnu-done ((,c :inherit success)))
+    `(debbugs-gnu-forwarded ((,c :inherit modus-themes-slant :foreground ,info)))
+    `(debbugs-gnu-handled (( )))
+    `(debbugs-gnu-marked ((,c :inherit modus-themes-mark-sel)))
+    `(debbugs-gnu-marked-stale ((,c :inherit modus-themes-mark-alt)))
+    `(debbugs-gnu-new ((,c :inherit error)))
+    `(debbugs-gnu-pending ((,c :inherit modus-themes-slant :foreground ,fg-alt)))
+    `(debbugs-gnu-stale-1 ((,c :foreground ,red-cooler)))
+    `(debbugs-gnu-stale-2 ((,c :foreground ,yellow-warmer)))
+    `(debbugs-gnu-stale-3 ((,c :foreground ,magenta-warmer)))
+    `(debbugs-gnu-stale-4 ((,c :foreground ,magenta-cooler)))
+    `(debbugs-gnu-stale-5 ((,c :foreground ,cyan-faint)))
+    `(debbugs-gnu-tagged ((,c :inherit modus-themes-mark-alt)))
+    `(debbugs-gnu-title ((,c :inherit bold)))
 ;;;;; deft
     `(deft-filter-string-face ((,c :inherit success)))
     `(deft-header-face ((,c :inherit shadow)))

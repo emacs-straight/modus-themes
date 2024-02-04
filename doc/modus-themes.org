@@ -35,7 +35,7 @@ Current development target is {{{development-version}}}.
 + Package name (GNU ELPA): ~modus-themes~
 + Official manual: <https://protesilaos.com/emacs/modus-themes>
 + Change log: <https://protesilaos.com/emacs/modus-themes-changelog>
-+ Colour palette: <https://protesilaos.com/emacs/modus-themes-colors>
++ Color palette: <https://protesilaos.com/emacs/modus-themes-colors>
 + Sample pictures: <https://protesilaos.com/emacs/modus-themes-pictures>
 + Git repositories:
   + GitHub: <https://github.com/protesilaos/modus-themes>
@@ -3936,6 +3936,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + custom (what you get with {{{kbd(M-x customize)}}})
 + dashboard
 + deadgrep
++ debbugs [ Part of {{{development-version}}}. ]
 + deft
 + denote [ Part of {{{development-version}}}. ]
 + devdocs
@@ -5435,7 +5436,7 @@ The Modus themes are a collective effort.  Every bit of work matters.
   John Wick, Jonas Collberg, Jorge Morais, Joshua O'Connor, Julio C.
   Villasante, Kenta Usami, Kevin Fleming, Kévin Le Gouguec, Kevin
   Kainan Li, Kostadin Ninev, Laith Bahodi, Lasse Lindner, Len Trigg,
-  Lennart C. Karssen, Luis Miguel Castañeda, Magne Hov, Manuel Giraud,
+  Lennart C.{{{space()}}} Karssen, Luis Miguel Castañeda, Magne Hov, Manuel Giraud,
   Manuel Uberti, Mark Bestley, Mark Burton, Mark Simpson, Marko Kocic,
   Markus Beppler, Matt Armstrong, Matthias Fuchs, Mattias Engdegård,
   Mauro Aranda, Maxime Tréca, Michael Goldenberg, Morgan Smith, Morgan
