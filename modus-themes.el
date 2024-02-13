@@ -2349,9 +2349,11 @@ FG and BG are the main colors."
     `(erc-dangerous-host-face ((,c :inherit error)))
     `(erc-direct-msg-face ((,c :inherit shadow)))
     `(erc-error-face ((,c :inherit error)))
+    `(erc-fill-wrap-merge-indicator-face ((,c :foreground ,fg-dim)))
     `(erc-fool-face ((,c :inherit shadow)))
     `(erc-input-face ((,c :foreground ,fnname)))
     `(erc-inverse-face ((,c :inherit erc-default-face :inverse-video t)))
+    `(erc-keep-place-indicator-arrow ((,c :foreground ,info)))
     `(erc-keyword-face ((,c :inherit bold :foreground ,keyword)))
     `(erc-my-nick-face ((,c :inherit bold :foreground ,name)))
     `(erc-my-nick-prefix-face ((,c :inherit erc-my-nick-face)))
@@ -4015,7 +4017,20 @@ FG and BG are the main colors."
 ;;;;; yaml-mode
     `(yaml-tab-face ((,c :background ,bg-space-err)))
 ;;;;; yasnippet
-    `(yas-field-highlight-face ((,c :inherit highlight))))
+    `(yas-field-highlight-face ((,c :inherit highlight)))
+;;;;; ztree
+    `(ztreep-arrow-face ((,c :inherit shadow)))
+    `(ztreep-diff-header-face ((,c :inherit modus-themes-heading-0)))
+    `(ztreep-diff-header-small-face ((,c :inherit font-lock-doc-face)))
+    `(ztreep-diff-model-add-face ((,c :foreground ,info)))
+    `(ztreep-diff-model-diff-face ((,c :foreground ,err)))
+    `(ztreep-diff-model-ignored-face ((,c :foreground ,fg-dim :strike-through t)))
+    `(ztreep-diff-model-normal-face (( )))
+    `(ztreep-expand-sign-face ((,c :inherit shadow)))
+    `(ztreep-header-face ((,c :inherit modus-themes-heading-0)))
+    `(ztreep-leaf-face (( )))
+    `(ztreep-node-count-children-face ((,c :inherit (shadow italic))))
+    `(ztreep-node-face ((,c :foreground ,accent-0))))
   "Face specs for use with `modus-themes-theme'.")
 
 (defconst modus-themes-custom-variables
