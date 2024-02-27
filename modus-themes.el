@@ -2505,7 +2505,7 @@ FG and BG are the main colors."
     `(git-timemachine-minibuffer-author-face ((,c :foreground ,name)))
     `(git-timemachine-minibuffer-detail-face ((,c :foreground ,fg-main)))
 ;;;;; gnus
-    `(gnus-button ((,c :inherit button)))
+    `(gnus-button ((,c :inherit button :underline nil)))
     `(gnus-cite-1 ((,c :inherit message-cited-text-1)))
     `(gnus-cite-2 ((,c :inherit message-cited-text-2)))
     `(gnus-cite-3 ((,c :inherit message-cited-text-3)))
@@ -3020,7 +3020,7 @@ FG and BG are the main colors."
     `(message-header-xheader ((,c :inherit message-header-other)))
     `(message-header-other ((,c :foreground ,mail-other)))
     `(message-mml ((,c :foreground ,mail-part)))
-    `(message-separator ((,c :background ,bg-active)))
+    `(message-separator ((,c :background ,bg-inactive :foreground ,fg-main)))
 ;;;;; minimap
     `(minimap-active-region-background ((,c :background ,bg-active)))
     `(minimap-current-line-face ((,c :background ,bg-cyan-intense :foreground ,fg-main)))
@@ -3081,6 +3081,7 @@ FG and BG are the main colors."
     `(mu4e-replied-face ((,c :foreground ,info)))
     `(mu4e-special-header-value-face ((,c :inherit message-header-subject)))
     `(mu4e-system-face ((,c :inherit italic)))
+    `(mu4e-thread-fold-face ((,c :foreground ,border)))
     `(mu4e-title-face (( )))
     `(mu4e-trashed-face ((,c :foreground ,err)))
     `(mu4e-unread-face ((,c :inherit bold)))
