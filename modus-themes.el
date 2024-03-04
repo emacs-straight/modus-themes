@@ -3198,7 +3198,7 @@ FG and BG are the main colors."
     `(org-block ((,c :inherit modus-themes-fixed-pitch :background ,bg-prose-block-contents :extend t)))
     `(org-block-begin-line ((,c :inherit modus-themes-fixed-pitch :background ,bg-prose-block-delimiter :foreground ,fg-prose-block-delimiter :extend t)))
     `(org-block-end-line ((,c :inherit org-block-begin-line)))
-    `(org-checkbox ((,c :foreground ,warning)))
+    `(org-checkbox ((,c :inherit modus-themes-fixed-pitch :foreground ,warning)))
     `(org-checkbox-statistics-done ((,c :inherit org-done)))
     `(org-checkbox-statistics-todo ((,c :inherit org-todo)))
     `(org-clock-overlay ((,c :inherit secondary-selection)))
@@ -3495,7 +3495,7 @@ FG and BG are the main colors."
     `(shortdoc-heading ((,c :inherit bold)))
     `(shortdoc-section (())) ; remove the default's variable-pitch style
 ;;;;; show-paren-mode
-    `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :underline ,underline-paren-match)))
+    `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-paren-match :underline ,underline-paren-match)))
     `(show-paren-match-expression ((,c :background ,bg-paren-expression)))
     `(show-paren-mismatch ((,c :inherit modus-themes-prominent-error)))
 ;;;;; shr
