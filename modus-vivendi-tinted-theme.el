@@ -209,7 +209,7 @@ which corresponds to a minimum contrast in relative luminance of
 ;;; Paren match
 
       (bg-paren-match        "#5f789f")
-      (fg-paren-match        unspecified)
+      (fg-paren-match        fg-main)
       (bg-paren-expression   "#453040")
       (underline-paren-match unspecified)
 
@@ -218,7 +218,7 @@ which corresponds to a minimum contrast in relative luminance of
 ;;;; General mappings
 
       (fringe bg-dim)
-      (cursor magenta-warmer)
+      (cursor magenta-intense)
 
       (keybind magenta-cooler)
       (name magenta)
