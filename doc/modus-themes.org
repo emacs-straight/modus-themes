@@ -4,9 +4,9 @@
 #+language: en
 #+options: ':t toc:nil author:t email:t num:t
 #+startup: content
-#+macro: stable-version 4.3.0
-#+macro: release-date 2023-09-19
-#+macro: development-version 4.4.0-dev
+#+macro: stable-version 4.4.0
+#+macro: release-date 2024-03-17
+#+macro: development-version 4.5.0-dev
 #+macro: file @@texinfo:@file{@@$1@@texinfo:}@@
 #+macro: space @@texinfo:@: @@
 #+macro: kbd @@texinfo:@kbd{@@$1@@texinfo:}@@
@@ -1945,8 +1945,6 @@ this code block we show how to change the background of matching
 delimiters when ~show-paren-mode~ is enabled.  We also demonstrate how
 to enable underlines for those highlights.
 
-[ The =fg-paren-match= is part of {{{development-version}}}. ]
-
 #+begin_src emacs-lisp
 ;; Change the background to a shade of magenta
 (setq modus-themes-common-palette-overrides
@@ -2087,6 +2085,8 @@ The default style of Org blocks is a subtle gray background for the
 contents and for the delimiter lines (the =#+begin_= and =#+end_=
 parts). The text of the delimiter lines is a subtle gray foreground
 color.
+
+[[#h:bb5b396f-5532-4d52-ab13-149ca24854f1][Make inline code in prose use alternative styles]].
 
 #+begin_src emacs-lisp
 ;; Make code blocks (in Org, for example) use a more colorful style
@@ -2257,42 +2257,42 @@ Org's verbatim, code, and macro entries.  We also provide mappings for
 tables, property drawers, tags, and code block delimiters, though we
 do not show every possible permutation.
 
-[[#h:b57bb50b-a863-4ea8-bb38-6de2275fa868][Make TODO and DONE more or less intense]].
+- [[#h:b57bb50b-a863-4ea8-bb38-6de2275fa868][Make TODO and DONE more or less intense]].
+- [[#h:f44cc6e3-b0f1-4a5e-8a90-9e48fa557b50][DIY Make Org block colors more or less colorful]].
 
 #+begin_src emacs-lisp
-;; These are all the mappings at their default values for didactic
-;; purposes
+;; A nuanced accented background, combined with a suitable foreground.
 (setq modus-themes-common-palette-overrides
-      '((prose-block fg-dim)
-        (prose-code green-cooler)
-        (prose-done green)
-        (prose-macro magenta-cooler)
-        (prose-metadata fg-dim)
-        (prose-metadata-value fg-alt)
-        (prose-table fg-alt)
-        (prose-tag magenta-faint)
-        (prose-todo red)
-        (prose-verbatim magenta-warmer)))
+      '((bg-prose-code bg-green-nuanced)
+        (fg-prose-code green-cooler)
 
-;; Make code block delimiters use a shade of red, tone down verbatim,
-;; code, and macro, and amplify the style of property drawers
-(setq modus-themes-common-palette-overrides
-      '((prose-block red-faint)
-        (prose-code fg-dim)
-        (prose-macro magenta-faint)
-        (prose-metadata cyan)
-        (prose-metadata-value green-warmer)
-        (prose-verbatim fg-dim)))
+        (bg-prose-verbatim bg-magenta-nuanced)
+        (fg-prose-verbatim magenta-warmer)
 
-;; Like the above but with more color variety for the inline code
-;; elements
+        (bg-prose-macro bg-blue-nuanced)
+        (fg-prose-macro magenta-cooler)))
+
+;; A more noticeable accented background, combined with a suitable foreground.
 (setq modus-themes-common-palette-overrides
-      '((prose-block red-faint)
-        (prose-code blue-cooler)
-        (prose-macro yellow-warmer)
-        (prose-metadata cyan)
-        (prose-metadata-value green-warmer)
-        (prose-verbatim red-warmer)))
+      '((bg-prose-code bg-sage)
+        (fg-prose-code green-faint)
+
+        (bg-prose-verbatim bg-ochre)
+        (fg-prose-verbatim red-faint)
+
+        (bg-prose-macro bg-lavender)
+        (fg-prose-macro blue-faint)))
+
+;; Leave the backgrounds without a color and simply make the foregrounds more intense.
+(setq modus-themes-common-palette-overrides
+      '((bg-prose-code unspecified)
+        (fg-prose-code green-intense)
+
+        (bg-prose-verbatim unspecified)
+        (fg-prose-verbatim magenta-intense)
+
+        (bg-prose-macro unspecified)
+        (fg-prose-macro cyan-intense)))
 #+end_src
 
 Reload the theme for changes to take effect.
@@ -3287,7 +3287,7 @@ the user had no choice over the =language --> color= mapping.
 As such, the old user option is no more. Users can use the following
 to achieve what they want:
 
-[ All this is done by setting the Org user option ~org-src-block-faces~, 
+[ All this is done by setting the Org user option ~org-src-block-faces~,
   so it is not related to the palette overrides mechanism provided by
   the Modus themes. ]
 
@@ -3922,9 +3922,9 @@ have lots of extensions, so the "full support" may not be 100% true…
 + custom (what you get with {{{kbd(M-x customize)}}})
 + dashboard
 + deadgrep
-+ debbugs [ Part of {{{development-version}}}. ]
++ debbugs
 + deft
-+ denote [ Part of {{{development-version}}}. ]
++ denote
 + devdocs
 + dictionary
 + diff-hl
@@ -4020,7 +4020,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + marginalia
 + markdown-mode
 + markup-faces (~adoc-mode~)
-+ mct [ Part of {{{development-version}}}. ]
++ mct
 + messages
 + minimap
 + mode-line
@@ -4132,7 +4132,7 @@ have lots of extensions, so the "full support" may not be 100% true…
 + xterm-color (and ansi-colors)
 + yaml-mode
 + yasnippet
-+ ztree [ Part of {{{development-version}}}. ]
++ ztree
 
 Plus many other miscellaneous faces that are provided by Emacs.
 
