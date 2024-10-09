@@ -2269,8 +2269,10 @@ FG and BG are the main colors."
     `(elpher-gemini-heading2 ((,c :inherit modus-themes-heading-2)))
     `(elpher-gemini-heading3 ((,c :inherit modus-themes-heading-3)))
 ;;;;; embark
+    `(embark-collect-group-title ((,c :inherit bold :foreground ,name)))
     `(embark-keybinding ((,c :inherit modus-themes-key-binding)))
-    `(embark-collect-marked ((,c :inherit modus-themes-mark-sel)))
+    `(embark-keybinding-repeat ((,c :inherit bold)))
+    `(embark-selected ((,c :inherit modus-themes-mark-sel)))
 ;;;;; ement (ement.el)
     `(ement-room-fully-read-marker ((,c :inherit success)))
     `(ement-room-membership ((,c :inherit shadow)))
