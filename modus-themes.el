@@ -312,24 +312,17 @@ the same as using the command `modus-themes-select'."
   :type `(choice
           (const :tag "No toggle" nil)
           (list :tag "Pick two themes to toggle between"
-                (choice :tag "Theme one of two"
-                        ,@(mapcar (lambda (theme)
-                                    (list 'const theme))
-                                  modus-themes-items))
-                (choice :tag "Theme two of two"
-                        ,@(mapcar (lambda (theme)
-                                    (list 'const theme))
-                                  modus-themes-items))))
+                (choice :tag "Theme one of two" ,@(mapcar (lambda (theme) (list 'const theme)) modus-themes-items))
+                (choice :tag "Theme two of two" ,@(mapcar (lambda (theme) (list 'const theme)) modus-themes-items))))
   :package-version '(modus-themes . "4.0.0")
   :version "30.1"
   :group 'modus-themes)
 
 (defcustom modus-themes-to-rotate modus-themes-items
   "List of Modus themes to rotate among, per `modus-themes-rotate'."
-  :type `(repeat (choice :tag "A theme among the `modus-themes-items'"
-                         ,@(mapcar (lambda (theme)
-                                     (list 'const theme))
-                                   modus-themes-items)))
+  :type `(repeat
+          (choice :tag "A theme among the `modus-themes-items'"
+                  ,@(mapcar (lambda (theme) (list 'const theme)) modus-themes-items)))
   :package-version '(modus-themes . "4.6.0")
   :version "31.1"
   :group 'modus-themes)
@@ -1116,7 +1109,7 @@ With optional SUFFIX, return THEME-palette-SUFFIX as a symbol."
   "Return palette value of active Modus theme, else produce `user-error'.
 With optional OVERRIDES return palette value plus whatever
 overrides."
-  (if-let ((theme (modus-themes--current-theme)))
+  (if-let* ((theme (modus-themes--current-theme)))
       (if overrides
           (modus-themes--palette-value theme :overrides)
         (modus-themes--palette-value theme))
@@ -1199,8 +1192,8 @@ symbol, which is safe when used as a face attribute's value."
 
 (defun modus-themes--annotate-theme (theme)
   "Return completion annotation for THEME."
-  (when-let ((symbol (intern-soft theme))
-             (doc-string (get symbol 'theme-documentation)))
+  (when-let* ((symbol (intern-soft theme))
+              (doc-string (get symbol 'theme-documentation)))
     (format " -- %s"
             (propertize (car (split-string doc-string "\\."))
                         'face 'completions-annotations))))
@@ -1255,6 +1248,7 @@ practically the same as the `modus-themes-select' command).
 
 Run `modus-themes-after-load-theme-hook' after loading the theme.
 Disable other themes per `modus-themes-disable-other-themes'."
+  (declare (interactive-only t))
   (interactive)
   (if-let* ((themes (modus-themes--toggle-theme-p))
             (one (car themes))
@@ -1266,7 +1260,7 @@ Disable other themes per `modus-themes-disable-other-themes'."
 
 (defun modus-themes--rotate (themes)
   "Rotate THEMES rightward such that the car is moved to the end."
-  (if (consp themes)
+  (if (proper-list-p themes)
       (let* ((index (seq-position themes (modus-themes--current-theme)))
              (offset (1+ index)))
         (append (nthcdr offset themes) (take offset themes)))
@@ -1274,7 +1268,7 @@ Disable other themes per `modus-themes-disable-other-themes'."
 
 (defun modus-themes--rotate-p (themes)
   "Return a new theme among THEMES if it is possible to rotate to it."
-  (if-let ((new-theme (car (modus-themes--rotate themes))))
+  (if-let* ((new-theme (car (modus-themes--rotate themes))))
       (if (eq new-theme (modus-themes--current-theme))
           (car (modus-themes--rotate-p (modus-themes--rotate themes)))
         new-theme)
@@ -1289,6 +1283,8 @@ If the current theme is already the next in line, then move to the one
 after.  Perform the rotation rightwards, such that the first element in
 the list becomes the last.  Do not modify THEMES in the process."
   (interactive (list modus-themes-to-rotate))
+  (unless (proper-list-p themes)
+    "This is not a list of themes: `%s'" themes)
   (let ((candidate (modus-themes--rotate-p themes)))
     (if (modus-themes--modus-p candidate)
         (progn
