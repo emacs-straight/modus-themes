@@ -1,6 +1,6 @@
 ;;; modus-operandi-tinted-theme.el --- Elegant, highly legible theme with a light ochre background -*- lexical-binding:t -*-
 
-;; Copyright (C) 2019-2024  Free Software Foundation, Inc.
+;; Copyright (C) 2019-2025  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
@@ -73,18 +73,18 @@ which corresponds to a minimum contrast in relative luminance of
       (red-cooler      "#a0132f")
       (red-faint       "#7f0000")
       (red-intense     "#d00000")
-      (green           "#006800")
-      (green-warmer    "#316500")
-      (green-cooler    "#00663f")
+      (green           "#006300")
+      (green-warmer    "#316000")
+      (green-cooler    "#00603f")
       (green-faint     "#2a5045")
       (green-intense   "#008900")
-      (yellow          "#6f5500")
-      (yellow-warmer   "#884900")
-      (yellow-cooler   "#7a4f2f")
+      (yellow          "#6d5000")
+      (yellow-warmer   "#894000")
+      (yellow-cooler   "#77492f")
       (yellow-faint    "#624416")
       (yellow-intense  "#808000")
       (blue            "#0031a9")
-      (blue-warmer     "#3548cf")
+      (blue-warmer     "#3546c2")
       (blue-cooler     "#0000b0")
       (blue-faint      "#003497")
       (blue-intense    "#0000ff")
@@ -93,10 +93,10 @@ which corresponds to a minimum contrast in relative luminance of
       (magenta-cooler  "#531ab6")
       (magenta-faint   "#7c318f")
       (magenta-intense "#dd22dd")
-      (cyan            "#005e8b")
-      (cyan-warmer     "#3f578f")
+      (cyan            "#00598b")
+      (cyan-warmer     "#32548f")
       (cyan-cooler     "#005f5f")
-      (cyan-faint      "#005077")
+      (cyan-faint      "#304463")
       (cyan-intense    "#008899")
 
 ;;; Uncommon accent foregrounds
@@ -233,8 +233,8 @@ which corresponds to a minimum contrast in relative luminance of
       (identifier yellow-cooler)
 
       (err red)
-      (warning yellow-warmer)
-      (info cyan-cooler)
+      (warning yellow)
+      (info green)
 
       (underline-err red-intense)
       (underline-warning yellow-intense)
@@ -255,23 +255,23 @@ which corresponds to a minimum contrast in relative luminance of
 ;;;; Code mappings
 
       (bracket fg-main)
-      (builtin magenta-warmer)
+      (builtin magenta)
       (comment red-faint)
-      (constant blue-cooler)
+      (constant magenta-cooler)
       (delimiter fg-main)
       (docmarkup magenta-faint)
-      (docstring green-faint)
-      (fnname magenta)
-      (keyword magenta-cooler)
+      (docstring cyan-faint)
+      (fnname yellow-cooler)
+      (keyword blue-cooler)
       (number fg-main)
       (operator fg-main)
-      (preprocessor red-cooler)
+      (preprocessor yellow-warmer)
       (punctuation fg-main)
-      (rx-backslash magenta)
-      (rx-construct green-cooler)
-      (string blue-warmer)
-      (type cyan-cooler)
-      (variable cyan)
+      (rx-backslash magenta-warmer)
+      (rx-construct magenta-cooler)
+      (string cyan)
+      (type green-cooler)
+      (variable green-warmer)
 
 ;;;; Accent mappings
 
@@ -356,7 +356,7 @@ which corresponds to a minimum contrast in relative luminance of
 
 ;;;; Prompt mappings
 
-      (fg-prompt cyan-cooler)
+      (fg-prompt green-cooler)
       (bg-prompt unspecified)
 
 ;;;; Prose mappings

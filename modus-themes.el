@@ -309,11 +309,12 @@ If the value is nil or otherwise does not specify two valid Modus
 themes, the command `modus-themes-toggle' reverts to selecting a
 theme from the list of available Modus themes.  In effect, it is
 the same as using the command `modus-themes-select'."
-  :type `(choice
-          (const :tag "No toggle" nil)
-          (list :tag "Pick two themes to toggle between"
-                (choice :tag "Theme one of two" ,@(mapcar (lambda (theme) (list 'const theme)) modus-themes-items))
-                (choice :tag "Theme two of two" ,@(mapcar (lambda (theme) (list 'const theme)) modus-themes-items))))
+  :type (let ((themes (mapcar (lambda (theme) (list 'const theme)) modus-themes-items)))
+          `(choice
+            (const :tag "No toggle" nil)
+            (list :tag "Pick two themes to toggle between"
+                  (choice :tag "Theme one of two" ,@themes)
+                  (choice :tag "Theme two of two" ,@themes))))
   :package-version '(modus-themes . "4.0.0")
   :version "30.1"
   :group 'modus-themes)
@@ -1723,6 +1724,25 @@ FG and BG are the main colors."
     `(link ((,c :inherit button)))
     `(link-visited ((,c :background ,bg-link-visited :foreground ,fg-link-visited :underline ,underline-link-visited)))
     `(tooltip ((,c :background ,bg-active :foreground ,fg-main)))
+;;;;; adoc-mode
+    `(adoc-code-face ((,c :inherit font-lock-constant-face)))
+    `(adoc-command-face ((,c :inherit modus-themes-prose-macro)))
+    `(adoc-complex-replacement-face ((,c :background ,bg-magenta-subtle :foreground ,magenta)))
+    `(adoc-emphasis-face ((t (:inherit bold))))
+    `(adoc-gen-face ((,c :foreground ,blue)))
+    `(adoc-meta-face ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata)))
+    `(adoc-meta-hide-face ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata)))
+    `(adoc-replacement-face ((,c :inherit font-lock-escape-face)))
+    `(adoc-secondary-text-face ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata-value)))
+    `(adoc-table-face ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-table)))
+    `(adoc-title-0-face ((,c :inherit modus-themes-heading-0)))
+    `(adoc-title-1-face ((,c :inherit modus-themes-heading-1)))
+    `(adoc-title-2-face ((,c :inherit modus-themes-heading-2)))
+    `(adoc-title-3-face ((,c :inherit modus-themes-heading-3)))
+    `(adoc-title-4-face ((,c :inherit modus-themes-heading-4)))
+    `(adoc-title-5-face ((,c :inherit modus-themes-heading-5)))
+    `(adoc-typewriter-face ((,c :inherit modus-themes-prose-verbatim)))
+    `(adoc-verbatim-face ((,c :inherit modus-themes-prose-verbatim)))
 ;;;;; agda2-mode
     `(agda2-highlight-bound-variable-face ((,c :inherit font-lock-variable-name-face)))
     `(agda2-highlight-catchall-clause-face ((,c :background ,bg-inactive)))
@@ -2723,6 +2743,8 @@ FG and BG are the main colors."
     `(ibut-face ((,c :inherit button :background ,bg-link-symbolic :foreground ,fg-link-symbolic :underline ,underline-link-symbolic)))
 ;;;;; icomplete
     `(icomplete-first-match ((,c :inherit modus-themes-completion-match-0)))
+    `(icomplete-vertical-selected-prefix-indicator-face ((,c :inherit bold :foreground ,keybind)))
+    `(icomplete-vertical-unselected-prefix-indicator-face ((,c :inherit shadow)))
     `(icomplete-selected-match ((,c :inherit modus-themes-completion-selected)))
 ;;;;; ido-mode
     `(ido-first-match ((,c :inherit modus-themes-completion-match-0)))
