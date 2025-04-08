@@ -172,10 +172,6 @@ standard)."
       (bg-region           "#5a5a5a")
       (fg-region           "#ffffff")
 
-      (bg-char-0 "#0040ff")
-      (bg-char-1 "#625000")
-      (bg-char-2 "#105faf")
-
       (bg-mode-line-active        "#2a2a6a")
       (fg-mode-line-active        "#f0f0f0")
       (border-mode-line-active    "#8080a7")
@@ -215,13 +211,6 @@ standard)."
       (fg-removed-intense "#d0b05f")
 
       (bg-diff-context    "#1a1a1a")
-
-;;; Paren match
-
-      (bg-paren-match        "#2f7f9f")
-      (fg-paren-match        fg-main)
-      (bg-paren-expression   "#453040")
-      (underline-paren-match unspecified)
 
 ;;; Mappings
 
@@ -274,6 +263,13 @@ standard)."
       (string blue-warmer)
       (type cyan-cooler)
       (variable cyan)
+
+;;;; Paren match
+
+      (bg-paren-match        bg-cyan-subtle)
+      (fg-paren-match        fg-main)
+      (underline-paren-match unspecified)
+      (bg-paren-expression   bg-yellow-nuanced)
 
 ;;;; Accent mappings
 
@@ -403,7 +399,7 @@ standard)."
 
       (bg-search-current bg-yellow-intense)
       (bg-search-lazy bg-blue-intense)
-      (bg-search-replace bg-magenta-intense)
+      (bg-search-replace bg-yellow-intense)
 
       (bg-search-rx-group-0 bg-cyan-intense)
       (bg-search-rx-group-1 bg-magenta-intense)

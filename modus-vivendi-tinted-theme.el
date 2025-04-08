@@ -170,10 +170,6 @@ which corresponds to a minimum contrast in relative luminance of
       (bg-region           "#555a66")
       (fg-region           "#ffffff")
 
-      (bg-char-0 "#0050af")
-      (bg-char-1 "#7f1f7f")
-      (bg-char-2 "#625a00")
-
       (bg-mode-line-active        "#484d67")
       (fg-mode-line-active        "#ffffff")
       (border-mode-line-active    "#979797")
@@ -213,13 +209,6 @@ which corresponds to a minimum contrast in relative luminance of
       (fg-removed-intense "#ff9095")
 
       (bg-diff-context    "#1a1f30")
-
-;;; Paren match
-
-      (bg-paren-match        "#5f789f")
-      (fg-paren-match        fg-main)
-      (bg-paren-expression   "#453040")
-      (underline-paren-match unspecified)
 
 ;;; Mappings
 
@@ -272,6 +261,13 @@ which corresponds to a minimum contrast in relative luminance of
       (string cyan-cooler)
       (type green-warmer)
       (variable cyan-warmer)
+
+;;;; Paren match
+
+      (bg-paren-match        bg-cyan-subtle)
+      (fg-paren-match        fg-main)
+      (underline-paren-match unspecified)
+      (bg-paren-expression   bg-yellow-nuanced)
 
 ;;;; Accent mappings
 
