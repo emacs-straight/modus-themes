@@ -63,7 +63,7 @@ standard)."
       (bg-dim           "#f2f2f2")
       (fg-main          "#000000")
       (fg-dim           "#595959")
-      (fg-alt           "#193668")
+      (fg-alt           "#024960")
       (bg-active        "#c4c4c4")
       (bg-inactive      "#e0e0e0")
       (border           "#9f9f9f")
@@ -381,7 +381,7 @@ standard)."
       (prose-table fg-alt)
       (prose-table-formula red-cooler)
 
-      (prose-tag magenta-faint)
+      (prose-tag fg-alt)
 
 ;;;; Rainbow mappings
 
