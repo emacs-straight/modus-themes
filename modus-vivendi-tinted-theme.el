@@ -74,7 +74,7 @@ which corresponds to a minimum contrast in relative luminance of
       (red-faint       "#ef8386")
       (red-intense     "#ff5f5f")
       (green           "#44bc44")
-      (green-warmer    "#75d027")
+      (green-warmer    "#75c12b")
       (green-cooler    "#00c06f")
       (green-faint     "#88ca9f")
       (green-intense   "#44df44")
@@ -165,7 +165,7 @@ which corresponds to a minimum contrast in relative luminance of
 
       (bg-completion       "#483d8a")
       (bg-hover            "#45605e")
-      (bg-hover-secondary  "#654a39")
+      (bg-hover-secondary  "#64404f")
       (bg-hl-line          "#303a6f")
       (bg-region           "#555a66")
       (fg-region           "#ffffff")
