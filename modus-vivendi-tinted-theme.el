@@ -74,7 +74,7 @@ which corresponds to a minimum contrast in relative luminance of
       (red-faint       "#ef8386")
       (red-intense     "#ff5f5f")
       (green           "#44bc44")
-      (green-warmer    "#75c12b")
+      (green-warmer    "#75c13e")
       (green-cooler    "#00c06f")
       (green-faint     "#88ca9f")
       (green-intense   "#44df44")
@@ -332,14 +332,14 @@ which corresponds to a minimum contrast in relative luminance of
 
 ;;;; Mail mappings
 
-      (mail-cite-0 blue-warmer)
+      (mail-cite-0 cyan-cooler)
       (mail-cite-1 yellow-cooler)
-      (mail-cite-2 cyan-cooler)
+      (mail-cite-2 cyan)
       (mail-cite-3 red-cooler)
-      (mail-part blue)
-      (mail-recipient magenta-cooler)
+      (mail-part magenta-cooler)
+      (mail-recipient blue-warmer)
       (mail-subject magenta-warmer)
-      (mail-other magenta-faint)
+      (mail-other magenta)
 
 ;;;; Mark mappings
 
