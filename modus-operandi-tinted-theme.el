@@ -333,8 +333,8 @@ which corresponds to a minimum contrast in relative luminance of
 ;;;; Mail mappings
 
       (mail-cite-0 cyan-cooler)
-      (mail-cite-1 yellow-cooler)
-      (mail-cite-2 cyan)
+      (mail-cite-1 yellow)
+      (mail-cite-2 green-warmer)
       (mail-cite-3 red-cooler)
       (mail-part magenta-cooler)
       (mail-recipient blue-warmer)
@@ -362,13 +362,13 @@ which corresponds to a minimum contrast in relative luminance of
       (bg-prose-block-contents bg-dim)
 
       (bg-prose-code unspecified)
-      (fg-prose-code cyan-cooler)
+      (fg-prose-code green-cooler)
 
       (bg-prose-macro unspecified)
-      (fg-prose-macro magenta-cooler)
+      (fg-prose-macro blue-cooler)
 
       (bg-prose-verbatim unspecified)
-      (fg-prose-verbatim magenta-warmer)
+      (fg-prose-verbatim yellow-warmer)
 
       (prose-done green)
       (prose-todo red)
@@ -454,7 +454,7 @@ which corresponds to a minimum contrast in relative luminance of
 
 ;;;; Heading mappings
 
-      (fg-heading-0 cyan-cooler)
+      (fg-heading-0 green-cooler)
       (fg-heading-1 fg-main)
       (fg-heading-2 yellow-faint)
       (fg-heading-3 fg-alt)
