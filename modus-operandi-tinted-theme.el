@@ -80,8 +80,8 @@ which corresponds to a minimum contrast in relative luminance of
       (green-intense   "#008900")
       (yellow          "#6d5000")
       (yellow-warmer   "#894000")
-      (yellow-cooler   "#673f40")
-      (yellow-faint    "#5e4816")
+      (yellow-cooler   "#602938")
+      (yellow-faint    "#574316")
       (yellow-intense  "#808000")
       (blue            "#0031a9")
       (blue-warmer     "#3546c2")
@@ -219,7 +219,7 @@ which corresponds to a minimum contrast in relative luminance of
 
       (keybind red)
       (name magenta)
-      (identifier yellow-cooler)
+      (identifier yellow-faint)
 
       (err red)
       (warning yellow)
@@ -259,8 +259,8 @@ which corresponds to a minimum contrast in relative luminance of
       (rx-backslash magenta-warmer)
       (rx-construct magenta-cooler)
       (string cyan)
-      (type green-cooler)
-      (variable green-warmer)
+      (type green-warmer)
+      (variable green-cooler)
 
 ;;;; Paren match
 

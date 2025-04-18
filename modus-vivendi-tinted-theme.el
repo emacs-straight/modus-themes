@@ -75,7 +75,7 @@ which corresponds to a minimum contrast in relative luminance of
       (red-intense     "#ff5f5f")
       (green           "#44bc44")
       (green-warmer    "#75c13e")
-      (green-cooler    "#00c06f")
+      (green-cooler    "#11c777")
       (green-faint     "#88ca9f")
       (green-intense   "#44df44")
       (yellow          "#d0bc00")
@@ -258,8 +258,8 @@ which corresponds to a minimum contrast in relative luminance of
       (punctuation fg-main)
       (rx-backslash magenta-warmer)
       (rx-construct magenta-cooler)
-      (string cyan-cooler)
-      (type green-warmer)
+      (string blue)
+      (type green-cooler)
       (variable cyan-warmer)
 
 ;;;; Paren match
@@ -273,7 +273,7 @@ which corresponds to a minimum contrast in relative luminance of
 
       (accent-0 magenta-cooler)
       (accent-1 cyan)
-      (accent-2 red-cooler)
+      (accent-2 magenta-warmer)
       (accent-3 yellow-warmer)
 
 ;;;; Button mappings
@@ -332,9 +332,9 @@ which corresponds to a minimum contrast in relative luminance of
 
 ;;;; Mail mappings
 
-      (mail-cite-0 cyan-cooler)
+      (mail-cite-0 blue)
       (mail-cite-1 yellow-cooler)
-      (mail-cite-2 cyan-warmer)
+      (mail-cite-2 cyan-cooler)
       (mail-cite-3 red-cooler)
       (mail-part magenta-cooler)
       (mail-recipient blue-warmer)
