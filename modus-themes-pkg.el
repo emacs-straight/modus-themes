@@ -1,2 +1,2 @@
-;; Generated package description from modus-themes.el  -*- no-byte-compile: t -*-
-(define-package "modus-themes" "4.8.1.0.20250928.171635" "Elegant, highly legible and customizable themes" '((emacs "27.1")) :commit "6f0e64daaa42d70720997a11c03e6805180a76c4" :authors '(("Protesilaos Stavrou" . "info@protesilaos.com")) :maintainer '("Protesilaos Stavrou" . "info@protesilaos.com") :keywords '("faces" "theme" "accessibility") :url "https://github.com/protesilaos/modus-themes")
+;; Generated package description from modus-themes.el  -*- mode: lisp-data; no-byte-compile: t -*-
+(define-package "modus-themes" "4.8.1.0.20251001.154430" "Elegant, highly legible and customizable themes" '((emacs "28.1")) :commit "6326130654f413fd15862fe71a8901a0b3592f44" :authors '(("Protesilaos Stavrou" . "info@protesilaos.com")) :maintainer '("Protesilaos Stavrou" . "info@protesilaos.com") :keywords '("faces" "theme" "accessibility") :url "https://github.com/protesilaos/modus-themes")
