@@ -1041,7 +1041,6 @@ represents."
      (date-event fg-alt)
      (date-holiday red)
      (date-holiday-other blue)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled yellow)
      (date-scheduled-subtle yellow-faint)
@@ -1368,7 +1367,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (date-event fg-alt)
      (date-holiday red)
      (date-holiday-other blue)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled yellow)
      (date-scheduled-subtle yellow-faint)
@@ -1695,7 +1693,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (date-event fg-alt)
      (date-holiday yellow-warmer)
      (date-holiday-other blue)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled yellow-cooler)
      (date-scheduled-subtle yellow-faint)
@@ -2358,7 +2355,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (date-event fg-alt)
      (date-holiday magenta-warmer)
      (date-holiday-other blue)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled yellow-cooler)
      (date-scheduled-subtle yellow-faint)
@@ -2690,7 +2686,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (date-event fg-alt)
      (date-holiday magenta-warmer)
      (date-holiday-other blue)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled yellow-cooler)
      (date-scheduled-subtle yellow-faint)
@@ -3022,7 +3017,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (date-event fg-alt)
      (date-holiday yellow-warmer)
      (date-holiday-other blue)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled yellow-cooler)
      (date-scheduled-subtle yellow-faint)
@@ -3356,7 +3350,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (date-event fg-alt)
      (date-holiday red-intense)
      (date-holiday-other cyan-warmer)
-     (date-now fg-main)
      (date-range fg-alt)
      (date-scheduled magenta)
      (date-scheduled-subtle magenta-faint)
@@ -3502,7 +3495,6 @@ exists in the palette and is associated with a HEX-VALUE.")
     (date-deadline red-faint)
     (date-event fg-alt)
     (date-holiday magenta)
-    (date-now fg-main)
     (date-scheduled yellow-faint)
     (date-weekday fg-dim)
     (date-weekend fg-dim)
@@ -7320,14 +7312,22 @@ properties, use `modus-themes-declare'."
   (add-to-list 'modus-themes-registered-items name))
 
 ;;;###autoload
-(defmacro modus-themes-theme (name family description background-mode core-palette user-palette overrides-palette)
+(defmacro modus-themes-theme (name family description background-mode core-palette user-palette overrides-palette &optional custom-faces custom-variables)
   "Define a Modus theme or derivative thereof.
 NAME is the name of the new theme.  FAMILY is the collection of themes
 it belongs to.  DESCRIPTION is its documentation string.
 BACKGROUND-MODE is either `dark' or `light', in reference to the theme's
 background color.  The CORE-PALETTE, USER-PALETTE, and OVERRIDES-PALETTE
 are symbols of variables which define palettes commensurate with
-`modus-themes-operandi-palette'."
+`modus-themes-operandi-palette'.
+
+The optional CUSTOM-FACES and CUSTOM-VARIABLES are joined together with
+the `modus-themes-faces' and `modus-themes-custom-variables',
+respectively.  A derivative theme defining those is thus overriding what
+the Modus themess have by default.
+
+Consult the manual for details on how to build a theme on top of the
+`modus-themes': Info node `(modus-themes) Build on top of the Modus themes'."
   (declare (indent 0))
   (let ((sym (gensym))
         (colors (mapcar #'car (symbol-value core-palette)))
@@ -7349,11 +7349,17 @@ are symbols of variables which define palettes commensurate with
                    (list color `(modus-themes--retrieve-palette-value ',color ,sym)))
                  colors))
          (ignore c ,@colors) ; Silence unused variable warnings
-         (custom-theme-set-faces ',name ,@modus-themes-faces)
+         (custom-theme-set-faces
+          ',name
+          ,@(append
+             (symbol-value custom-faces)
+             modus-themes-faces))
          (custom-theme-set-variables
           ',name
-          ,@(append modus-themes-custom-variables
-                    (list `'(frame-background-mode ',background-mode))))
+          ,@(append
+             modus-themes-custom-variables
+             (symbol-value custom-variables)
+             (list `'(frame-background-mode ',background-mode))))
          ,@(unless theme-exists-p
              (list `(provide-theme ',name)))))))
 
@@ -7416,6 +7422,7 @@ accordingly."
   :init-value nil)
 
 (cl-defmethod modus-themes-get-themes (&context (modus-themes-include-derivatives-mode (eql t)))
+  "Return list of Modus themes per `modus-themes-include-derivatives-mode'."
   (if-let* ((themes (modus-themes-get-all-known-themes nil))
             (sorted-themes (modus-themes-sort themes 'light)))
       sorted-themes
