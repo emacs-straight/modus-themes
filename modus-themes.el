@@ -665,7 +665,7 @@ represents."
 (define-obsolete-variable-alias 'modus-vivendi-deuteranopia-palette 'modus-themes-vivendi-deuteranopia-palette "5.0.0")
 (define-obsolete-variable-alias 'modus-vivendi-tritanopia-palette 'modus-themes-vivendi-tritanopia-palette "5.0.0")
 
-(defconst modus-themes-common-palette-mappings
+(defvar modus-themes-common-palette-mappings
   '((fringe bg-dim)
 
     ;; Button mappings
@@ -993,7 +993,6 @@ represents."
      (builtin magenta-warmer)
      (comment fg-dim)
      (constant blue-cooler)
-     (docmarkup magenta-faint)
      (docstring green-faint)
      (fnname magenta)
      (keyword magenta-cooler)
@@ -1320,7 +1319,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (builtin magenta)
      (comment red-faint)
      (constant magenta-cooler)
-     (docmarkup magenta-faint)
      (docstring cyan-faint)
      (fnname yellow-cooler)
      (keyword blue)
@@ -1991,13 +1989,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (accent-2 cyan-cooler)
      (accent-3 magenta)
 
-     ;; Button mappings
-
-     (fg-button-active fg-main)
-     (fg-button-inactive fg-dim)
-     (bg-button-active bg-active)
-     (bg-button-inactive bg-dim)
-
      ;; Completion mappings
 
      (fg-completion-match-0 cyan)
@@ -2322,13 +2313,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (accent-1 magenta-warmer)
      (accent-2 cyan-cooler)
      (accent-3 yellow)
-
-     ;; Button mappings
-
-     (fg-button-active fg-main)
-     (fg-button-inactive fg-dim)
-     (bg-button-active bg-active)
-     (bg-button-inactive bg-dim)
 
      ;; Completion mappings
 
@@ -2655,13 +2639,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (accent-2 magenta-warmer)
      (accent-3 yellow-warmer)
 
-     ;; Button mappings
-
-     (fg-button-active fg-main)
-     (fg-button-inactive fg-dim)
-     (bg-button-active bg-active)
-     (bg-button-inactive bg-dim)
-
      ;; Completion mappings
 
      (fg-completion-match-0 blue-cooler)
@@ -2986,13 +2963,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (accent-1 yellow)
      (accent-2 cyan-cooler)
      (accent-3 yellow-cooler)
-
-     ;; Button mappings
-
-     (fg-button-active fg-main)
-     (fg-button-inactive fg-dim)
-     (bg-button-active bg-active)
-     (bg-button-inactive bg-dim)
 
      ;; Completion mappings
 
@@ -3320,13 +3290,6 @@ exists in the palette and is associated with a HEX-VALUE.")
      (accent-1 red-warmer)
      (accent-2 cyan-cooler)
      (accent-3 magenta)
-
-     ;; Button mappings
-
-     (fg-button-active fg-main)
-     (fg-button-inactive fg-dim)
-     (bg-button-active bg-active)
-     (bg-button-inactive bg-dim)
 
      ;; Completion mappings
 
@@ -4558,7 +4521,7 @@ FG and BG are the main colors."
     `(escape-glyph ((,c :foreground ,err)))
     `(file-name-shadow ((,c :inherit shadow)))
     `(header-line ((,c :inherit modus-themes-ui-variable-pitch :background ,bg-dim)))
-    `(header-line-inactive ((,c :inherit (modus-themes-ui-variable-pitch shadow))))
+    `(header-line-inactive ((,c :inherit (shadow header-line))))
     `(header-line-highlight ((,c :background ,bg-hover :foreground ,fg-main :box ,fg-main)))
     `(help-argument-name ((,c :inherit modus-themes-slant :foreground ,variable)))
     `(help-key-binding ((,c :inherit modus-themes-key-binding)))
@@ -7432,15 +7395,19 @@ accordingly."
 
 (defmacro modus-themes-define-derivative-command (family suffix)
   "Define convenience command with SUFFIX to load only FAMILY themes.
-The command's symbol is FAMILY-SUFFIX, like `modus-themes-rotate'."
+SUFFIX is a symbol among those listed in the variable
+`modus-themes-define-derivative-command-known-suffixes'.  The newly
+defined command's symbol is FAMILY-SUFFIX, like `modus-themes-rotate'."
   (unless (memq suffix modus-themes-define-derivative-command-known-suffixes)
     (error "Cannot define command with unknown suffix `%s'" suffix))
-  `(defun ,(intern (format "%s-%s" family suffix)) ()
-     (interactive)
-     (cl-letf (((symbol-function 'modus-themes-get-themes)
-                (lambda ()
-                  (modus-themes-get-all-known-themes ',family))))
-       (call-interactively ',(intern (format "modus-themes-%s" suffix))))))
+  (let ((modus-command (intern (format "modus-themes-%s" suffix))))
+    `(defun ,(intern (format "%s-%s" family suffix)) ()
+       ,(format "Like `%s' but only consider members of the `%s'" modus-command family)
+       (interactive)
+       (cl-letf (((symbol-function 'modus-themes-get-themes)
+                  (lambda ()
+                    (modus-themes-get-all-known-themes ',family))))
+         (call-interactively ',modus-command)))))
 
 ;;;; Add themes from package to path
 
