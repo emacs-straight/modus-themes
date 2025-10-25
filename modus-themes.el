@@ -230,8 +230,9 @@ text should not be underlined as well) yet still blend in."
 ;;;; Customization variables
 
 (make-obsolete-variable
- 'modus-themes-custom-auto-reload nil
- "Since version 5.0.0: reload the theme manually for changes to take effect")
+ 'modus-themes-custom-auto-reload
+ "reload the theme manually for changes to take effect"
+ "5.0.0")
 
 (defcustom modus-themes-disable-other-themes t
   "Disable all other themes when loading a Modus theme.
@@ -4647,37 +4648,6 @@ FG and BG are the main colors."
     `(adoc-title-5-face ((,c :inherit modus-themes-heading-5)))
     `(adoc-typewriter-face ((,c :inherit modus-themes-prose-verbatim)))
     `(adoc-verbatim-face ((,c :inherit modus-themes-prose-verbatim)))
-;;;;; agda2-mode
-    `(agda2-highlight-bound-variable-face ((,c :inherit font-lock-variable-name-face)))
-    `(agda2-highlight-catchall-clause-face ((,c :background ,bg-inactive)))
-    `(agda2-highlight-coinductive-constructor-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-coverage-problem-face ((,c :inherit modus-themes-lang-error)))
-    `(agda2-highlight-datatype-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-deadcode-face ((,c :background ,bg-active)))
-    `(agda2-highlight-dotted-face ((,c :inherit font-lock-variable-name-face)))
-    `(agda2-highlight-error-face ((,c :inherit modus-themes-lang-error)))
-    `(agda2-highlight-field-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-function-face ((,c :inherit font-lock-function-name-face)))
-    `(agda2-highlight-generalizable-variable-face ((,c :inherit font-lock-variable-name-face)))
-    `(agda2-highlight-incomplete-pattern-face ((,c :inherit modus-themes-lang-warning)))
-    `(agda2-highlight-inductive-constructor-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-keyword-face ((,c :inherit font-lock-keyword-face)))
-    `(agda2-highlight-macro-face ((,c :inherit font-lock-keyword-face)))
-    `(agda2-highlight-module-face ((,c :inherit font-lock-variable-name-face)))
-    `(agda2-highlight-number-face ((,c :inherit shadow)))
-    `(agda2-highlight-operator-face ((,c :inherit font-lock-variable-name-face)))
-    `(agda2-highlight-positivity-problem-face ((,c :inherit modus-themes-lang-warning)))
-    `(agda2-highlight-postulate-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-pragma-face ((,c :inherit font-lock-preprocessor-face)))
-    `(agda2-highlight-primitive-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-primitive-type-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-record-face ((,c :inherit font-lock-type-face)))
-    `(agda2-highlight-string-face ((,c :inherit font-lock-string-face)))
-    `(agda2-highlight-symbol-face ((,c :inherit font-lock-constant-face)))
-    `(agda2-highlight-termination-problem-face ((,c :inherit modus-themes-lang-warning)))
-    `(agda2-highlight-typechecks-face ((,c :inherit font-lock-warning-face)))
-    `(agda2-highlight-unsolved-constraint-face ((,c :inherit modus-themes-lang-warning)))
-    `(agda2-highlight-unsolved-meta-face ((,c :inherit modus-themes-lang-warning)))
 ;;;;; all-the-icons
     `(all-the-icons-blue ((,c :foreground ,blue-cooler)))
     `(all-the-icons-blue-alt ((,c :foreground ,blue-warmer)))
@@ -5022,17 +4992,17 @@ FG and BG are the main colors."
 ;;;;; debbugs
     `(debbugs-gnu-archived ((,c :background ,bg-inactive :foreground ,fg-dim)))
     `(debbugs-gnu-done ((,c :inherit success)))
-    `(debbugs-gnu-forwarded ((,c :inherit modus-themes-slant :foreground ,info)))
+    `(debbugs-gnu-forwarded ((,c :inherit italic)))
     `(debbugs-gnu-handled (( )))
     `(debbugs-gnu-marked ((,c :inherit modus-themes-mark-sel)))
     `(debbugs-gnu-marked-stale ((,c :inherit modus-themes-mark-alt)))
-    `(debbugs-gnu-new ((,c :inherit error)))
-    `(debbugs-gnu-pending ((,c :inherit modus-themes-slant :foreground ,fg-alt)))
-    `(debbugs-gnu-stale-1 ((,c :foreground ,red-cooler)))
-    `(debbugs-gnu-stale-2 ((,c :foreground ,yellow-warmer)))
-    `(debbugs-gnu-stale-3 ((,c :foreground ,magenta-warmer)))
-    `(debbugs-gnu-stale-4 ((,c :foreground ,magenta-cooler)))
-    `(debbugs-gnu-stale-5 ((,c :foreground ,cyan-faint)))
+    `(debbugs-gnu-new ((,c :inherit bold :foreground ,err)))
+    `(debbugs-gnu-pending ((,c :inherit bold-italic :foreground ,warning)))
+    `(debbugs-gnu-stale-1 ((,c :foreground ,err)))
+    `(debbugs-gnu-stale-2 ((,c :foreground ,warning)))
+    `(debbugs-gnu-stale-3 ((,c :foreground ,info)))
+    `(debbugs-gnu-stale-4 ((,c :foreground ,fg-alt)))
+    `(debbugs-gnu-stale-5 ((,c :foreground ,fg-dim)))
     `(debbugs-gnu-tagged ((,c :inherit modus-themes-mark-alt)))
     `(debbugs-gnu-title ((,c :inherit bold)))
 ;;;;; deft
@@ -5281,14 +5251,6 @@ FG and BG are the main colors."
     `(emms-playlist-selected-face ((,c :inherit bold :foreground ,constant)))
     `(emms-metaplaylist-mode-current-face ((,c :inherit emms-playlist-selected-face)))
     `(emms-metaplaylist-mode-face ((,c :foreground ,variable)))
-;;;;; enh-ruby-mode (enhanced-ruby-mode)
-    `(enh-ruby-heredoc-delimiter-face ((,c :inherit font-lock-constant-face)))
-    `(enh-ruby-op-face ((,c :foreground ,fg-main)))
-    `(enh-ruby-regexp-delimiter-face ((,c :inherit font-lock-regexp-grouping-construct)))
-    `(enh-ruby-regexp-face ((,c :inherit font-lock-string-face)))
-    `(enh-ruby-string-delimiter-face ((,c :inherit font-lock-string-face)))
-    `(erm-syn-errline ((,c :inherit modus-themes-lang-error)))
-    `(erm-syn-warnline ((,c :inherit modus-themes-lang-warning)))
 ;;;;; epa
     `(epa-field-body (( )))
     `(epa-field-name ((,c :inherit bold :foreground ,fg-dim)))
@@ -5573,46 +5535,17 @@ FG and BG are the main colors."
 ;;;;; hideshow
     `(hs-ellipsis (( )))
 ;;;;; highlight region or ad-hoc regexp
-    ;; HACK 2022-06-23: The :inverse-video prevents hl-line-mode from
-    ;; overriding the background.  Such an override really defeats the
-    ;; purpose of setting those highlights.
-    ;;
-    ;; NOTE 2022-10-04: We do not use the ,c here but instead
-    ;; hardcode color values.  We have to do this as the themes lack
-    ;; entries in their palette for such an edge case.  Defining those
-    ;; entries is not appropriate.
-    `(hi-aquamarine ((((class color) (min-colors 88) (background light))
-                      :background "#ffffff" :foreground "#227f9f" :inverse-video t)
-                     (((class color) (min-colors 88) (background dark))
-                      :background "#000000" :foreground "#66cbdc" :inverse-video t)))
-    `(hi-black-b ((,c :inverse-video t)))
-    `(hi-black-hb ((,c :background ,bg-main :foreground ,fg-dim :inverse-video t)))
-    `(hi-blue ((((class color) (min-colors 88) (background light))
-                :background "#ffffff" :foreground "#3366dd" :inverse-video t)
-               (((class color) (min-colors 88) (background dark))
-                :background "#000000" :foreground "#aaccff" :inverse-video t)))
+    `(hi-aquamarine ((,c :background ,bg-cyan-intense :foreground ,fg-main)))
+    `(hi-black-b ((,c :background ,fg-main :foreground ,bg-main)))
+    `(hi-black-hb ((,c :inherit (bold hi-black-b))))
+    `(hi-blue ((,c :background ,bg-blue-intense :foreground ,fg-main)))
     `(hi-blue-b ((,c :inherit (bold hi-blue))))
-    `(hi-green ((((class color) (min-colors 88) (background light))
-                 :background "#ffffff" :foreground "#008a00" :inverse-video t)
-                (((class color) (min-colors 88) (background dark))
-                 :background "#000000" :foreground "#66dd66" :inverse-video t)))
+    `(hi-green ((,c :background ,bg-green-intense :foreground ,fg-main)))
     `(hi-green-b ((,c :inherit (bold hi-green))))
-    `(hi-pink ((((class color) (min-colors 88) (background light))
-                :background "#ffffff" :foreground "#bd30aa" :inverse-video t)
-               (((class color) (min-colors 88) (background dark))
-                :background "#000000" :foreground "#ff88ee" :inverse-video t)))
-    `(hi-red-b ((((class color) (min-colors 88) (background light))
-                 :background "#ffffff" :foreground "#dd0000" :inverse-video t)
-                (((class color) (min-colors 88) (background dark))
-                 :background "#000000" :foreground "#f06666" :inverse-video t)))
-    `(hi-salmon ((((class color) (min-colors 88) (background light))
-                  :background "#ffffff" :foreground "#bf555a" :inverse-video t)
-                 (((class color) (min-colors 88) (background dark))
-                  :background "#000000" :foreground "#e08a50" :inverse-video t)))
-    `(hi-yellow ((((class color) (min-colors 88) (background light))
-                  :background "#ffffff" :foreground "#af6400" :inverse-video t)
-                 (((class color) (min-colors 88) (background dark))
-                  :background "#000000" :foreground "#faea00" :inverse-video t)))
+    `(hi-pink ((,c :background ,bg-magenta-intense :foreground ,fg-main)))
+    `(hi-red-b ((,c :background ,bg-red-intense :foreground ,fg-main)))
+    `(hi-salmon ((,c :background ,bg-clay :foreground ,fg-clay)))
+    `(hi-yellow ((,c :background ,bg-yellow-intense :foreground ,fg-main)))
     `(highlight-changes ((,c :foreground ,warning :underline nil)))
     `(highlight-changes-delete ((,c :foreground ,err :underline t)))
     `(hl-line ((,c :background ,bg-hl-line :extend t)))
@@ -5691,14 +5624,6 @@ FG and BG are the main colors."
     `(imenu-list-entry-subalist-face-1 ((,c :inherit bold :foreground ,fg-heading-2 :underline t)))
     `(imenu-list-entry-subalist-face-2 ((,c :inherit bold :foreground ,fg-heading-3 :underline t)))
     `(imenu-list-entry-subalist-face-3 ((,c :inherit bold :foreground ,fg-heading-4 :underline t)))
-;;;;; indium
-    `(indium-breakpoint-face ((,c :foreground ,err)))
-    `(indium-frame-url-face ((,c :inherit (shadow button))))
-    `(indium-keyword-face ((,c :inherit font-lock-keyword-face)))
-    `(indium-litable-face ((,c :inherit modus-themes-slant)))
-    `(indium-repl-error-face ((,c :inherit error)))
-    `(indium-repl-prompt-face ((,c :inherit modus-themes-prompt)))
-    `(indium-repl-stdout-face (( )))
 ;;;;; info
     `(Info-quoted ((,c :inherit modus-themes-prose-verbatim))) ; the capitalization is canonical
     `(info-header-node ((,c :inherit (shadow bold))))
@@ -6403,14 +6328,15 @@ FG and BG are the main colors."
     `(org-verse ((,c :inherit org-block)))
     `(org-warning ((,c :inherit warning)))
 ;;;;; org-habit
-    `(org-habit-alert-face ((,c :background ,bg-graph-yellow-0 :foreground "#000000"))) ; fg is special case
-    `(org-habit-alert-future-face ((,c :background ,bg-graph-yellow-1)))
-    `(org-habit-clear-face ((,c :background ,bg-graph-blue-0 :foreground "#000000"))) ; fg is special case
-    `(org-habit-clear-future-face ((,c :background ,bg-graph-blue-1)))
-    `(org-habit-overdue-face ((,c :background ,bg-graph-red-0)))
-    `(org-habit-overdue-future-face ((,c :background ,bg-graph-red-1)))
-    `(org-habit-ready-face ((,c :background ,bg-graph-green-0 :foreground "#000000"))) ; fg is special case
-    `(org-habit-ready-future-face ((,c :background ,bg-graph-green-1)))
+    ;; NOTE 2025-10-24: All foregrounds here are a special case.
+    `(org-habit-alert-face ((,c :background ,bg-graph-yellow-0 :foreground ,(readable-foreground-color bg-graph-yellow-0))))
+    `(org-habit-alert-future-face ((,c :background ,bg-graph-yellow-1 :foreground ,(readable-foreground-color bg-graph-yellow-1))))
+    `(org-habit-clear-face ((,c :background ,bg-graph-blue-0 :foreground ,(readable-foreground-color bg-graph-blue-0))))
+    `(org-habit-clear-future-face ((,c :background ,bg-graph-blue-1 :foreground ,(readable-foreground-color bg-graph-blue-1))))
+    `(org-habit-overdue-face ((,c :background ,bg-graph-red-0 :foreground ,(readable-foreground-color bg-graph-red-0))))
+    `(org-habit-overdue-future-face ((,c :background ,bg-graph-red-1 :foreground ,(readable-foreground-color bg-graph-red-1))))
+    `(org-habit-ready-face ((,c :background ,bg-graph-green-0 :foreground ,(readable-foreground-color bg-graph-green-0))))
+    `(org-habit-ready-future-face ((,c :background ,bg-graph-green-1 :foreground ,(readable-foreground-color bg-graph-green-1))))
 ;;;;; org-journal
     `(org-journal-calendar-entry-face ((,c :inherit modus-themes-slant :foreground ,date-common)))
     `(org-journal-calendar-scheduled-face ((,c :inherit (modus-themes-slant org-scheduled))))
@@ -6929,24 +6855,6 @@ FG and BG are the main colors."
     `(treemacs-window-background-face ((,c :background ,bg-main)))
     `(treemacs-nerd-icons-root-face ((,c :foreground ,accent-0)))
     `(treemacs-nerd-icons-file-face ((,c :foreground ,accent-0)))
-;;;;; tree-sitter
-    `(tree-sitter-hl-face:attribute ((,c :inherit font-lock-variable-name-face)))
-    `(tree-sitter-hl-face:constant.builtin ((,c :inherit tree-sitter-hl-face:constant)))
-    `(tree-sitter-hl-face:escape ((,c :inherit font-lock-regexp-grouping-backslash)))
-    `(tree-sitter-hl-face:function ((,c :inherit font-lock-function-name-face)))
-    `(tree-sitter-hl-face:function.call ((,c :inherit tree-sitter-hl-face:function)))
-    `(tree-sitter-hl-face:label (( )))
-    `(tree-sitter-hl-face:method.call (( )))
-    `(tree-sitter-hl-face:operator ((,c :inherit modus-themes-bold)))
-    `(tree-sitter-hl-face:property (( )))
-    `(tree-sitter-hl-face:property.definition ((,c :inherit font-lock-variable-name-face)))
-    `(tree-sitter-hl-face:punctuation (( )))
-    `(tree-sitter-hl-face:punctuation.bracket (( )))
-    `(tree-sitter-hl-face:punctuation.delimiter (( )))
-    `(tree-sitter-hl-face:punctuation.special ((,c :inherit font-lock-regexp-grouping-construct)))
-    `(tree-sitter-hl-face:string.special ((,c :inherit tree-sitter-hl-face:string)))
-    `(tree-sitter-hl-face:tag ((,c :inherit font-lock-function-name-face)))
-    `(tree-sitter-hl-face:type.argument (( )))
 ;;;;; tty-menu
     `(tty-menu-disabled-face ((,c :background ,bg-inactive :foreground ,fg-dim)))
     `(tty-menu-enabled-face ((,c :inherit bold :background ,bg-inactive :foreground ,fg-main)))
