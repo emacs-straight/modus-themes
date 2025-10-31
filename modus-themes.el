@@ -835,8 +835,8 @@ represents."
      ;; Uncommon accent foregrounds
 
      (rust       "#8a290f")
-     (gold       "#80601f")
-     (olive      "#56692d")
+     (gold       "#6c501c")
+     (olive      "#4c6000")
      (slate      "#2f3f83")
      (indigo     "#4a3a8a")
      (maroon     "#731c52")
@@ -983,6 +983,7 @@ represents."
      (constant blue-cooler)
      (docstring green-faint)
      (fnname magenta)
+     (fnname-call pink)
      (keyword magenta-cooler)
      (preprocessor red-cooler)
      (property cyan)
@@ -991,6 +992,7 @@ represents."
      (string blue-warmer)
      (type cyan-cooler)
      (variable cyan)
+     (variable-use slate)
 
      ;; Accent mappings
 
@@ -1162,8 +1164,8 @@ exists in the palette and is associated with a HEX-VALUE.")
      ;; Uncommon accent foregrounds
 
      (rust       "#8a290f")
-     (gold       "#80601f")
-     (olive      "#56692d")
+     (gold       "#6c501c")
+     (olive      "#425d00")
      (slate      "#2f3f83")
      (indigo     "#4a3a8a")
      (maroon     "#731c52")
@@ -1309,6 +1311,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant magenta-cooler)
      (docstring cyan-faint)
      (fnname yellow-cooler)
+     (fnname-call pink)
      (keyword blue)
      (preprocessor yellow-warmer)
      (property green-cooler)
@@ -1317,6 +1320,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string cyan)
      (type green-warmer)
      (variable green-cooler)
+     (variable-use green-faint)
 
      ;; Accent mappings
 
@@ -1487,8 +1491,8 @@ exists in the palette and is associated with a HEX-VALUE.")
      ;; Uncommon accent foregrounds
 
      (rust       "#8a290f")
-     (gold       "#80601f")
-     (olive      "#56692d")
+     (gold       "#70550f")
+     (olive      "#4c6000")
      (slate      "#2f3f83")
      (indigo     "#4a3a8a")
      (maroon     "#731c52")
@@ -1636,6 +1640,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant blue-faint)
      (docstring green-faint)
      (fnname yellow-warmer)
+     (fnname-call gold)
      (keyword blue-cooler)
      (preprocessor magenta-cooler)
      (property cyan)
@@ -1644,6 +1649,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string blue-warmer)
      (type cyan-cooler)
      (variable cyan)
+     (variable-use indigo)
 
      ;; Accent mappings
 
@@ -1814,9 +1820,9 @@ exists in the palette and is associated with a HEX-VALUE.")
      ;; Uncommon accent foregrounds
 
      (rust       "#8a290f")
-     (gold       "#80601f")
-     (olive      "#56692d")
-     (slate      "#2f3f83")
+     (gold       "#70550f")
+     (olive      "#4c6000")
+     (slate      "#104860")
      (indigo     "#4a3a8a")
      (maroon     "#731c52")
      (pink       "#7b435c")
@@ -1961,6 +1967,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant green-cooler)
      (docstring fg-alt)
      (fnname cyan-warmer)
+     (fnname-call indigo)
      (keyword red-cooler)
      (preprocessor red-warmer)
      (property cyan-cooler)
@@ -1969,6 +1976,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string cyan)
      (type blue-warmer)
      (variable cyan-cooler)
+     (variable-use slate)
 
      ;; Accent mappings
 
@@ -2175,7 +2183,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-clay     "#f1b090")
 
      (bg-ochre    "#462f20")
-     (fg-ochre    "#e0d09c")
+     (fg-ochre    "#e0d38c")
 
      (bg-lavender "#38325c")
      (fg-lavender "#dfc0f0")
@@ -2286,6 +2294,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant blue-cooler)
      (docstring cyan-faint)
      (fnname magenta)
+     (fnname-call pink)
      (keyword magenta-cooler)
      (preprocessor red-cooler)
      (property cyan)
@@ -2294,6 +2303,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string blue-warmer)
      (type cyan-cooler)
      (variable cyan)
+     (variable-use slate)
 
      ;; Accent mappings
 
@@ -2463,7 +2473,7 @@ exists in the palette and is associated with a HEX-VALUE.")
 
      ;; Uncommon accent foregrounds
 
-     (rust       "#db7b5f")
+     (rust       "#db8b3f")
      (gold       "#c0965b")
      (olive      "#9cbd6f")
      (slate      "#76afbf")
@@ -2506,7 +2516,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-lavender "#dfc0f0")
 
      (bg-sage     "#143e32")
-     (fg-sage     "#c3e7d4")
+     (fg-sage     "#83d7ac")
 
      ;; Graphs
 
@@ -2611,6 +2621,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant magenta-cooler)
      (docstring cyan-faint)
      (fnname magenta-warmer)
+     (fnname-call pink)
      (keyword blue-warmer)
      (preprocessor red-cooler)
      (property cyan-warmer)
@@ -2619,6 +2630,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string blue)
      (type green-cooler)
      (variable cyan-warmer)
+     (variable-use slate)
 
      ;; Accent mappings
 
@@ -2936,6 +2948,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant blue-faint)
      (docstring cyan-faint)
      (fnname yellow-warmer)
+     (fnname-call gold)
      (keyword blue-cooler)
      (preprocessor magenta-cooler)
      (property cyan)
@@ -2944,6 +2957,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string blue-warmer)
      (type cyan-cooler)
      (variable cyan)
+     (variable-use slate)
 
      ;; Accent mappings
 
@@ -3263,6 +3277,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (constant green-faint)
      (docstring fg-alt)
      (fnname cyan-warmer)
+     (fnname-call indigo)
      (keyword red-cooler)
      (preprocessor red-warmer)
      (property cyan-cooler)
@@ -3271,6 +3286,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (string cyan)
      (type blue-warmer)
      (variable cyan-cooler)
+     (variable-use slate)
 
      ;; Accent mappings
 
@@ -4496,7 +4512,6 @@ FG and BG are the main colors."
     `(comint-highlight-prompt ((,c :inherit modus-themes-prompt)))
     `(confusingly-reordered ((,c :underline (:style wave :color ,underline-err))))
     `(edmacro-label ((,c :inherit modus-themes-bold :foreground ,accent-0)))
-    `(elisp-shorthand-font-lock-face ((,c :inherit modus-themes-slant :foreground ,preprocessor)))
     `(error ((,c :inherit modus-themes-bold :foreground ,err)))
     `(escape-glyph ((,c :inherit modus-themes-bold :foreground ,keybind)))
     `(file-name-shadow ((,c :foreground ,fg-dim)))
@@ -5095,6 +5110,7 @@ FG and BG are the main colors."
     `(ein:markdowncell-input-area-face (( )))
     `(ein:notification-tab-normal ((,c :inherit underline)))
 ;;;;; eglot
+    `(eglot-highlight-symbol-face ((,c :underline ,border)))
     `(eglot-mode-line ((,c :inherit modus-themes-bold :foreground ,modeline-info)))
     `(eglot-diagnostic-tag-unnecessary-face ((,c :underline (:style wave :color ,underline-note))))
 ;;;;; el-search
@@ -5128,6 +5144,54 @@ FG and BG are the main colors."
     `(elfeed-score-error-level-face ((,c :foreground ,err)))
     `(elfeed-score-info-level-face ((,c :foreground ,info)))
     `(elfeed-score-warn-level-face ((,c :foreground ,warning)))
+;;;;; elisp semantic highlighting
+    `(elisp-ampersand ((,c :inherit modus-themes-bold :foreground ,type)))
+    `(elisp-binding-variable (( )))
+    `(elisp-bound-variable ((,c :foreground ,variable-use)))
+    `(elisp-charset (( )))
+    `(elisp-coding (( )))
+    `(elisp-completion-category (( )))
+    `(elisp-completion-category-definition ((,c :foreground ,constant)))
+    `(elisp-condition ((,c :inherit modus-themes-bold :foreground ,builtin)))
+    `(elisp-constant (( )))
+    `(elisp-defcharset ((,c :foreground ,type)))
+    `(elisp-defcoding ((,c :foreground ,type)))
+    `(elisp-defface ((,c :foreground ,type)))
+    `(elisp-deficon ((,c :foreground ,type)))
+    `(elisp-defmacro ((,c :foreground ,fnname)))
+    `(elisp-defoclosure ((,c :foreground ,type)))
+    `(elisp-defun ((,c :foreground ,fnname)))
+    `(elisp-defvar ((,c :foreground ,variable)))
+    `(elisp-face (( )))
+    `(elisp-feature (( )))
+    `(elisp-free-variable (( )))
+    `(elisp-function ((,c :foreground ,fnname-call)))
+    `(elisp-function-property-declaration ((,c :foreground ,builtin)))
+    `(elisp-group (( )))
+    `(elisp-icon (( )))
+    `(elisp-macro ((,c :inherit modus-themes-bold :foreground ,keyword)))
+    `(elisp-major-mode-name ((,c :foreground ,type)))
+    `(elisp-nnoo-backend ((,c :foreground ,type)))
+    `(elisp-non-local-exit ((,c :inherit modus-themes-bold :foreground ,warning)))
+    `(elisp-oclosure (( )))
+    `(elisp-rx ((,c :inherit modus-themes-bold :foreground ,builtin)))
+    `(elisp-shadowed-variable ((,c :foreground ,variable-use)))
+    `(elisp-shadowing-variable (( )))
+    `(elisp-shorthand-font-lock-face ((,c :inherit modus-themes-slant :foreground ,preprocessor)))
+    `(elisp-slot ((,c :foreground ,builtin)))
+    `(elisp-special-form ((,c :inherit modus-themes-bold :foreground ,keyword)))
+    `(elisp-special-variable-declaration (( )))
+    `(elisp-symbol-at-mouse ((,c :background ,bg-hover :foreground ,fg-main)))
+    `(elisp-symbol-role (( )))
+    `(elisp-symbol-role-definition ((,c :foreground ,type)))
+    `(elisp-theme (( )))
+    `(elisp-thing (( )))
+    `(elisp-throw-tag ((,c :inherit modus-themes-bold :foreground ,fg-main)))
+    `(elisp-type (( )))
+    `(elisp-unknown-call ((,c :inherit modus-themes-slant :foreground ,fnname-call)))
+    `(elisp-variable-at-point ((,c :underline ,border)))
+    `(elisp-warning-type ((,c :foreground ,warning)))
+    `(elisp-widget-type (( )))
 ;;;;; elpher
     `(elpher-gemini-heading1 ((,c :inherit modus-themes-heading-1)))
     `(elpher-gemini-heading2 ((,c :inherit modus-themes-heading-2)))
@@ -5284,6 +5348,7 @@ FG and BG are the main colors."
     `(font-lock-delimiter-face ((,c :foreground ,delimiter)))
     `(font-lock-doc-face ((,c :inherit modus-themes-slant :foreground ,docstring)))
     `(font-lock-doc-markup-face ((,c :inherit modus-themes-slant :foreground ,docmarkup)))
+    `(font-lock-function-call-face ((,c :foreground ,fnname-call)))
     `(font-lock-function-name-face ((,c :foreground ,fnname)))
     `(font-lock-keyword-face ((,c :inherit modus-themes-bold :foreground ,keyword)))
     `(font-lock-negation-char-face ((,c :foreground ,err)))
@@ -5297,6 +5362,7 @@ FG and BG are the main colors."
     `(font-lock-string-face ((,c :foreground ,string)))
     `(font-lock-type-face ((,c :inherit modus-themes-bold :foreground ,type)))
     `(font-lock-variable-name-face ((,c :foreground ,variable)))
+    `(font-lock-variable-use-face ((,c :foreground ,variable-use)))
     `(font-lock-warning-face ((,c :inherit modus-themes-bold :foreground ,warning)))
 ;;;;; forge
     `(forge-dimmed ((,c :foreground ,fg-dim)))
@@ -5918,7 +5984,7 @@ FG and BG are the main colors."
     `(markup-title-5-face ((,c :inherit modus-themes-heading-6)))
     `(markup-verbatim-face ((,c :inherit modus-themes-fixed-pitch :background ,bg-prose-verbatim :foreground ,fg-prose-verbatim)))
 ;;;;; mbdepth
-    `(minibuffer-depth-indicator ((,c :inherit bold :background ,bg-mark-other :foreground ,fg-mark-other)))
+    `(minibuffer-depth-indicator ((,c :inverse-video t)))
 ;;;;; mct
     `(mct-highlight-candidate ((,c :inherit modus-themes-completion-selected)))
 ;;;;; messages
@@ -6196,7 +6262,11 @@ FG and BG are the main colors."
     ;; with the :box, but I do it here because the keys are otherwise
     ;; very hard to read.  The square brackets around them are not
     ;; colored, which is what is causing the problem.
-    `(org-dispatcher-highlight ((,c :inherit modus-themes-bold :box (:line-width 2 :color ,bg-hover-secondary) :background ,bg-hover-secondary :foreground ,fg-main)))
+    `(org-dispatcher-highlight
+      ((default :background ,bg-mark-select :foreground ,fg-main)
+       (((supports :box t))
+        :box (:line-width 2 :color ,bg-mark-select))
+       (t :underline ,border)))
     `(org-document-info ((,c :foreground ,prose-metadata-value)))
     `(org-document-info-keyword ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata)))
     `(org-document-title ((,c :inherit modus-themes-heading-0)))
@@ -6220,7 +6290,7 @@ FG and BG are the main colors."
     `(org-level-7 ((,c :inherit modus-themes-heading-7)))
     `(org-level-8 ((,c :inherit modus-themes-heading-8)))
     `(org-link ((,c :background ,bg-link :foreground ,fg-link :underline ,underline-link)))
-    `(org-list-dt ((,c :inherit modus-themes-bold)))
+    `(org-list-dt ((,c :inherit modus-themes-bold :foreground ,fg-alt)))
     `(org-macro ((,c :inherit modus-themes-fixed-pitch :background ,bg-prose-macro :foreground ,fg-prose-macro)))
     `(org-meta-line ((,c :inherit modus-themes-fixed-pitch :foreground ,prose-metadata)))
     `(org-mode-line-clock (( )))
