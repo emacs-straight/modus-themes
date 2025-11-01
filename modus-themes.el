@@ -5163,7 +5163,7 @@ FG and BG are the main colors."
     `(elisp-defun ((,c :foreground ,fnname)))
     `(elisp-defvar ((,c :foreground ,variable)))
     `(elisp-face (( )))
-    `(elisp-feature (( )))
+    `(elisp-feature ((,c :foreground ,constant)))
     `(elisp-free-variable (( )))
     `(elisp-function ((,c :foreground ,fnname-call)))
     `(elisp-function-property-declaration ((,c :foreground ,builtin)))
@@ -6441,21 +6441,21 @@ FG and BG are the main colors."
         :box ,border-mode-line-active)
        (t :underline ,border-mode-line-active)))
     `(powerline-active2
-      (((default :inherit modus-themes-ui-variable-pitch
+      ((default :inherit modus-themes-ui-variable-pitch
                 :background ,bg-mode-line-inactive
                 :foreground ,fg-mode-line-inactive)
        (((supports :box t))
         :box ,border-mode-line-inactive)
-       (t :underline ,border-mode-line-inactive))))
+       (t :underline ,border-mode-line-inactive)))
     `(powerline-inactive0 ((,c :background ,bg-active :foreground ,fg-dim)))
     `(powerline-inactive1 ((,c :background ,bg-main :foreground ,fg-dim)))
     `(powerline-inactive2
-      (((default :inherit modus-themes-ui-variable-pitch
+      ((default :inherit modus-themes-ui-variable-pitch
                 :background ,bg-mode-line-inactive
                 :foreground ,fg-mode-line-inactive)
        (((supports :box t))
         :box ,border-mode-line-inactive)
-       (t :underline ,border-mode-line-inactive))))
+       (t :underline ,border-mode-line-inactive)))
 ;;;;; powerline-evil
     `(powerline-evil-base-face ((,c :background ,fg-main :foreground ,bg-main)))
     `(powerline-evil-emacs-face ((,c :inherit modus-themes-bold :background ,bg-main)))
