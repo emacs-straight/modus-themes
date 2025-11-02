@@ -5,7 +5,7 @@
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 ;; URL: https://github.com/protesilaos/modus-themes
-;; Version: 4.8.1
+;; Version: 5.0.0
 ;; Package-Requires: ((emacs "28.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -29,7 +29,7 @@
 ;; The Modus themes conform with the highest standard for
 ;; color-contrast accessibility between background and foreground
 ;; values (WCAG AAA).  They are also highly customizable and can even
-;; be used as a basis for other themes.  Please refer to the official
+;; be used as the basis for other themes.  Please refer to the official
 ;; Info manual for further documentation (distributed with the themes,
 ;; or available at: <https://protesilaos.com/emacs/modus-themes>).
 
@@ -4146,7 +4146,7 @@ PALETTE is the value of a variable like `modus-operandi-palette'."
                     (value-string-padded (format "%-30s" value-string))
                     (color (modus-themes-get-color-value name :with-overrides theme))) ; resolve a semantic mapping
          (list
-          entry
+          (cons entry color)
           (vector
            (pcase value
              ('unspecified "---")
@@ -4241,18 +4241,43 @@ color mappings instead of the complete palette."
   (setq-local modus-themes-preview-mode--marked-entries nil)
   (tabulated-list-clear-all-tags))
 
-(defun modus-themes-preview-mode-copy-color ()
-  "Copy marked entries or entry at point in the `modus-themes-list-colors' buffer."
+(defun modus-themes-preview-mode-copy-entry ()
+  "Copy marked entries or entry at point in the `modus-themes-list-colors' buffer.
+Each entry is of the form that appears is the underlying palette.  This
+is useful as a starting point for writing palette overrides.
+
+Also see `modus-themes-preview-mode-copy-color'."
   (declare (interactive-only t))
   (interactive nil modus-themes-preview-mode)
   (unless (derived-mode-p 'modus-themes-preview-mode)
     (user-error "Only use this command inside the `modus-themes-preview-mode'"))
   (cond
    (modus-themes-preview-mode--marked-entries
-    (let ((entries (nreverse modus-themes-preview-mode--marked-entries)))
-      (kill-new (format "%S" entries))
-      (message "Copied all marked entries: `%S'" entries)))
-   ((when-let* ((color (tabulated-list-get-id))
+    (let* ((entries (copy-sequence modus-themes-preview-mode--marked-entries))
+           (colors (mapcar #'car (nreverse entries))))
+      (kill-new (format "%S" colors))
+      (message "Copied all marked entries: `%S'" colors)))
+   ((when-let* ((color (car (tabulated-list-get-id)))
+                (string (format "%S" color)))
+      (kill-new string)
+      (message "Copied palette entry: `%s'" (propertize string 'face 'success))))
+   (t
+    (user-error "Nothing to copy"))))
+
+(defun modus-themes-preview-mode-copy-color ()
+  "Copy marked colors or colors at point in the `modus-themes-list-colors' buffer.
+Each color is a string.  Also see `modus-themes-preview-mode-copy-entry'."
+  (declare (interactive-only t))
+  (interactive nil modus-themes-preview-mode)
+  (unless (derived-mode-p 'modus-themes-preview-mode)
+    (user-error "Only use this command inside the `modus-themes-preview-mode'"))
+  (cond
+   (modus-themes-preview-mode--marked-entries
+    (let* ((entries (copy-sequence modus-themes-preview-mode--marked-entries))
+           (colors (mapcar #'cdr (nreverse entries))))
+      (kill-new (format "%S" colors))
+      (message "Copied all marked entries: `%S'" colors)))
+   ((when-let* ((color (cdr (tabulated-list-get-id)))
                 (string (format "%S" color)))
       (kill-new string)
       (message "Copied palette entry: `%s'" (propertize string 'face 'success))))
@@ -4266,6 +4291,7 @@ color mappings instead of the complete palette."
     (define-key map (kbd "u") #'modus-themes-preview-mode-unmark)
     (define-key map (kbd "U") #'modus-themes-preview-mode-unmark-all)
     (define-key map (kbd "w") #'modus-themes-preview-mode-copy-color)
+    (define-key map (kbd "W") #'modus-themes-preview-mode-copy-entry)
     map)
   "Key map for `modus-themes-preview-mode'.")
 
