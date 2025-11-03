@@ -3779,8 +3779,11 @@ Also see `modus-themes-get-themes'.")
   ;; `custom-known-themes' because loading the theme has the desired
   ;; side effect of adding the relevant `theme-properties' to it.
   (unless (and (memq theme modus-themes--activated-themes)
-              (custom-theme-p theme))
-    (load-theme theme t t)
+               (custom-theme-p theme))
+    (let ((file (locate-file (concat (symbol-name theme) "-theme.el")
+                             (custom-theme--load-path)
+                             '("" "c"))))
+      (load file nil t))
     (add-to-list 'modus-themes--activated-themes theme)))
 
 (defun modus-themes--belongs-to-family-p (theme family)
@@ -5709,7 +5712,7 @@ FG and BG are the main colors."
     `(jabber-roster-user-dnd ((,c :foreground ,warning)))
     `(jabber-roster-user-chatty ((,c :foreground ,warning)))
     `(jabber-roster-user-error ((,c :foreground ,err)))
-    `(jabber-roster-user-offline ((,c :foreground ,fg-dim :strike-through t)))
+    `(jabber-roster-user-offline ((,c :foreground ,fg-dim)))
     `(jabber-roster-user-online ((,c :inherit modus-themes-bold :foreground ,info)))
     `(jabber-chat-prompt-foreign ((,c :inherit modus-themes-bold :foreground ,err)))
     `(jabber-chat-prompt-system ((,c :foreground ,warning)))
