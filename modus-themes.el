@@ -3779,11 +3779,8 @@ Also see `modus-themes-get-themes'.")
   ;; `custom-known-themes' because loading the theme has the desired
   ;; side effect of adding the relevant `theme-properties' to it.
   (unless (and (memq theme modus-themes--activated-themes)
-               (custom-theme-p theme))
-    (let ((file (locate-file (concat (symbol-name theme) "-theme.el")
-                             (custom-theme--load-path)
-                             '("" "c"))))
-      (load file nil t))
+              (custom-theme-p theme))
+    (load-theme theme t t)
     (add-to-list 'modus-themes--activated-themes theme)))
 
 (defun modus-themes--belongs-to-family-p (theme family)
@@ -3836,54 +3833,54 @@ Use `modus-themes-sort' to sort by light and then dark background."
       sorted-themes
     modus-themes-items))
 
-(defun modus-themes-known-p (themes &optional show-error)
+(defun modus-themes-known-p (themes)
   "Return THEMES if they are among `modus-themes-get-themes' else nil.
 THEMES is either a list of symbols, like `modus-themes-items' or a
 symbol.
 
 With optional SHOW-ERROR, throw an error instead of returning nil."
-  (condition-case data
-      (let ((themes (if (listp themes) themes (list themes)))
-            (known-themes (modus-themes-get-themes)))
-        (dolist (theme themes)
-          (or (memq theme known-themes)
-              (error "`%s' is not part of whant `modus-themes-get-themes' returns" theme))))
-    (:success
-     themes)
-    (error
-     (when show-error
-       (signal (car data) (list (apply #'format-message (cdr data))))))))
-
-(defun modus-themes--list-enabled-themes ()
-  "Return list of known `custom-enabled-themes'."
-  (seq-intersection (modus-themes-get-themes) custom-enabled-themes))
+  (let ((known-themes (modus-themes-get-all-known-themes)))
+    (cond
+     ((symbolp themes)
+      (memq themes known-themes))
+     ((listp themes)
+      (when (seq-every-p (lambda (theme) (memq theme known-themes)) themes)
+        themes))
+     (t
+      (error "Themes `%S' is not a symbol or a list of symbols" themes)))))
 
 (defun modus-themes-get-current-theme ()
-  "Return first enabled Modus theme."
-  (car (modus-themes--list-enabled-themes)))
+  "Return current enabled Modus theme."
+  (let ((current (car custom-enabled-themes)))
+    (when (memq current (modus-themes-get-all-known-themes))
+      current)))
 
 (defun modus-themes--get-theme-palette-subr (theme with-overrides with-user-palette)
   "Get THEME palette without `modus-themes-known-p'.
 WITH-OVERRIDES and WITH-USER-PALETTE are described in
-`modus-themes-get-theme-palette'."
-  (if-let* ((properties (get theme 'theme-properties))
-            (core-palette (symbol-value (plist-get properties :modus-core-palette))))
-      (let* ((user-palette (when with-user-palette (symbol-value (plist-get properties :modus-user-palette))))
-             (overrides-palette (when with-overrides (symbol-value (plist-get properties :modus-overrides-palette))))
-             (all-overrides (when with-overrides
-                              (append overrides-palette modus-themes-common-palette-overrides))))
-        (append all-overrides user-palette core-palette))
-    (error "The theme must have at least a `:modus-core-palette' property")))
+`modus-themes-get-theme-palette'.
+
+If THEME does not have at least a `:modus-core-palette' among its
+`theme-properties', return nil."
+  (when-let* ((properties (get theme 'theme-properties))
+              (core-palette (symbol-value (plist-get properties :modus-core-palette))))
+    (let* ((user-palette (when with-user-palette (symbol-value (plist-get properties :modus-user-palette))))
+           (overrides-palette (when with-overrides (symbol-value (plist-get properties :modus-overrides-palette))))
+           (all-overrides (when with-overrides (append overrides-palette modus-themes-common-palette-overrides))))
+      (append all-overrides user-palette core-palette))))
 
 (defun modus-themes-get-theme-palette (&optional theme with-overrides with-user-palette)
   "Return palette value of active `modus-themes-get-themes' THEME.
 If THEME is nil, use the return value of `modus-themes-get-current-theme'.
 With WITH-OVERRIDES, include all overrides in the combined palette.
 With WITH-USER-PALETTE do the same for the user-defined palette
-extension."
-  (let ((theme (or theme (modus-themes-get-current-theme))))
-    (when (modus-themes-known-p theme :err-if-needed)
-      (modus-themes--get-theme-palette-subr theme with-overrides with-user-palette))))
+extension.
+
+If THEME is unknown, return nil."
+  (modus-themes--get-theme-palette-subr
+   (or theme (modus-themes-get-current-theme))
+   with-overrides
+   with-user-palette))
 
 (defun modus-themes--disable-themes ()
   "Disable themes per `modus-themes-disable-other-themes'."
@@ -7294,31 +7291,46 @@ Consult the manual for details on how to build a theme on top of the
            ,@faces)
           (custom-theme-set-variables
            ',name
-           ,@variables))))
+           ,@variables))
+       :lexical))
     (unless theme-exists-p
       (provide-theme name))))
 
 ;;;; Use theme colors
 
+(defun modus-themes--with-colors-resolve-palette-sort (colors)
+  "Sort all COLORS in the theme's palette.
+Put all named colors before semantic color mappings.  A named color is a
+symbol whose value is a string.  A semantic color mapping is a symbol
+whose value is another symbol, which ultimately resolves to a string or
+`unspecified'."
+  (let ((named nil)
+        (semantic nil))
+    (dolist (color colors)
+      (if (stringp (cadr color))
+          (push color named)
+        (push color semantic)))
+    (let ((sorted (seq-uniq
+                   (nconc (nreverse named) (nreverse semantic))
+                   (lambda (elt1 elt2)
+                     (eq (car elt1) (car elt2))))))
+      (append '((unspecified 'unspecified)) sorted))))
+
+(defun modus-themes-with-colors-subr (expressions)
+  "Do the work of `modus-themes-with-colors' for EXPRESSIONS."
+  (condition-case data
+      (when-let* ((theme (modus-themes-get-current-theme)))
+        (eval
+         `(let* (,@(modus-themes--with-colors-resolve-palette-sort
+                    (modus-themes--get-theme-palette-subr theme :with-overrides :with-user-palette)))
+            ,@expressions)
+         :lexical))
+    (error (message "Error in `modus-themes-with-colors': %s" data))))
+
 (defmacro modus-themes-with-colors (&rest body)
   "Evaluate BODY with colors from current palette bound."
   (declare (indent 0))
-  (let* ((sym (gensym))
-         (palette (modus-themes-get-theme-palette nil :with-overrides :with-user-palette))
-         ;; NOTE 2022-08-23: We just give it a sample palette at this
-         ;; stage.  It only needs to collect each car.  Then we
-         ;; instantiate the actual theme's palette.  We have to do this
-         ;; otherwise the macro does not work properly when called from
-         ;; inside a function.
-         (colors (mapcar #'car palette)))
-    `(let* ((c '((class color) (min-colors 256)))
-            (,sym (modus-themes-get-theme-palette nil :with-overrides :with-user-palette))
-            ,@(mapcar (lambda (color)
-                        (list color
-                              `(modus-themes--retrieve-palette-value ',color ,sym)))
-                      colors))
-       (ignore c ,@colors) ; Silence unused variable warnings
-       ,@body)))
+  `(modus-themes-with-colors-subr ',body))
 
 ;;;; Declare all the Modus themes
 

@@ -1,4 +1,4 @@
-This is doceIoUO6.info, produced by makeinfo version 6.8 from
+This is docwOYhLl.info, produced by makeinfo version 6.8 from
 modus-themes.texi.
 
 Copyright (C) 2020-2025 Free Software Foundation, Inc.
@@ -20,7 +20,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: doceIoUO6.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: docwOYhLl.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Modus themes for GNU Emacs
 **************************
@@ -241,7 +241,7 @@ Indices
 
 
 
-File: doceIoUO6.info,  Node: Overview,  Next: Installation,  Prev: Top,  Up: Top
+File: docwOYhLl.info,  Node: Overview,  Next: Installation,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -308,7 +308,7 @@ GNU Emacs.
 * Learn about the latest changes::
 
 
-File: doceIoUO6.info,  Node: How do the themes look like,  Next: Learn about the latest changes,  Up: Overview
+File: docwOYhLl.info,  Node: How do the themes look like,  Next: Learn about the latest changes,  Up: Overview
 
 1.1 How do the themes look like
 ===============================
@@ -318,7 +318,7 @@ Check the web page with the screen shots
 themes are highly customizable (*note Customization options::).
 
 
-File: doceIoUO6.info,  Node: Learn about the latest changes,  Prev: How do the themes look like,  Up: Overview
+File: docwOYhLl.info,  Node: Learn about the latest changes,  Prev: How do the themes look like,  Up: Overview
 
 1.2 Learn about the latest changes
 ==================================
@@ -329,7 +329,7 @@ comprehensive and covers everything that goes into every tagged release
 of the themes.
 
 
-File: doceIoUO6.info,  Node: Installation,  Next: Enable and load,  Prev: Overview,  Up: Top
+File: docwOYhLl.info,  Node: Installation,  Next: Enable and load,  Prev: Overview,  Up: Top
 
 2 Installation
 **************
@@ -354,7 +354,7 @@ versions of Emacs and of the themes across the years.
 * Dealing with byte compilation errors::
 
 
-File: doceIoUO6.info,  Node: Install manually from source,  Next: Install from the archives,  Up: Installation
+File: docwOYhLl.info,  Node: Install manually from source,  Next: Install from the archives,  Up: Installation
 
 2.1 Install manually from source
 ================================
@@ -376,7 +376,7 @@ stored in ‘~/.emacs.d’ and that you want to place the Modus themes in
    The themes are now ready to be used: *note Enable and load::.
 
 
-File: doceIoUO6.info,  Node: Install from the archives,  Next: Install on GNU/Linux,  Prev: Install manually from source,  Up: Installation
+File: docwOYhLl.info,  Node: Install from the archives,  Next: Install on GNU/Linux,  Prev: Install manually from source,  Up: Installation
 
 2.2 Install from the archives
 =============================
@@ -392,7 +392,7 @@ with ‘M-x package-refresh-contents’.  Then all you need to do is type
 load::.
 
 
-File: doceIoUO6.info,  Node: Install on GNU/Linux,  Next: Dealing with byte compilation errors,  Prev: Install from the archives,  Up: Installation
+File: docwOYhLl.info,  Node: Install on GNU/Linux,  Next: Dealing with byte compilation errors,  Prev: Install from the archives,  Up: Installation
 
 2.3 Install on GNU/Linux
 ========================
@@ -408,7 +408,7 @@ distro’s packaging policies.
 * GNU Guix::
 
 
-File: doceIoUO6.info,  Node: Debian 11 Bullseye,  Next: GNU Guix,  Up: Install on GNU/Linux
+File: docwOYhLl.info,  Node: Debian 11 Bullseye,  Next: GNU Guix,  Up: Install on GNU/Linux
 
 2.3.1 Debian 11 Bullseye
 ------------------------
@@ -423,7 +423,7 @@ The themes are part of Debian 11 Bullseye.  Get them with:
 2022-07-24 09:57 +0300.
 
 
-File: doceIoUO6.info,  Node: GNU Guix,  Prev: Debian 11 Bullseye,  Up: Install on GNU/Linux
+File: docwOYhLl.info,  Node: GNU Guix,  Prev: Debian 11 Bullseye,  Up: Install on GNU/Linux
 
 2.3.2 GNU Guix
 --------------
@@ -435,7 +435,7 @@ Users of Guix can get the themes with this command:
    They are now ready to be used: *note Enable and load::.
 
 
-File: doceIoUO6.info,  Node: Dealing with byte compilation errors,  Prev: Install on GNU/Linux,  Up: Installation
+File: docwOYhLl.info,  Node: Dealing with byte compilation errors,  Prev: Install on GNU/Linux,  Up: Installation
 
 2.4 Dealing with byte compilation errors
 ========================================
@@ -464,7 +464,7 @@ wrong.
    *note Issues you can help with::.
 
 
-File: doceIoUO6.info,  Node: Enable and load,  Next: Customization options,  Prev: Installation,  Up: Top
+File: docwOYhLl.info,  Node: Enable and load,  Next: Customization options,  Prev: Installation,  Up: Top
 
 3 Enable and load
 *****************
@@ -569,7 +569,7 @@ toggle::).  The aforementioned hold true for them as well.
 * Differences between loading and enabling::
 
 
-File: doceIoUO6.info,  Node: The require-theme for built-in Emacs themes,  Next: Sample configuration,  Up: Enable and load
+File: docwOYhLl.info,  Node: The require-theme for built-in Emacs themes,  Next: Sample configuration,  Up: Enable and load
 
 3.1 The ‘require-theme’ for built-in Emacs themes
 =================================================
@@ -592,7 +592,7 @@ function must be used in this case as a replacement.  For example:
      (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
 
 
-File: doceIoUO6.info,  Node: Sample configuration,  Next: Differences between loading and enabling,  Prev: The require-theme for built-in Emacs themes,  Up: Enable and load
+File: docwOYhLl.info,  Node: Sample configuration,  Next: Differences between loading and enabling,  Prev: The require-theme for built-in Emacs themes,  Up: Enable and load
 
 3.2 Sample configuration
 ========================
@@ -654,7 +654,7 @@ If either or both of those variables need to be changed, their values
 should be defined before the package declaration of the themes.
 
 
-File: doceIoUO6.info,  Node: Differences between loading and enabling,  Prev: Sample configuration,  Up: Enable and load
+File: docwOYhLl.info,  Node: Differences between loading and enabling,  Prev: Sample configuration,  Up: Enable and load
 
 3.3 Differences between loading and enabling
 ============================================
@@ -703,7 +703,7 @@ configure custom faces, where ‘load-theme’ is expected, though
 theme colors in code with modus-themes-with-colors.
 
 
-File: doceIoUO6.info,  Node: Customization options,  Next: Preview theme colors,  Prev: Enable and load,  Up: Top
+File: docwOYhLl.info,  Node: Customization options,  Next: Preview theme colors,  Prev: Enable and load,  Up: Top
 
 4 Customization options
 ***********************
@@ -779,7 +779,7 @@ active, it must be reloaded for changes to take effect.
 * Palette extension::            Define new colors and use them like the original ones
 
 
-File: doceIoUO6.info,  Node: Disable other themes,  Next: Bold constructs,  Up: Customization options
+File: docwOYhLl.info,  Node: Disable other themes,  Next: Bold constructs,  Up: Customization options
 
 4.1 Option for disabling other themes while loading Modus
 =========================================================
@@ -810,7 +810,7 @@ customizations.  Users who use such customization bundles must set this
 variable to a ‘nil’ value.
 
 
-File: doceIoUO6.info,  Node: Bold constructs,  Next: Italic constructs,  Prev: Disable other themes,  Up: Customization options
+File: docwOYhLl.info,  Node: Bold constructs,  Next: Italic constructs,  Prev: Disable other themes,  Up: Customization options
 
 4.2 Option for more bold constructs
 ===================================
@@ -839,7 +839,7 @@ prompts.
 faces.
 
 
-File: doceIoUO6.info,  Node: Italic constructs,  Next: Option for which themes to toggle,  Prev: Bold constructs,  Up: Customization options
+File: docwOYhLl.info,  Node: Italic constructs,  Next: Option for which themes to toggle,  Prev: Bold constructs,  Up: Customization options
 
 4.3 Option for more italic constructs
 =====================================
@@ -866,7 +866,7 @@ This typically affects documentation strings and code comments.
 faces.
 
 
-File: doceIoUO6.info,  Node: Option for which themes to toggle,  Next: Option for which themes to rotate,  Prev: Italic constructs,  Up: Customization options
+File: docwOYhLl.info,  Node: Option for which themes to toggle,  Next: Option for which themes to rotate,  Prev: Italic constructs,  Up: Customization options
 
 4.4 Option for which themes to toggle
 =====================================
@@ -890,7 +890,7 @@ Brief: Specify which two themes to toggle between when using the command
    • ‘modus-vivendi-tritanopia’
 
 
-File: doceIoUO6.info,  Node: Option for which themes to rotate,  Next: Mixed fonts,  Prev: Option for which themes to toggle,  Up: Customization options
+File: docwOYhLl.info,  Node: Option for which themes to rotate,  Next: Mixed fonts,  Prev: Option for which themes to toggle,  Up: Customization options
 
 4.5 Option for which themes to rotate
 =====================================
@@ -917,7 +917,7 @@ command will perform the same action for all the themes returned by the
 function ‘modus-themes-get-themes’.
 
 
-File: doceIoUO6.info,  Node: Mixed fonts,  Next: Command prompts,  Prev: Option for which themes to rotate,  Up: Customization options
+File: docwOYhLl.info,  Node: Mixed fonts,  Next: Command prompts,  Prev: Option for which themes to rotate,  Up: Customization options
 
 4.6 Option for font mixing
 ==========================
@@ -946,7 +946,7 @@ of the ‘fixed-pitch’ face.
 for Org and others.
 
 
-File: doceIoUO6.info,  Node: Command prompts,  Next: Completion UIs,  Prev: Mixed fonts,  Up: Customization options
+File: docwOYhLl.info,  Node: Command prompts,  Next: Completion UIs,  Prev: Mixed fonts,  Up: Customization options
 
 4.7 Option for command prompt styles
 ====================================
@@ -1003,7 +1003,7 @@ in these examples:
 less colorful.
 
 
-File: doceIoUO6.info,  Node: Completion UIs,  Next: Org mode blocks,  Prev: Command prompts,  Up: Customization options
+File: docwOYhLl.info,  Node: Completion UIs,  Next: Org mode blocks,  Prev: Command prompts,  Up: Customization options
 
 4.8 Option for completion framework aesthetics
 ==============================================
@@ -1069,7 +1069,7 @@ across all keys that are not explicitly referenced.  For example, this:
 completion matches more or less colorful.
 
 
-File: doceIoUO6.info,  Node: Org mode blocks,  Next: Heading styles,  Prev: Completion UIs,  Up: Customization options
+File: docwOYhLl.info,  Node: Org mode blocks,  Next: Heading styles,  Prev: Completion UIs,  Up: Customization options
 
 4.9 Option for org-mode block styles
 ====================================
@@ -1084,7 +1084,7 @@ provide the relevant setup (*note DIY Use colored Org source blocks per
 language::).
 
 
-File: doceIoUO6.info,  Node: Heading styles,  Next: UI typeface,  Prev: Org mode blocks,  Up: Customization options
+File: docwOYhLl.info,  Node: Heading styles,  Next: UI typeface,  Prev: Org mode blocks,  Up: Customization options
 
 4.10 Option for the headings’ overall style
 ===========================================
@@ -1197,7 +1197,7 @@ done in older versions of the themes).
 less colorful.
 
 
-File: doceIoUO6.info,  Node: UI typeface,  Next: Palette overrides,  Prev: Heading styles,  Up: Customization options
+File: docwOYhLl.info,  Node: UI typeface,  Next: Palette overrides,  Prev: Heading styles,  Up: Customization options
 
 4.11 Option for variable-pitch font in UI elements
 ==================================================
@@ -1227,7 +1227,7 @@ items.
 for Org and others.
 
 
-File: doceIoUO6.info,  Node: Palette overrides,  Next: Palette extension,  Prev: UI typeface,  Up: Customization options
+File: docwOYhLl.info,  Node: Palette overrides,  Next: Palette extension,  Prev: UI typeface,  Up: Customization options
 
 4.12 Option for palette overrides
 =================================
@@ -1345,7 +1345,7 @@ watch:
 <https://protesilaos.com/codelog/2022-12-17-modus-themes-v4-demo/>.
 
 
-File: doceIoUO6.info,  Node: Palette extension,  Prev: Palette overrides,  Up: Customization options
+File: docwOYhLl.info,  Node: Palette extension,  Prev: Palette overrides,  Up: Customization options
 
 4.13 Option to extend the palette
 =================================
@@ -1420,7 +1420,7 @@ the following user options:
              (string kiwi)))
 
 
-File: doceIoUO6.info,  Node: Preview theme colors,  Next: Use colors from the Modus themes palette,  Prev: Customization options,  Up: Top
+File: docwOYhLl.info,  Node: Preview theme colors,  Next: Use colors from the Modus themes palette,  Prev: Customization options,  Up: Top
 
 5 Preview theme colors
 **********************
@@ -1458,7 +1458,7 @@ the palette (named colors as well as semantic color mappings) and
 * Commands for the preview palette buffer::
 
 
-File: doceIoUO6.info,  Node: Commands for the preview palette buffer,  Up: Preview theme colors
+File: docwOYhLl.info,  Node: Commands for the preview palette buffer,  Up: Preview theme colors
 
 5.1 Commands for the preview palette buffer
 ===========================================
@@ -1499,7 +1499,7 @@ the current or affected lines.  These marks influence the result of the
 aforementioned commands for copying colors and palette entries.
 
 
-File: doceIoUO6.info,  Node: Use colors from the Modus themes palette,  Next: Advanced customization,  Prev: Preview theme colors,  Up: Top
+File: docwOYhLl.info,  Node: Use colors from the Modus themes palette,  Next: Advanced customization,  Prev: Preview theme colors,  Up: Top
 
 6 Use colors from the Modus themes palette
 ******************************************
@@ -1522,7 +1522,7 @@ Macro
 * Use theme colors in code with modus-themes-with-colors::
 
 
-File: doceIoUO6.info,  Node: Get a single color from the palette with modus-themes-get-color-value,  Next: Use theme colors in code with modus-themes-with-colors,  Up: Use colors from the Modus themes palette
+File: docwOYhLl.info,  Node: Get a single color from the palette with modus-themes-get-color-value,  Next: Use theme colors in code with modus-themes-with-colors,  Up: Use colors from the Modus themes palette
 
 6.1 Get a single color from the palette with ‘modus-themes-get-color-value’
 ===========================================================================
@@ -1573,7 +1573,7 @@ with/without overrides and when recursive mappings are introduced.
      ;; => "#a60000"
 
 
-File: doceIoUO6.info,  Node: Use theme colors in code with modus-themes-with-colors,  Prev: Get a single color from the palette with modus-themes-get-color-value,  Up: Use colors from the Modus themes palette
+File: docwOYhLl.info,  Node: Use theme colors in code with modus-themes-with-colors,  Prev: Get a single color from the palette with modus-themes-get-color-value,  Up: Use colors from the Modus themes palette
 
 6.2 Use theme colors in code with ‘modus-themes-with-colors’
 ============================================================
@@ -1616,7 +1616,7 @@ will also be needed (*note DIY Use a hook at the post-load-theme
 phase::).
 
 
-File: doceIoUO6.info,  Node: Advanced customization,  Next: Build on top of the Modus themes,  Prev: Use colors from the Modus themes palette,  Up: Top
+File: docwOYhLl.info,  Node: Advanced customization,  Next: Build on top of the Modus themes,  Prev: Use colors from the Modus themes palette,  Up: Top
 
 7 Advanced customization
 ************************
@@ -1660,7 +1660,7 @@ such, they are labeled as “do-it-yourself” or “DIY”.
 * DIY Use a hook at the post-load-theme phase::
 
 
-File: doceIoUO6.info,  Node: DIY Palette override presets,  Next: DIY Add support for engrave-faces,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Palette override presets,  Next: DIY Add support for engrave-faces,  Up: Advanced customization
 
 7.1 DIY Palette override presets
 ================================
@@ -1723,7 +1723,7 @@ the general idea (extra space for didactic purposes):
              ,@modus-themes-preset-overrides-intense))
 
 
-File: doceIoUO6.info,  Node: DIY Add support for engrave-faces,  Next: DIY Stylistic variants using palette overrides,  Prev: DIY Palette override presets,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Add support for engrave-faces,  Next: DIY Stylistic variants using palette overrides,  Prev: DIY Palette override presets,  Up: Advanced customization
 
 7.2 DIY Add support for ‘engrave-faces’
 =======================================
@@ -1818,7 +1818,7 @@ post-load-theme phase::).
      (add-hook 'enable-theme-functions #'my-modus-themes-engraved-faces)
 
 
-File: doceIoUO6.info,  Node: DIY Stylistic variants using palette overrides,  Next: DIY More accurate colors in terminal emulators,  Prev: DIY Add support for engrave-faces,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Stylistic variants using palette overrides,  Next: DIY More accurate colors in terminal emulators,  Prev: DIY Add support for engrave-faces,  Up: Advanced customization
 
 7.3 DIY Stylistic variants using palette overrides
 ==================================================
@@ -1859,7 +1859,7 @@ Palette override presets: DIY Palette override presets.).
 * DIY Make deuteranopia diffs red and blue instead of yellow and blue::
 
 
-File: doceIoUO6.info,  Node: DIY Make the mode line borderless,  Next: DIY Make the active mode line colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make the mode line borderless,  Next: DIY Make the active mode line colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.1 DIY Make the mode line borderless
 ---------------------------------------
@@ -1891,7 +1891,7 @@ line colorful.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make the active mode line colorful,  Next: DIY Make the tab bar more or less colorful,  Prev: DIY Make the mode line borderless,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make the active mode line colorful,  Next: DIY Make the tab bar more or less colorful,  Prev: DIY Make the mode line borderless,  Up: DIY Stylistic variants using palette overrides
 
 7.3.2 DIY Make the active mode line colorful
 --------------------------------------------
@@ -1941,7 +1941,7 @@ borderless.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make the tab bar more or less colorful,  Next: DIY Make the fringe invisible or another color,  Prev: DIY Make the active mode line colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make the tab bar more or less colorful,  Next: DIY Make the fringe invisible or another color,  Prev: DIY Make the active mode line colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.3 DIY Make the tab bar more or less colorful
 ------------------------------------------------
@@ -1985,7 +1985,7 @@ manual.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make the fringe invisible or another color,  Next: DIY Make links use subtle or no underlines,  Prev: DIY Make the tab bar more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make the fringe invisible or another color,  Next: DIY Make links use subtle or no underlines,  Prev: DIY Make the tab bar more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.4 DIY Make the fringe invisible or another color
 ----------------------------------------------------
@@ -2012,7 +2012,7 @@ which shows indicators such as for truncation or continuation lines.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make links use subtle or no underlines,  Next: DIY Make prompts more or less colorful,  Prev: DIY Make the fringe invisible or another color,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make links use subtle or no underlines,  Next: DIY Make prompts more or less colorful,  Prev: DIY Make the fringe invisible or another color,  Up: DIY Stylistic variants using palette overrides
 
 7.3.5 DIY Make links use subtle or no underlines
 ------------------------------------------------
@@ -2038,7 +2038,7 @@ mappings can read correctly.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make prompts more or less colorful,  Next: DIY Make completion matches more or less colorful,  Prev: DIY Make links use subtle or no underlines,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make prompts more or less colorful,  Next: DIY Make completion matches more or less colorful,  Prev: DIY Make links use subtle or no underlines,  Up: DIY Stylistic variants using palette overrides
 
 7.3.6 DIY Make prompts more or less colorful
 --------------------------------------------
@@ -2069,7 +2069,7 @@ prompts.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make completion matches more or less colorful,  Next: DIY Make comments yellow and strings green,  Prev: DIY Make prompts more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make completion matches more or less colorful,  Next: DIY Make comments yellow and strings green,  Prev: DIY Make prompts more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.7 DIY Make completion matches more or less colorful
 -------------------------------------------------------
@@ -2147,7 +2147,7 @@ colors to two:
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make comments yellow and strings green,  Next: DIY Make code syntax use the old alt-syntax style,  Prev: DIY Make completion matches more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make comments yellow and strings green,  Next: DIY Make code syntax use the old alt-syntax style,  Prev: DIY Make completion matches more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.8 DIY Make comments yellow and strings green
 ------------------------------------------------
@@ -2186,7 +2186,7 @@ alternative styles for code syntax.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make code syntax use the old alt-syntax style,  Next: DIY Make use of alternative styles for code syntax,  Prev: DIY Make comments yellow and strings green,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make code syntax use the old alt-syntax style,  Next: DIY Make use of alternative styles for code syntax,  Prev: DIY Make comments yellow and strings green,  Up: DIY Stylistic variants using palette overrides
 
 7.3.9 DIY Make code syntax use the old alt-syntax style
 -------------------------------------------------------
@@ -2262,7 +2262,7 @@ alternative styles for code syntax.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make use of alternative styles for code syntax,  Next: DIY Make matching parenthesis more or less intense,  Prev: DIY Make code syntax use the old alt-syntax style,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make use of alternative styles for code syntax,  Next: DIY Make matching parenthesis more or less intense,  Prev: DIY Make code syntax use the old alt-syntax style,  Up: DIY Stylistic variants using palette overrides
 
 7.3.10 DIY Make use of alternative styles for code syntax
 ---------------------------------------------------------
@@ -2348,7 +2348,7 @@ syntax use the old alt-syntax style.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make matching parenthesis more or less intense,  Next: DIY Make box buttons more or less gray,  Prev: DIY Make use of alternative styles for code syntax,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make matching parenthesis more or less intense,  Next: DIY Make box buttons more or less gray,  Prev: DIY Make use of alternative styles for code syntax,  Up: DIY Stylistic variants using palette overrides
 
 7.3.11 DIY Make matching parenthesis more or less intense
 ---------------------------------------------------------
@@ -2378,7 +2378,7 @@ underlines for those highlights.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make box buttons more or less gray,  Next: DIY Make TODO and DONE more or less intense,  Prev: DIY Make matching parenthesis more or less intense,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make box buttons more or less gray,  Next: DIY Make TODO and DONE more or less intense,  Prev: DIY Make matching parenthesis more or less intense,  Up: DIY Stylistic variants using palette overrides
 
 7.3.12 DIY Make box buttons more or less gray
 ---------------------------------------------
@@ -2399,7 +2399,7 @@ active buttons and amplifies it for the inactive ones.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make TODO and DONE more or less intense,  Next: DIY Make headings more or less colorful,  Prev: DIY Make box buttons more or less gray,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make TODO and DONE more or less intense,  Next: DIY Make headings more or less colorful,  Prev: DIY Make box buttons more or less gray,  Up: DIY Stylistic variants using palette overrides
 
 7.3.13 DIY Make TODO and DONE more or less intense
 --------------------------------------------------
@@ -2434,7 +2434,7 @@ inline code in prose use alternative styles.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make headings more or less colorful,  Next: DIY Make Org block colors more or less colorful,  Prev: DIY Make TODO and DONE more or less intense,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make headings more or less colorful,  Next: DIY Make Org block colors more or less colorful,  Prev: DIY Make TODO and DONE more or less intense,  Up: DIY Stylistic variants using palette overrides
 
 7.3.14 DIY Make headings more or less colorful
 ----------------------------------------------
@@ -2484,7 +2484,7 @@ less intense.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make Org block colors more or less colorful,  Next: DIY Make Org agenda more or less colorful,  Prev: DIY Make headings more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make Org block colors more or less colorful,  Next: DIY Make Org agenda more or less colorful,  Prev: DIY Make headings more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.15 DIY Make Org block colors more or less colorful
 ------------------------------------------------------
@@ -2579,7 +2579,7 @@ until version 4.3.0.
    *note DIY Use colored Org source blocks per language::.
 
 
-File: doceIoUO6.info,  Node: DIY Make Org agenda more or less colorful,  Next: DIY Make inline code in prose use alternative styles,  Prev: DIY Make Org block colors more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make Org agenda more or less colorful,  Next: DIY Make inline code in prose use alternative styles,  Prev: DIY Make Org block colors more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.16 DIY Make Org agenda more or less colorful
 ------------------------------------------------
@@ -2649,7 +2649,7 @@ chapters with practical stylistic variants.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make inline code in prose use alternative styles,  Next: DIY Make mail citations and headers more or less colorful,  Prev: DIY Make Org agenda more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make inline code in prose use alternative styles,  Next: DIY Make mail citations and headers more or less colorful,  Prev: DIY Make Org agenda more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.17 DIY Make inline code in prose use alternative styles
 -----------------------------------------------------------
@@ -2702,7 +2702,7 @@ permutation.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make mail citations and headers more or less colorful,  Next: DIY Make the region preserve text colors plus other styles,  Prev: DIY Make inline code in prose use alternative styles,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make mail citations and headers more or less colorful,  Next: DIY Make the region preserve text colors plus other styles,  Prev: DIY Make inline code in prose use alternative styles,  Up: DIY Stylistic variants using palette overrides
 
 7.3.18 DIY Make mail citations and headers more or less colorful
 ----------------------------------------------------------------
@@ -2761,7 +2761,7 @@ Before we show the code, this is the anatomy of a message:
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make the region preserve text colors plus other styles,  Next: DIY Make mouse highlights more or less colorful,  Prev: DIY Make mail citations and headers more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make the region preserve text colors plus other styles,  Next: DIY Make mouse highlights more or less colorful,  Prev: DIY Make mail citations and headers more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.19 DIY Make the region preserve text colors, plus other styles
 ------------------------------------------------------------------
@@ -2795,7 +2795,7 @@ region background.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make mouse highlights more or less colorful,  Next: DIY Make language underlines less colorful,  Prev: DIY Make the region preserve text colors plus other styles,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make mouse highlights more or less colorful,  Next: DIY Make language underlines less colorful,  Prev: DIY Make the region preserve text colors plus other styles,  Up: DIY Stylistic variants using palette overrides
 
 7.3.20 DIY Make mouse highlights more or less colorful
 ------------------------------------------------------
@@ -2817,7 +2817,7 @@ hover effects and related highlights:
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make language underlines less colorful,  Next: DIY Make line numbers use alternative styles,  Prev: DIY Make mouse highlights more or less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make language underlines less colorful,  Next: DIY Make line numbers use alternative styles,  Prev: DIY Make mouse highlights more or less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.21 DIY Make language underlines less colorful
 -------------------------------------------------
@@ -2843,7 +2843,7 @@ prose spell checkers.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make line numbers use alternative styles,  Next: DIY Make diffs use only a foreground,  Prev: DIY Make language underlines less colorful,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make line numbers use alternative styles,  Next: DIY Make diffs use only a foreground,  Prev: DIY Make language underlines less colorful,  Up: DIY Stylistic variants using palette overrides
 
 7.3.22 DIY Make line numbers use alternative styles
 ---------------------------------------------------
@@ -2878,7 +2878,7 @@ how to affect the ‘display-line-numbers-mode’.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make diffs use only a foreground,  Next: DIY Make deuteranopia diffs red and blue instead of yellow and blue,  Prev: DIY Make line numbers use alternative styles,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make diffs use only a foreground,  Next: DIY Make deuteranopia diffs red and blue instead of yellow and blue,  Prev: DIY Make line numbers use alternative styles,  Up: DIY Stylistic variants using palette overrides
 
 7.3.23 DIY Make diffs use only a foreground
 -------------------------------------------
@@ -2943,7 +2943,7 @@ palettes directly instead of just using the “common” overrides.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Make deuteranopia diffs red and blue instead of yellow and blue,  Prev: DIY Make diffs use only a foreground,  Up: DIY Stylistic variants using palette overrides
+File: docwOYhLl.info,  Node: DIY Make deuteranopia diffs red and blue instead of yellow and blue,  Prev: DIY Make diffs use only a foreground,  Up: DIY Stylistic variants using palette overrides
 
 7.3.24 DIY Make deuteranopia diffs red and blue instead of yellow and blue
 --------------------------------------------------------------------------
@@ -2995,7 +2995,7 @@ regular ‘modus-operandi’ and ‘modus-vivendi’.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY More accurate colors in terminal emulators,  Next: DIY Range of color with terminal emulators,  Prev: DIY Stylistic variants using palette overrides,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY More accurate colors in terminal emulators,  Next: DIY Range of color with terminal emulators,  Prev: DIY Stylistic variants using palette overrides,  Up: Advanced customization
 
 7.4 DIY More accurate colors in terminal emulators
 ==================================================
@@ -3024,7 +3024,7 @@ adapted to shell aliases:
      TERM=xterm-direct uxterm -e emacsclient -nw
 
 
-File: doceIoUO6.info,  Node: DIY Range of color with terminal emulators,  Next: DIY Per-theme customization settings,  Prev: DIY More accurate colors in terminal emulators,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Range of color with terminal emulators,  Next: DIY Per-theme customization settings,  Prev: DIY More accurate colors in terminal emulators,  Up: Advanced customization
 
 7.5 DIY Range of color with terminal emulators
 ==============================================
@@ -3094,7 +3094,7 @@ colors::):
      xterm*color15:    #ffffff
 
 
-File: doceIoUO6.info,  Node: DIY Per-theme customization settings,  Next: DIY Do not extend the region background,  Prev: DIY Range of color with terminal emulators,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Per-theme customization settings,  Next: DIY Do not extend the region background,  Prev: DIY Range of color with terminal emulators,  Up: Advanced customization
 
 7.6 DIY Per-theme customization settings
 ========================================
@@ -3130,7 +3130,7 @@ of ‘modus-themes-toggle’ and relevant functions.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Do not extend the region background,  Next: DIY Add padding to the mode line,  Prev: DIY Per-theme customization settings,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Do not extend the region background,  Next: DIY Add padding to the mode line,  Prev: DIY Per-theme customization settings,  Up: Advanced customization
 
 7.7 DIY Do not extend the region background
 ===========================================
@@ -3148,7 +3148,7 @@ Emacs configuration file will suffice:
 Make the region preserve text colors plus other styles.
 
 
-File: doceIoUO6.info,  Node: DIY Add padding to the mode line,  Next: DIY Remap face with local value,  Prev: DIY Do not extend the region background,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Add padding to the mode line,  Next: DIY Remap face with local value,  Prev: DIY Do not extend the region background,  Up: Advanced customization
 
 7.8 DIY Add padding to the mode line
 ====================================
@@ -3212,7 +3212,7 @@ state of affairs.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Remap face with local value,  Next: DIY Font configurations for Org and others,  Prev: DIY Add padding to the mode line,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Remap face with local value,  Next: DIY Font configurations for Org and others,  Prev: DIY Add padding to the mode line,  Up: Advanced customization
 
 7.9 DIY Remap face with local value
 ===================================
@@ -3275,7 +3275,7 @@ experimentation up to you.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Font configurations for Org and others,  Next: DIY Configure bold and italic faces,  Prev: DIY Remap face with local value,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Font configurations for Org and others,  Next: DIY Configure bold and italic faces,  Prev: DIY Remap face with local value,  Up: Advanced customization
 
 7.10 DIY Font configurations for Org and others
 ===============================================
@@ -3346,7 +3346,7 @@ the likes of ‘115’ are perfectly valid—some typefaces will change to
 account for those finer increments.
 
 
-File: doceIoUO6.info,  Node: DIY Configure bold and italic faces,  Next: DIY Custom Org todo keyword and priority faces,  Prev: DIY Font configurations for Org and others,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Configure bold and italic faces,  Next: DIY Custom Org todo keyword and priority faces,  Prev: DIY Font configurations for Org and others,  Up: Advanced customization
 
 7.11 DIY Configure bold and italic faces
 ========================================
@@ -3445,7 +3445,7 @@ the post-load-theme phase.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Custom Org todo keyword and priority faces,  Next: DIY Custom Org emphasis faces,  Prev: DIY Configure bold and italic faces,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Custom Org todo keyword and priority faces,  Next: DIY Custom Org emphasis faces,  Prev: DIY Configure bold and italic faces,  Up: Advanced customization
 
 7.12 DIY Custom Org todo keyword and priority faces
 ===================================================
@@ -3528,7 +3528,7 @@ Do it if you plan to control face attributes.
    *note Check color combinations: DIY Measure color contrast.
 
 
-File: doceIoUO6.info,  Node: DIY Custom Org emphasis faces,  Next: DIY Use colored Org source blocks per language,  Prev: DIY Custom Org todo keyword and priority faces,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Custom Org emphasis faces,  Next: DIY Use colored Org source blocks per language,  Prev: DIY Custom Org todo keyword and priority faces,  Up: Advanced customization
 
 7.13 DIY Custom Org emphasis faces
 ==================================
@@ -3649,7 +3649,7 @@ already styled by the themes, it probably is best not to edit them:
 invoke ‘M-x org-mode-restart’.
 
 
-File: doceIoUO6.info,  Node: DIY Use colored Org source blocks per language,  Next: DIY Measure color contrast,  Prev: DIY Custom Org emphasis faces,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Use colored Org source blocks per language,  Next: DIY Measure color contrast,  Prev: DIY Custom Org emphasis faces,  Up: Advanced customization
 
 7.14 DIY Use colored Org source blocks per language
 ===================================================
@@ -3736,7 +3736,7 @@ idea:
      (add-hook 'modus-themes-after-load-theme-hook #'my-modus-themes-org-block-faces)
 
 
-File: doceIoUO6.info,  Node: DIY Measure color contrast,  Next: DIY Load theme depending on time of day,  Prev: DIY Use colored Org source blocks per language,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Measure color contrast,  Next: DIY Load theme depending on time of day,  Prev: DIY Use colored Org source blocks per language,  Up: Advanced customization
 
 7.15 DIY Measure color contrast
 ===============================
@@ -3801,7 +3801,7 @@ minutia and relevant commentary.
 theme’s color palette.
 
 
-File: doceIoUO6.info,  Node: DIY Load theme depending on time of day,  Next: DIY Backdrop for pdf-tools,  Prev: DIY Measure color contrast,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Load theme depending on time of day,  Next: DIY Backdrop for pdf-tools,  Prev: DIY Measure color contrast,  Up: Advanced customization
 
 7.16 DIY Load theme depending on time of day
 ============================================
@@ -3828,7 +3828,7 @@ location using the built-in ‘solar.el’ and then configuring the
        (circadian-setup))
 
 
-File: doceIoUO6.info,  Node: DIY Backdrop for pdf-tools,  Next: DIY Toggle themes without reloading them,  Prev: DIY Load theme depending on time of day,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Backdrop for pdf-tools,  Next: DIY Toggle themes without reloading them,  Prev: DIY Load theme depending on time of day,  Up: Advanced customization
 
 7.17 DIY Backdrop for pdf-tools
 ===============================
@@ -3903,7 +3903,7 @@ to dark mode when ‘modus-themes-toggle’ is called.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Toggle themes without reloading them,  Next: DIY Use more spacious margins or padding in Emacs frames,  Prev: DIY Backdrop for pdf-tools,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Toggle themes without reloading them,  Next: DIY Use more spacious margins or padding in Emacs frames,  Prev: DIY Backdrop for pdf-tools,  Up: Advanced customization
 
 7.18 DIY Toggle themes without reloading them
 =============================================
@@ -3930,7 +3930,7 @@ their own command which calls ‘enable-theme’ instead of ‘load-theme’:
    Recall that ‘modus-themes-toggle’ uses ‘load-theme’.
 
 
-File: doceIoUO6.info,  Node: DIY Use more spacious margins or padding in Emacs frames,  Next: DIY Custom hl-todo colors,  Prev: DIY Toggle themes without reloading them,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Use more spacious margins or padding in Emacs frames,  Next: DIY Custom hl-todo colors,  Prev: DIY Toggle themes without reloading them,  Up: Advanced customization
 
 7.19 DIY Use more spacious margins or padding in Emacs frames
 =============================================================
@@ -4018,7 +4018,7 @@ defining their own theme-agnostic hook (*note A theme-agnostic hook for
 theme loading: DIY A theme-agnostic hook for theme loading.).
 
 
-File: doceIoUO6.info,  Node: DIY Custom hl-todo colors,  Next: DIY Add support for solaire-mode,  Prev: DIY Use more spacious margins or padding in Emacs frames,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Custom hl-todo colors,  Next: DIY Add support for solaire-mode,  Prev: DIY Use more spacious margins or padding in Emacs frames,  Up: Advanced customization
 
 7.20 DIY Custom hl-todo colors
 ==============================
@@ -4061,7 +4061,7 @@ otherwise the defaults are not always legible.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Add support for solaire-mode,  Next: DIY Add support for meow-mode,  Prev: DIY Custom hl-todo colors,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Add support for solaire-mode,  Next: DIY Add support for meow-mode,  Prev: DIY Custom hl-todo colors,  Up: Advanced customization
 
 7.21 DIY Add support for solaire-mode
 =====================================
@@ -4122,7 +4122,7 @@ the post-load-theme phase.
    Reload the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: DIY Add support for meow-mode,  Next: DIY Add support for combobulate,  Prev: DIY Add support for solaire-mode,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Add support for meow-mode,  Next: DIY Add support for combobulate,  Prev: DIY Add support for solaire-mode,  Up: Advanced customization
 
 7.22 DIY Add support for meow-mode
 ==================================
@@ -4153,7 +4153,7 @@ styles to use.  The following is but a basic attempt to get started.
 the post-load-theme phase.
 
 
-File: doceIoUO6.info,  Node: DIY Add support for combobulate,  Next: DIY Use a hook at the post-load-theme phase,  Prev: DIY Add support for meow-mode,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Add support for combobulate,  Next: DIY Use a hook at the post-load-theme phase,  Prev: DIY Add support for meow-mode,  Up: Advanced customization
 
 7.23 DIY Add support for combobulate
 ====================================
@@ -4204,7 +4204,7 @@ try this instead:
 the post-load-theme phase.
 
 
-File: doceIoUO6.info,  Node: DIY Use a hook at the post-load-theme phase,  Prev: DIY Add support for combobulate,  Up: Advanced customization
+File: docwOYhLl.info,  Node: DIY Use a hook at the post-load-theme phase,  Prev: DIY Add support for combobulate,  Up: Advanced customization
 
 7.24 DIY Use a hook at the post-load-theme phase
 ================================================
@@ -4252,7 +4252,7 @@ it will not use them (in plain terms, the code works with or without
 * DIY A theme-agnostic hook for theme loading::
 
 
-File: doceIoUO6.info,  Node: DIY A theme-agnostic hook for theme loading,  Up: DIY Use a hook at the post-load-theme phase
+File: docwOYhLl.info,  Node: DIY A theme-agnostic hook for theme loading,  Up: DIY Use a hook at the post-load-theme phase
 
 7.24.1 DIY A theme-agnostic hook for theme loading
 --------------------------------------------------
@@ -4308,7 +4308,7 @@ though the user can replace it with ‘after-enable-theme-hook’ should
 they need to (provided they understand the implications).
 
 
-File: doceIoUO6.info,  Node: Build on top of the Modus themes,  Next: Face coverage,  Prev: Advanced customization,  Up: Top
+File: docwOYhLl.info,  Node: Build on top of the Modus themes,  Next: Face coverage,  Prev: Advanced customization,  Up: Top
 
 8 Build on top of the Modus themes
 **********************************
@@ -4430,7 +4430,7 @@ corresponds to some named color in the palette of the active theme.
 * Create convenience commands to load a derivative theme::
 
 
-File: doceIoUO6.info,  Node: Determine what counts as a Modus theme,  Next: Create convenience commands to load a derivative theme,  Up: Build on top of the Modus themes
+File: docwOYhLl.info,  Node: Determine what counts as a Modus theme,  Next: Create convenience commands to load a derivative theme,  Up: Build on top of the Modus themes
 
 8.1 Determine what counts as a Modus theme
 ==========================================
@@ -4496,7 +4496,7 @@ on.
          modus-themes-items))
 
 
-File: doceIoUO6.info,  Node: Create convenience commands to load a derivative theme,  Prev: Determine what counts as a Modus theme,  Up: Build on top of the Modus themes
+File: docwOYhLl.info,  Node: Create convenience commands to load a derivative theme,  Prev: Determine what counts as a Modus theme,  Up: Build on top of the Modus themes
 
 8.2 Create convenience commands to load a derivative theme
 ==========================================================
@@ -4543,7 +4543,7 @@ what the command is doing), though this approach with the ‘cl-letf’ can
 still prove useful.
 
 
-File: doceIoUO6.info,  Node: Face coverage,  Next: Notes on individual packages,  Prev: Build on top of the Modus themes,  Up: Top
+File: docwOYhLl.info,  Node: Face coverage,  Next: Notes on individual packages,  Prev: Build on top of the Modus themes,  Up: Top
 
 9 Face coverage
 ***************
@@ -4558,7 +4558,7 @@ experience across all available interfaces.
 * Indirectly covered packages::
 
 
-File: doceIoUO6.info,  Node: Supported packages,  Next: Indirectly covered packages,  Up: Face coverage
+File: docwOYhLl.info,  Node: Supported packages,  Next: Indirectly covered packages,  Up: Face coverage
 
 9.1 Full support for packages or face groups
 ============================================
@@ -4839,7 +4839,7 @@ have lots of extensions, so the “full support” may not be 100% true…
    Plus many other miscellaneous faces that are provided by Emacs.
 
 
-File: doceIoUO6.info,  Node: Indirectly covered packages,  Prev: Supported packages,  Up: Face coverage
+File: docwOYhLl.info,  Node: Indirectly covered packages,  Prev: Supported packages,  Up: Face coverage
 
 9.2 Indirectly covered packages
 ===============================
@@ -4901,7 +4901,7 @@ supported by the themes.
    • xref
 
 
-File: doceIoUO6.info,  Node: Notes on individual packages,  Next: Frequently Asked Questions,  Prev: Face coverage,  Up: Top
+File: docwOYhLl.info,  Node: Notes on individual packages,  Next: Frequently Asked Questions,  Prev: Face coverage,  Up: Top
 
 10 Notes on individual packages
 *******************************
@@ -4932,7 +4932,7 @@ individual packages.
 * Note on goto-address-mode faces::
 
 
-File: doceIoUO6.info,  Node: Note on calendarel weekday and weekend colors,  Next: Note on git-gutter in Doom Emacs,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on calendarel weekday and weekend colors,  Next: Note on git-gutter in Doom Emacs,  Up: Notes on individual packages
 
 10.1 Note on calendar.el weekday and weekend colors
 ===================================================
@@ -4960,7 +4960,7 @@ of weekends uniformly.
 anew.
 
 
-File: doceIoUO6.info,  Node: Note on git-gutter in Doom Emacs,  Next: Note on php-mode multiline comments,  Prev: Note on calendarel weekday and weekend colors,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on git-gutter in Doom Emacs,  Next: Note on php-mode multiline comments,  Prev: Note on calendarel weekday and weekend colors,  Up: Notes on individual packages
 
 10.2 Note on git-gutter in Doom Emacs
 =====================================
@@ -5016,7 +5016,7 @@ the post-load-theme phase.
           `(git-gutter-fr:modified ((,c :foreground ,bg-changed-intense))))))
 
 
-File: doceIoUO6.info,  Node: Note on php-mode multiline comments,  Next: Note on underlines in compilation buffers,  Prev: Note on git-gutter in Doom Emacs,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on php-mode multiline comments,  Next: Note on underlines in compilation buffers,  Prev: Note on git-gutter in Doom Emacs,  Up: Notes on individual packages
 
 10.3 Note on php-mode multiline comments
 ========================================
@@ -5035,7 +5035,7 @@ multiline comments in PHP with the ‘php-mode’ package use the
    As always, re-load the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: Note on underlines in compilation buffers,  Next: Note on inline Latex in Org buffers,  Prev: Note on php-mode multiline comments,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on underlines in compilation buffers,  Next: Note on inline Latex in Org buffers,  Prev: Note on php-mode multiline comments,  Up: Notes on individual packages
 
 10.4 Note on underlines in compilation buffers
 ==============================================
@@ -5058,7 +5058,7 @@ to render the affected text with the ‘italic’ face:
 faces.
 
 
-File: doceIoUO6.info,  Node: Note on inline Latex in Org buffers,  Next: Note on dimmerel,  Prev: Note on underlines in compilation buffers,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on inline Latex in Org buffers,  Next: Note on dimmerel,  Prev: Note on underlines in compilation buffers,  Up: Notes on individual packages
 
 10.5 Note on inline Latex in Org buffers
 ========================================
@@ -5072,7 +5072,7 @@ the desired list of values (per its doc string).  For example:
    Remember to use ‘M-x org-mode-restart’ for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: Note on dimmerel,  Next: Note on display-fill-column-indicator-mode,  Prev: Note on inline Latex in Org buffers,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on dimmerel,  Next: Note on display-fill-column-indicator-mode,  Prev: Note on inline Latex in Org buffers,  Up: Notes on individual packages
 
 10.6 Note on dimmer.el
 ======================
@@ -5107,7 +5107,7 @@ gray.  This inadvertently leads to the opposite of the intended utility
 of this package: it draws too much attention to unfocused windows.
 
 
-File: doceIoUO6.info,  Node: Note on display-fill-column-indicator-mode,  Next: Note on highlight-parenthesesel,  Prev: Note on dimmerel,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on display-fill-column-indicator-mode,  Next: Note on highlight-parenthesesel,  Prev: Note on dimmerel,  Up: Notes on individual packages
 
 10.7 Note on display-fill-column-indicator-mode
 ===============================================
@@ -5139,7 +5139,7 @@ For example:
         `(fill-column-indicator ((,c :height 1.0 :background ,bg-inactive :foreground ,bg-inactive)))))
 
 
-File: doceIoUO6.info,  Node: Note on highlight-parenthesesel,  Next: Note on mmm-modeel background colors,  Prev: Note on display-fill-column-indicator-mode,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on highlight-parenthesesel,  Next: Note on mmm-modeel background colors,  Prev: Note on display-fill-column-indicator-mode,  Up: Notes on individual packages
 
 10.8 Note on highlight-parentheses.el
 =====================================
@@ -5266,7 +5266,7 @@ the post-load-theme phase.
    As always, re-load the theme for changes to take effect.
 
 
-File: doceIoUO6.info,  Node: Note on mmm-modeel background colors,  Next: Note for prism,  Prev: Note on highlight-parenthesesel,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on mmm-modeel background colors,  Next: Note for prism,  Prev: Note on highlight-parenthesesel,  Up: Notes on individual packages
 
 10.9 Note on mmm-mode.el background colors
 ==========================================
@@ -5316,7 +5316,7 @@ the very high cost of degraded legibility.
         `(mmm-special-submode-face ((,c :background ,bg-green-intense)))))
 
 
-File: doceIoUO6.info,  Node: Note for prism,  Next: Note on company-mode overlay pop-up,  Prev: Note on mmm-modeel background colors,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note for prism,  Next: Note on company-mode overlay pop-up,  Prev: Note on mmm-modeel background colors,  Up: Notes on individual packages
 
 10.10 Note on prism.el
 ======================
@@ -5406,7 +5406,7 @@ examples with the 4, 8, 16 colors):
                        magenta)))
 
 
-File: doceIoUO6.info,  Node: Note on company-mode overlay pop-up,  Next: Note on ERC escaped color sequences,  Prev: Note for prism,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on company-mode overlay pop-up,  Next: Note on ERC escaped color sequences,  Prev: Note for prism,  Up: Notes on individual packages
 
 10.11 Note on company-mode overlay pop-up
 =========================================
@@ -5429,7 +5429,7 @@ instead of overlays.(1)(2)
    (2) <https://github.com/tumashu/company-posframe/>
 
 
-File: doceIoUO6.info,  Node: Note on ERC escaped color sequences,  Next: Note on powerline or spaceline,  Prev: Note on company-mode overlay pop-up,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on ERC escaped color sequences,  Next: Note on powerline or spaceline,  Prev: Note on company-mode overlay pop-up,  Up: Notes on individual packages
 
 10.12 Note on ERC escaped color sequences
 =========================================
@@ -5467,7 +5467,7 @@ together, if you must.
 Emacs: <https://www.mirc.com/colors.html>
 
 
-File: doceIoUO6.info,  Node: Note on powerline or spaceline,  Next: Note on SHR colors,  Prev: Note on ERC escaped color sequences,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on powerline or spaceline,  Next: Note on SHR colors,  Prev: Note on ERC escaped color sequences,  Up: Notes on individual packages
 
 10.13 Note on powerline or spaceline
 ====================================
@@ -5477,7 +5477,7 @@ command ‘powerline-reset’ whenever they make changes to their themes
 and/or mode line setup.
 
 
-File: doceIoUO6.info,  Node: Note on SHR colors,  Next: Note on SHR fonts,  Prev: Note on powerline or spaceline,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on SHR colors,  Next: Note on SHR fonts,  Prev: Note on powerline or spaceline,  Up: Notes on individual packages
 
 10.14 Note on SHR colors
 ========================
@@ -5489,7 +5489,7 @@ webpage provides.
    Consult the doc string of ‘shr-use-colors’.
 
 
-File: doceIoUO6.info,  Node: Note on SHR fonts,  Next: Note on Ement colors and fonts,  Prev: Note on SHR colors,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on SHR fonts,  Next: Note on Ement colors and fonts,  Prev: Note on SHR colors,  Up: Notes on individual packages
 
 10.15 Note on SHR fonts
 =======================
@@ -5511,7 +5511,7 @@ for Org and others.
    This is a non-exhaustive list.
 
 
-File: doceIoUO6.info,  Node: Note on Ement colors and fonts,  Next: Note on pdf-tools link hints,  Prev: Note on SHR fonts,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on Ement colors and fonts,  Next: Note on pdf-tools link hints,  Prev: Note on SHR fonts,  Up: Notes on individual packages
 
 10.16 Note on Ement colors and fonts
 ====================================
@@ -5547,7 +5547,7 @@ Our target is the highest of the sort, though we do not demand that
 everyone conforms with it.
 
 
-File: doceIoUO6.info,  Node: Note on pdf-tools link hints,  Next: Note on the Notmuch logo,  Prev: Note on Ement colors and fonts,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on pdf-tools link hints,  Next: Note on the Notmuch logo,  Prev: Note on Ement colors and fonts,  Up: Notes on individual packages
 
 10.17 Note on pdf-tools link hints
 ==================================
@@ -5596,7 +5596,7 @@ your initialization file after you’ve customized any faces.
                  "-draw"       "text %X,%Y '%c'"))))
 
 
-File: doceIoUO6.info,  Node: Note on the Notmuch logo,  Next: Note on goto-address-mode faces,  Prev: Note on pdf-tools link hints,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on the Notmuch logo,  Next: Note on goto-address-mode faces,  Prev: Note on pdf-tools link hints,  Up: Notes on individual packages
 
 10.18 Note on the Notmuch logo
 ==============================
@@ -5609,7 +5609,7 @@ those buttons.  Disabling the logo fixes the problem:
      (setq notmuch-show-logo nil)
 
 
-File: doceIoUO6.info,  Node: Note on goto-address-mode faces,  Prev: Note on the Notmuch logo,  Up: Notes on individual packages
+File: docwOYhLl.info,  Node: Note on goto-address-mode faces,  Prev: Note on the Notmuch logo,  Up: Notes on individual packages
 
 10.19 Note on goto-address-mode faces
 =====================================
@@ -5634,7 +5634,7 @@ addresses stand out more, due to the use of the uncommon ‘@’ character
 but also because they are often enclosed in angled brackets).
 
 
-File: doceIoUO6.info,  Node: Frequently Asked Questions,  Next: Contributing,  Prev: Notes on individual packages,  Up: Top
+File: docwOYhLl.info,  Node: Frequently Asked Questions,  Next: Contributing,  Prev: Notes on individual packages,  Up: Top
 
 11 Frequently Asked Questions
 *****************************
@@ -5652,7 +5652,7 @@ themes’ design and application.
 * Port the Modus themes to other platforms?::
 
 
-File: doceIoUO6.info,  Node: Is the contrast ratio about adjacent colors?,  Next: What does it mean to avoid exaggerations?,  Up: Frequently Asked Questions
+File: docwOYhLl.info,  Node: Is the contrast ratio about adjacent colors?,  Next: What does it mean to avoid exaggerations?,  Up: Frequently Asked Questions
 
 11.1 Is the contrast ratio about adjacent colors?
 =================================================
@@ -5680,7 +5680,7 @@ be colored differently.  They would still be legible though, which is
 the primary objective of the Modus themes.
 
 
-File: doceIoUO6.info,  Node: What does it mean to avoid exaggerations?,  Next: Why are colors mostly variants of blue magenta cyan?,  Prev: Is the contrast ratio about adjacent colors?,  Up: Frequently Asked Questions
+File: docwOYhLl.info,  Node: What does it mean to avoid exaggerations?,  Next: Why are colors mostly variants of blue magenta cyan?,  Prev: Is the contrast ratio about adjacent colors?,  Up: Frequently Asked Questions
 
 11.2 What does it mean to avoid exaggerations?
 ==============================================
@@ -5713,7 +5713,7 @@ magenta can suffice to tell things apart and avoid excess coloration: a
 harmonious rhythm.
 
 
-File: doceIoUO6.info,  Node: Why are colors mostly variants of blue magenta cyan?,  Next: What is the best setup for legibility?,  Prev: What does it mean to avoid exaggerations?,  Up: Frequently Asked Questions
+File: docwOYhLl.info,  Node: Why are colors mostly variants of blue magenta cyan?,  Next: What is the best setup for legibility?,  Prev: What does it mean to avoid exaggerations?,  Up: Frequently Asked Questions
 
 11.3 Why are colors mostly variants of blue, magenta, cyan?
 ===========================================================
@@ -5801,7 +5801,7 @@ completely different than ‘modus-operandi’, to the effect that the two
 could not be properly considered part of the same project.
 
 
-File: doceIoUO6.info,  Node: What is the best setup for legibility?,  Next: Are these color schemes?,  Prev: Why are colors mostly variants of blue magenta cyan?,  Up: Frequently Asked Questions
+File: docwOYhLl.info,  Node: What is the best setup for legibility?,  Next: Are these color schemes?,  Prev: Why are colors mostly variants of blue magenta cyan?,  Up: Frequently Asked Questions
 
 11.4 What is the best setup for legibility?
 ===========================================
@@ -5851,7 +5851,7 @@ accessibility, though the remaining contributing factors in each case
 need to be considered in full.
 
 
-File: doceIoUO6.info,  Node: Are these color schemes?,  Next: Port the Modus themes to other platforms?,  Prev: What is the best setup for legibility?,  Up: Frequently Asked Questions
+File: docwOYhLl.info,  Node: Are these color schemes?,  Next: Port the Modus themes to other platforms?,  Prev: What is the best setup for legibility?,  Up: Frequently Asked Questions
 
 11.5 Are these color schemes?
 =============================
@@ -5923,7 +5923,7 @@ design beyond the particularities of a color scheme.
 requirements.  Please do not conflate the two.
 
 
-File: doceIoUO6.info,  Node: Port the Modus themes to other platforms?,  Prev: Are these color schemes?,  Up: Frequently Asked Questions
+File: docwOYhLl.info,  Node: Port the Modus themes to other platforms?,  Prev: Are these color schemes?,  Up: Frequently Asked Questions
 
 11.6 Port the Modus themes to other platforms?
 ==============================================
@@ -5983,7 +5983,7 @@ themes, they are welcome to contact me and I will do my best to help
 them in their efforts.
 
 
-File: doceIoUO6.info,  Node: Contributing,  Next: Acknowledgements,  Prev: Frequently Asked Questions,  Up: Top
+File: docwOYhLl.info,  Node: Contributing,  Next: Acknowledgements,  Prev: Frequently Asked Questions,  Up: Top
 
 12 Contributing
 ***************
@@ -5998,7 +5998,7 @@ in which you can contribute to their ongoing development.
 * Patches require copyright assignment to the FSF::
 
 
-File: doceIoUO6.info,  Node: Sources of the themes,  Next: Issues you can help with,  Up: Contributing
+File: docwOYhLl.info,  Node: Sources of the themes,  Next: Issues you can help with,  Up: Contributing
 
 12.1 Sources of the themes
 ==========================
@@ -6018,7 +6018,7 @@ File: doceIoUO6.info,  Node: Sources of the themes,  Next: Issues you can help w
    • Backronym: My Old Display Unexpectedly Sharpened ... themes
 
 
-File: doceIoUO6.info,  Node: Issues you can help with,  Next: Patches require copyright assignment to the FSF,  Prev: Sources of the themes,  Up: Contributing
+File: docwOYhLl.info,  Node: Issues you can help with,  Next: Patches require copyright assignment to the FSF,  Prev: Sources of the themes,  Up: Contributing
 
 12.2 Issues you can help with
 =============================
@@ -6049,7 +6049,7 @@ between aesthetics and accessibility, it shall always be made in the
 interest of the latter.
 
 
-File: doceIoUO6.info,  Node: Patches require copyright assignment to the FSF,  Prev: Issues you can help with,  Up: Contributing
+File: docwOYhLl.info,  Node: Patches require copyright assignment to the FSF,  Prev: Issues you can help with,  Up: Contributing
 
 12.3 Patches require copyright assignment to the FSF
 ====================================================
@@ -6111,7 +6111,7 @@ you to make contributions to Emacs in general.
 
 
 
-File: doceIoUO6.info,  Node: Acknowledgements,  Next: GNU Free Documentation License,  Prev: Contributing,  Up: Top
+File: docwOYhLl.info,  Node: Acknowledgements,  Next: GNU Free Documentation License,  Prev: Contributing,  Up: Top
 
 13 Acknowledgements
 *******************
@@ -6193,7 +6193,7 @@ themes’ design and/or aspects of their functionality.
    All errors are my own.
 
 
-File: doceIoUO6.info,  Node: GNU Free Documentation License,  Next: Indices,  Prev: Acknowledgements,  Up: Top
+File: docwOYhLl.info,  Node: GNU Free Documentation License,  Next: Indices,  Prev: Acknowledgements,  Up: Top
 
 Appendix A GNU Free Documentation License
 *****************************************
@@ -6675,7 +6675,7 @@ software license, such as the GNU General Public License, to permit
 their use in free software.
 
 
-File: doceIoUO6.info,  Node: Indices,  Prev: GNU Free Documentation License,  Up: Top
+File: docwOYhLl.info,  Node: Indices,  Prev: GNU Free Documentation License,  Up: Top
 
 B Indices
 *********
@@ -6687,7 +6687,7 @@ B Indices
 * Concept index::
 
 
-File: doceIoUO6.info,  Node: Function index,  Next: Variable index,  Up: Indices
+File: docwOYhLl.info,  Node: Function index,  Next: Variable index,  Up: Indices
 
 B.1 Function index
 ==================
@@ -6750,7 +6750,7 @@ B.1 Function index
                                                                (line 10)
 
 
-File: doceIoUO6.info,  Node: Variable index,  Next: Concept index,  Prev: Function index,  Up: Indices
+File: docwOYhLl.info,  Node: Variable index,  Next: Concept index,  Prev: Function index,  Up: Indices
 
 B.2 Variable index
 ==================
@@ -6817,7 +6817,7 @@ B.2 Variable index
 * modus-vivendi-tritanopia-palette-user: Palette extension.    (line 34)
 
 
-File: doceIoUO6.info,  Node: Concept index,  Prev: Variable index,  Up: Indices
+File: docwOYhLl.info,  Node: Concept index,  Prev: Variable index,  Up: Indices
 
 B.3 Concept index
 =================
