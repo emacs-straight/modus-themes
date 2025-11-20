@@ -4862,7 +4862,12 @@ FG and BG are the main colors."
 ;;;;; completion-preview
     `(completion-preview ((,c :foreground ,fg-dim)))
     `(completion-preview-common ((,c :inherit completion-preview :underline t)))
-    `(completion-preview-exact ((,c :inherit completion-preview :foreground ,accent-0 :underline ,accent-0)))
+    ;; NOTE 2025-11-18: We have to inherit `completion-preview'
+    ;; otherwise the `hl-line-mode' line loses its background where
+    ;; the `completion-preview-mode' overlay is.  This is not
+    ;; intuitive, given that we do not set a background for
+    ;; `completion-preview'.
+    `(completion-preview-exact ((,c :inherit (modus-themes-completion-match-0 completion-preview))))
 ;;;;; completions
     `(completions-annotations ((,c :inherit modus-themes-slant :foreground ,docstring)))
     `(completions-common-part ((,c :inherit modus-themes-completion-match-0)))
@@ -6831,11 +6836,9 @@ FG and BG are the main colors."
     `(tmr-tabulated-start-time ((,c :foreground ,date-common)))
 ;;;;; transient
     `(transient-active-infix ((,c :background ,bg-hover :foreground ,fg-main)))
-    `(transient-amaranth ((,c :inherit bold :foreground ,yellow-warmer)))
     ;; Placate the compiler for what is a spurious warning.  We also
     ;; have to do this with `eldoc-highlight-function-argument'.
     (list 'transient-argument `((,c :inherit modus-themes-bold :background ,bg-active-argument :foreground ,fg-active-argument)))
-    `(transient-blue ((,c :inherit bold :foreground ,blue)))
     `(transient-disabled-suffix ((,c :inherit bold :background ,bg-mark-delete :foreground ,fg-mark-delete)))
     `(transient-enabled-suffix ((,c :inherit bold :background ,bg-mark-select :foreground ,fg-mark-select)))
     `(transient-heading ((,c :inherit bold :foreground ,fg-main)))
@@ -6843,26 +6846,17 @@ FG and BG are the main colors."
     `(transient-inactive-value ((,c :foreground ,fg-dim)))
     `(transient-inapt-argument ((,c :inherit bold :foreground ,fg-dim)))
     `(transient-inapt-suffix ((,c :inherit italic :foreground ,fg-dim)))
-    ;; NOTE 2023-12-09 10:30:09 +0200: The new user option
-    ;; `transient-semantic-coloring' is enabled by default.  This is
-    ;; not good for us, because we are making it harder for users who
-    ;; need accessible colors to use the transient interfaces.  I
-    ;; could set that user option to nil, but I think it is less
-    ;; intrusive to enforce uniformity among the relevant faces.
-    ;; Those who want semantic coloring can modify these faces.
     `(transient-key ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
-    `(transient-key-exit ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
+    ;; NOTE 2025-11-19: With regard to `transient-semantic-coloring',
+    ;; also see `modus-themes-faces-deuteranopia' and `modus-themes-faces-tritanopia'.
+    `(transient-key-exit ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,red-warmer)))
     `(transient-key-noop ((,c :inherit modus-themes-fixed-pitch :foreground ,fg-dim)))
-    `(transient-key-recurse ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
-    `(transient-key-return ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
-    `(transient-key-stack ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
-    `(transient-key-stay ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,keybind)))
+    `(transient-key-recurse ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,fg-main)))
+    `(transient-key-return ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,yellow)))
+    `(transient-key-stack ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,blue-cooler)))
+    `(transient-key-stay ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,green-cooler)))
     `(transient-mismatched-key ((,c :inherit underline)))
     `(transient-nonstandard-key ((,c :inherit underline)))
-    `(transient-pink ((,c :inherit bold :foreground ,magenta)))
-    `(transient-purple ((,c :inherit bold :foreground ,magenta-cooler)))
-    `(transient-red ((,c :inherit bold :foreground ,red-faint)))
-    `(transient-teal ((,c :inherit bold :foreground ,cyan-cooler)))
     `(transient-unreachable ((,c :foreground ,fg-dim)))
     `(transient-unreachable-key ((,c :inherit modus-themes-fixed-pitch :foreground ,fg-dim)))
     `(transient-value ((,c :inherit modus-themes-bold :background ,bg-active-value :foreground ,fg-active-value)))
@@ -7162,6 +7156,26 @@ FG and BG are the main colors."
     `(ztreep-node-count-children-face ((,c :inherit modus-themes-slant :foreground ,fg-dim)))
     `(ztreep-node-face ((,c :foreground ,accent-0))))
   "Face specs for use with `modus-themes-theme'.")
+
+(defconst modus-themes-faces-deuteranopia
+  '(
+    `(transient-key-exit ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,yellow-warmer)))
+    `(transient-key-noop ((,c :inherit modus-themes-fixed-pitch :foreground ,fg-dim)))
+    `(transient-key-recurse ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,fg-main)))
+    `(transient-key-return ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,yellow-cooler)))
+    `(transient-key-stack ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,blue-cooler)))
+    `(transient-key-stay ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,cyan-faint))))
+  "Faces that must be used by themes that are optimized for deuteranopia.")
+
+(defconst modus-themes-faces-tritanopia
+  '(
+    `(transient-key-exit ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,red-warmer)))
+    `(transient-key-noop ((,c :inherit modus-themes-fixed-pitch :foreground ,fg-dim)))
+    `(transient-key-recurse ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,fg-main)))
+    `(transient-key-return ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,magenta)))
+    `(transient-key-stack ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,cyan)))
+    `(transient-key-stay ((,c :inherit (bold modus-themes-fixed-pitch) :foreground ,cyan-faint))))
+  "Faces that must be used by themes that are optimized for tritanopia.")
 
 (defconst modus-themes-custom-variables
   '(
