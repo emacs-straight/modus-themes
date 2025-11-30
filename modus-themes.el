@@ -37,6 +37,7 @@
 
 
 
+(require 'color)
 (eval-when-compile
   (require 'subr-x)
   (require 'cl-lib))
@@ -7532,9 +7533,6 @@ defined command's symbol is FAMILY-SUFFIX, like `modus-themes-rotate'."
 
 ;;;; Generate a palette given the base colors
 
-(declare-function color-lighten-name "color" (name percent))
-(declare-function color-darken-name "color" (name percent))
-
 ;; NOTE 2025-11-25: This is a copy of `color-blend' from Emacs 31.  We
 ;; should remove this in the future.
 (defun modus-themes-blend (a b &optional alpha)
@@ -7665,7 +7663,6 @@ COOL-OR-WARM-PREFERENCE.  This inferred palette will be
 With optional MAPPINGS use them instead of trying to derive new ones.
 If MAPPINGS is nil, generate some essential color mappings and let the
 rest come from CORE-PALETTE."
-  (require 'color)
   (when (seq-some
          (lambda (entry)
            (not (stringp (cadr entry))))
@@ -7711,12 +7708,10 @@ rest come from CORE-PALETTE."
         (funcall push-derived-value-fn (intern (format "%s-cooler" name)) (modus-themes-generate-gradient (modus-themes-generate-color-cooler value 0.9) (if bg-main-dark-p 20 -20)))
         (funcall push-derived-value-fn (intern (format "%s-faint" name)) (modus-themes-generate-gradient value (if bg-main-dark-p 10 -10)))
         (funcall push-derived-value-fn (intern (format "%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -5 5)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -30 30)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-subtle" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -50 50)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-nuanced" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -70 70))))
+        (funcall push-derived-value-fn (intern (format "bg-%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -50 50)))
+        (funcall push-derived-value-fn (intern (format "bg-%s-subtle" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -70 70)))
+        (funcall push-derived-value-fn (intern (format "bg-%s-nuanced" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -90 90))))
       ;; Mappings
-      (funcall push-mapping-fn 'identifier (if prefers-cool-p 'green-faint 'magenta-faint))
-
       (funcall push-mapping-fn 'bg-completion (if prefers-cool-p 'bg-cyan-subtle 'bg-yellow-subtle))
       (funcall push-mapping-fn 'bg-hover (if prefers-cool-p 'bg-green-intense 'bg-magenta-intense))
       (funcall push-mapping-fn 'bg-hover-secondary (if prefers-cool-p 'bg-green-subtle 'bg-magenta-subtle))
