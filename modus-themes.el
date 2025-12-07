@@ -1117,7 +1117,7 @@ represents."
      (fg-heading-7 cyan-warmer)
      (fg-heading-8 fg-dim))
    modus-themes-common-palette-mappings)
-    "The entire palette of the `modus-operandi' theme.
+  "The entire palette of the `modus-operandi' theme.
 
 Named colors have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
@@ -1773,7 +1773,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-heading-7 cyan)
      (fg-heading-8 fg-dim))
    modus-themes-common-palette-mappings)
-    "The entire palette of the `modus-operandi-deuteranopia' theme.
+  "The entire palette of the `modus-operandi-deuteranopia' theme.
 
 Named colors have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
@@ -2100,7 +2100,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-heading-7 cyan-warmer)
      (fg-heading-8 fg-dim))
    modus-themes-common-palette-mappings)
-    "The entire palette of the `modus-operandi-tritanopia' theme.
+  "The entire palette of the `modus-operandi-tritanopia' theme.
 
 Named colors have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
@@ -2427,7 +2427,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-heading-7 cyan-faint)
      (fg-heading-8 fg-dim))
    modus-themes-common-palette-mappings)
-    "The entire palette of the `modus-vivendi' theme.
+  "The entire palette of the `modus-vivendi' theme.
 
 Named colors have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
@@ -2754,7 +2754,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-heading-7 cyan-faint)
      (fg-heading-8 fg-dim))
    modus-themes-common-palette-mappings)
-    "The entire palette of the `modus-vivendi-tinted' theme.
+  "The entire palette of the `modus-vivendi-tinted' theme.
 
 Named colors have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
@@ -3412,7 +3412,7 @@ exists in the palette and is associated with a HEX-VALUE.")
      (fg-heading-7 cyan-faint)
      (fg-heading-8 fg-dim))
    modus-themes-common-palette-mappings)
-    "The entire palette of the `modus-vivendi-tritanopia' theme.
+  "The entire palette of the `modus-vivendi-tritanopia' theme.
 
 Named colors have the form (COLOR-NAME HEX-VALUE) with the former
 as a symbol and the latter as a string.
@@ -3799,7 +3799,7 @@ Also see `modus-themes-get-themes'.")
             (add-to-list 'modus-themes--activated-themes theme)
             (load-theme theme t t))
         (let ((core-palette (plist-get properties :modus-core-palette))
-               (user-palette (plist-get properties :modus-user-palette)))
+              (user-palette (plist-get properties :modus-user-palette)))
           ;; If its core palette is or nil, then we need to load it.
           ;; Same if its user palette is void, but it is okay if that
           ;; one is nil.
@@ -3875,8 +3875,9 @@ With optional SHOW-ERROR, throw an error instead of returning nil."
       (error "Themes `%S' is not a symbol or a list of symbols" themes)))))
 
 (defun modus-themes--modus-theme-p (theme)
+  "Return non-nil if THEME has a :modus-core-palette property."
   (when-let* ((properties (get theme 'theme-properties))
-                 (core (plist-get properties :modus-core-palette)))
+              (core (plist-get properties :modus-core-palette)))
     theme))
 
 (defun modus-themes-get-current-theme ()
@@ -4623,7 +4624,6 @@ If COLOR is unspecified, then return :box unspecified."
     `(italic ((,c :slant italic)))
     `(cursor ((,c :background ,cursor)))
     `(fringe ((,c :background ,fringe :foreground ,fg-main)))
-    `(menu ((,c :background ,bg-dim :foreground ,fg-main)))
     `(scroll-bar ((,c :background ,fringe :foreground ,border)))
     `(tool-bar ((,c :background ,bg-dim :foreground ,fg-main)))
     `(vertical-border ((,c :foreground ,border)))
@@ -5445,7 +5445,7 @@ If COLOR is unspecified, then return :box unspecified."
     `(flycheck-color-mode-line-error-face ((,c :background ,bg-prominent-err :foreground ,fg-prominent-err)))
     `(flycheck-color-mode-line-info-face ((,c :background ,bg-prominent-note :foreground ,fg-prominent-note)))
     `(flycheck-color-mode-line-running-face ((,c :inherit modus-themes-slant)))
-    `(flycheck-color-mode-line-info-face ((,c :background ,bg-prominent-warning :foreground ,fg-prominent-warning)))
+    `(flycheck-color-mode-line-warning-face ((,c :background ,bg-prominent-warning :foreground ,fg-prominent-warning)))
 ;;;;; flycheck-indicator
     `(flycheck-indicator-disabled ((,c :inherit modus-themes-slant :foreground ,fg-dim)))
     `(flycheck-indicator-error ((,c :foreground ,err)))
@@ -6771,7 +6771,6 @@ If COLOR is unspecified, then return :box unspecified."
     `(sly-error-face ((,c :underline (:style wave :color ,underline-err))))
     `(sly-mode-line ((,c :inherit italic :foreground ,modeline-info)))
     `(sly-mrepl-output-face ((,c :foreground ,string)))
-    `(sly-mrepl-output-face ((,c :foreground ,string)))
     `(sly-mrepl-prompt-face ((,c :inherit modus-themes-prompt)))
     `(sly-note-face ((,c :underline (:style wave :color ,underline-note))))
     `(sly-stickers-placed-face ((,c :background ,bg-inactive)))
@@ -7724,9 +7723,12 @@ rest come from CORE-PALETTE."
         (funcall push-derived-value-fn (intern (format "%s-cooler" name)) (modus-themes-generate-gradient (modus-themes-generate-color-cooler value 0.9) (if bg-main-dark-p 20 -20)))
         (funcall push-derived-value-fn (intern (format "%s-faint" name)) (modus-themes-generate-gradient value (if bg-main-dark-p 10 -10)))
         (funcall push-derived-value-fn (intern (format "%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -5 5)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -50 50)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-subtle" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -70 70)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-nuanced" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -90 90))))
+        ;; TODO 2025-12-06: We should have a function here that adjusts the value also up to a
+        ;; maximum distance from bg-main.  Basically, we want to avoid the scenario where a given
+        ;; base value produces something that is virtually indistinguishable from bg-main.
+        (funcall push-derived-value-fn (intern (format "bg-%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -40 40)))
+        (funcall push-derived-value-fn (intern (format "bg-%s-subtle" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -60 60)))
+        (funcall push-derived-value-fn (intern (format "bg-%s-nuanced" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -80 80))))
       ;; Mappings
       (funcall push-mapping-fn 'bg-completion (if prefers-cool-p 'bg-cyan-subtle 'bg-yellow-subtle))
       (funcall push-mapping-fn 'bg-hover (if prefers-cool-p 'bg-green-intense 'bg-magenta-intense))
