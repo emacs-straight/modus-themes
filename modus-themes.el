@@ -624,7 +624,7 @@ Individual theme overrides take precedence over these common
 overrides.
 
 The idea of common overrides is to change semantic color
-mappings, such as to make the cursor red.  Wherea theme-specific
+mappings, such as to make the cursor red.  Whereas theme-specific
 overrides can also be used to change the value of a named color,
 such as what hexadecimal RGB value the red-warmer symbol
 represents."
@@ -3796,17 +3796,17 @@ Also see `modus-themes-get-themes'.")
       ;; those are reified.
       (if (null properties)
           (progn
-            (add-to-list 'modus-themes--activated-themes theme)
+            (push theme modus-themes--activated-themes)
             (load-theme theme t t))
         (let ((core-palette (plist-get properties :modus-core-palette))
               (user-palette (plist-get properties :modus-user-palette)))
-          ;; If its core palette is or nil, then we need to load it.
+          ;; If its core palette is void or nil, then we need to load it.
           ;; Same if its user palette is void, but it is okay if that
           ;; one is nil.
-          (when (or (not (boundp core-palette))
-                    (null core-palette)
-                    (not (boundp user-palette)))
-            (add-to-list 'modus-themes--activated-themes theme)
+          (unless (and (boundp core-palette)
+                       core-palette
+                       (boundp user-palette))
+            (push theme modus-themes--activated-themes)
             (load-theme theme t t)))))))
 
 (defun modus-themes--belongs-to-family-p (theme family)
@@ -3824,7 +3824,7 @@ derivatives.
 Also see `modus-themes-sort'."
   (let ((themes (pcase theme-family
                   ('modus-themes modus-themes-items)
-                  ((pred (not null)) modus-themes-registered-items)
+                  ((pred identity) modus-themes-registered-items)
                   (_ (seq-union modus-themes-items modus-themes-registered-items)))))
     (if theme-family
         (seq-filter
@@ -4777,7 +4777,7 @@ If COLOR is unspecified, then return :box unspecified."
     `(font-latex-math-face ((,c :foreground ,constant)))
     `(font-latex-script-char-face ((,c :inherit modus-themes-bold :foreground ,builtin)))
     `(font-latex-sectioning-5-face ((,c :inherit modus-themes-bold :foreground ,fg-alt)))
-    `(font-latex-sedate-face ((,c :inherit mouds-themes-bold :foreground ,keyword)))
+    `(font-latex-sedate-face ((,c :inherit modus-themes-bold :foreground ,keyword)))
     `(font-latex-slide-title-face ((,c :inherit modus-themes-heading-1)))
     `(font-latex-string-face ((,c :foreground ,string)))
     `(font-latex-subscript-face ((,c :height 0.9)))
@@ -7390,7 +7390,7 @@ are symbols of variables which define palettes commensurate with
 The optional CUSTOM-FACES and CUSTOM-VARIABLES are joined together with
 the `modus-themes-faces' and `modus-themes-custom-variables',
 respectively.  A derivative theme defining those is thus overriding what
-the Modus themess have by default.
+the Modus themes have by default.
 
 Consult the manual for details on how to build a theme on top of the
 `modus-themes': Info node `(modus-themes) Build on top of the Modus themes'."
@@ -7579,7 +7579,7 @@ For instance:
         (concat "#" (string-join triplets-shortened))))))
 
 (defun modus-themes-generate-color-blend (color blended-with alpha)
-  "Return hexademical RGB of COLOR with BLENDED-WITH given ALPHA.
+  "Return hexadecimal RGB of COLOR with BLENDED-WITH given ALPHA.
 BLENDED-WITH is commensurate with COLOR.  ALPHA is between 0.0 and 1.0,
 inclusive."
   (let* ((blend-rgb (modus-themes-blend (color-name-to-rgb color) (color-name-to-rgb blended-with) alpha))
