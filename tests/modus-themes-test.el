@@ -2,7 +2,8 @@
 
 ;; Copyright (C) 2025  Free Software Foundation, Inc.
 
-;; Author: Rudolf Adamkovič <rudolf@adamkovic.org>
+;; Author: Rudolf Adamkovič <rudolf@adamkovic.org>,
+;;         Protesilaos Stavrou <info@protesilaos.com>
 ;; Maintainer: Protesilaos Stavrou <info@protesilaos.com>
 ;; URL: https://github.com/protesilaos/modus-themes
 
@@ -23,18 +24,21 @@
 
 ;;; Commentary:
 
-;; Tests for the Modus themes.
+;; Tests for the Modus themes.  Note that we are using Shorthands in
+;; this file, so the "mtt-" prefix really is "modus-themes-test-".
+;; Evaluate the following to learn more:
+;;
+;;    (info "(elisp) Shorthands")
 
 ;;; Code:
 
 (require 'ert)
 (require 'modus-themes)
 
-;; Third-party packages, loaded if possible.
-(require 'font-latex nil t)
-
-(ert-deftest modus-themes-test-inheritance ()
+(ert-deftest mtt-inheritance ()
   "Ensure all faces inherit from valid faces."
+  ;; Third-party packages, loaded if possible to better test face inheritance.
+  (require 'font-latex nil t)
   (modus-themes-select 'modus-operandi)
   (should-not (seq-filter
                (lambda (face)
@@ -48,3 +52,7 @@
 
 (provide 'modus-themes-test)
 ;;; modus-themes-test.el ends here
+
+;; Local Variables:
+;; read-symbol-shorthands: (("mtt" . "modus-themes-test-"))
+;; End:
