@@ -3992,7 +3992,7 @@ symbol, which is safe when used as a face attribute's value."
   "Minibuffer history of `modus-themes-select-prompt'.")
 
 (defun modus-themes--annotate-theme (theme)
-  "Return descriptioon of THEME ."
+  "Return description of THEME ."
   (when-let* ((symbol (intern-soft theme))
               (properties (get symbol 'theme-properties))
               (doc-string (or (get symbol 'theme-documentation)
@@ -7251,6 +7251,8 @@ If COLOR is unspecified, then return :box unspecified."
     `(xah-elisp-cap-variable ((,c :foreground ,preprocessor)))
     `(xah-elisp-command-face ((,c :inherit modus-themes-bold :foreground ,type)))
     `(xah-elisp-dollar-symbol ((,c :foreground ,variable)))
+;;;;; xref
+    `(xref-file-header ((,c :foreground ,name)))
 ;;;;; yaml-mode
     `(yaml-tab-face ((,c :background ,bg-space-err)))
 ;;;;; yasnippet
