@@ -4967,12 +4967,11 @@ If COLOR is unspecified, then return :box unspecified."
     `(compilation-warning ((,c :inherit modus-themes-bold :foreground ,warning)))
 ;;;;; completion-preview
     `(completion-preview ((,c :foreground ,fg-dim)))
+    ;; We set the following faces to inherit from `completion-preview',
+    ;; as they do by default.  If we ever want them not to inherit from
+    ;; `completion-preview', then we should remember to customize
+    ;; `completion-preview-adapt-background-color' accordingly.
     `(completion-preview-common ((,c :inherit completion-preview :underline t)))
-    ;; NOTE 2025-11-18: We have to inherit `completion-preview'
-    ;; otherwise the `hl-line-mode' line loses its background where
-    ;; the `completion-preview-mode' overlay is.  This is not
-    ;; intuitive, given that we do not set a background for
-    ;; `completion-preview'.
     `(completion-preview-exact ((,c :inherit (modus-themes-completion-match-0 completion-preview))))
 ;;;;; completions
     `(completions-annotations ((,c :inherit modus-themes-slant :foreground ,docstring)))
@@ -5913,6 +5912,19 @@ If COLOR is unspecified, then return :box unspecified."
     `(ledger-font-xact-highlight-face ((,c :background ,bg-hl-line :extend t)))
 ;;;;; leerzeichen
     `(leerzeichen ((,c :background ,bg-inactive)))
+;;;;; lin
+    `(lin-blue ((,c :background ,bg-blue-subtle)))
+    `(lin-cyan ((,c :background ,bg-cyan-subtle)))
+    `(lin-green ((,c :background ,bg-green-subtle)))
+    `(lin-magenta ((,c :background ,bg-magenta-subtle)))
+    `(lin-red ((,c :background ,bg-red-subtle)))
+    `(lin-yellow ((,c :background ,bg-yellow-subtle)))
+    `(lin-blue-override-fg ((,c :background ,bg-blue-subtle :foreground ,fg-main)))
+    `(lin-cyan-override-fg ((,c :background ,bg-cyan-subtle :foreground ,fg-main)))
+    `(lin-green-override-fg ((,c :background ,bg-green-subtle :foreground ,fg-main)))
+    `(lin-magenta-override-fg ((,c :background ,bg-magenta-subtle :foreground ,fg-main)))
+    `(lin-red-override-fg ((,c :background ,bg-red-subtle :foreground ,fg-main)))
+    `(lin-yellow-override-fg ((,c :background ,bg-yellow-subtle :foreground ,fg-main)))
 ;;;;; line numbers (display-line-numbers-mode and global variant)
     ;; Here we cannot inherit `modus-themes-fixed-pitch'.  We need to
     ;; fall back to `default' otherwise line numbers do not scale when
@@ -6632,6 +6644,13 @@ If COLOR is unspecified, then return :box unspecified."
     `(prodigy-green-face ((,c :foreground ,info)))
     `(prodigy-red-face ((,c :foreground ,err)))
     `(prodigy-yellow-face ((,c :foreground ,warning)))
+;;;;; pulsar
+    `(pulsar-blue ((,c :background ,bg-blue-subtle)))
+    `(pulsar-cyan ((,c :background ,bg-cyan-subtle)))
+    `(pulsar-green ((,c :background ,bg-green-subtle)))
+    `(pulsar-magenta ((,c :background ,bg-magenta-subtle)))
+    `(pulsar-red ((,c :background ,bg-red-subtle)))
+    `(pulsar-yellow ((,c :background ,bg-yellow-subtle)))
 ;;;;; pulse
     `(pulse-highlight-start-face ((,c :background ,bg-blue-intense :extend t)))
 ;;;;; pyim
