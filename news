@@ -1,0 +1,110 @@
+             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+              CHANGE LOG OF THE MODUS THEMES FOR GNU EMACS
+             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+This document contains the release notes that are included in each
+tagged commit on the project's main git repository:
+<https://github.com/protesilaos/modus-themes>.
+
+The newest release is at the top.  Since the notes are meant to be in
+plain text format, I copy them verbatim.
+
+For further details, please consult these additional resources:
+
+Manual
+      <https://protesilaos.com/emacs/modus-themes>
+Screenshots
+      <https://protesilaos.com/emacs/modus-themes-pictures>
+
+
+DEVELOPMENT
+═══════════
+
+`modus-themes-with-colors' improved again
+─────────────────────────────────────────
+
+  The recently introduced `let'-based method exhibits a subtle bug:
+  since it sorts real colors prior to "mapped" colors, an override from
+  the latter to the former would be lost.
+
+
+5.2.0 on 2025-12-31
+═══════════════════
+
+  This version fixes some bugs, adds a new feature for those who want to
+  derive a theme from Modus, and makes other small quality-of-life
+  refinements.
+
+
+The `modus-themes-with-colors' should work at all times
+───────────────────────────────────────────────────────
+
+  In the transition to version `5.0.0', I inadvertently introduced
+  regressions to the behaviour of the `modus-themes-with-colors' macro.
+  This macro `let' binds the current theme's palette around arbitrary
+  Elisp expressions, which allows users to access the named colours
+  therein. In versions `5.0.0' and `5.1.0' the macro could not read
+  variables defined outside its scope. Users needed to write an `eval'
+  around it, which I did not like. Now the macro should not require such
+  workarounds: it basically is a `let' that should work as expected
+  everywhere.
+
+  This was fixed over a series of Git commits related to issue 170:
+  <https://github.com/protesilaos/modus-themes/issues/170>. Thanks to
+  Alexandr Semenov and realazy for reporting the problems and testing my
+  revisions.
+
+
+The `modus-themes-generate-palette' function to quickly get a palette
+─────────────────────────────────────────────────────────────────────
+
+  Users or package developers who want to create a theme on top of Modus
+  can now get a kickstart by defining their palette with the help of the
+  new `modus-themes-generate-palette' function. This function is meant
+  to return a complete palette, given a list of basic colours. Users can
+  thus experiment with their new theme while knowing that what they got
+  contains all the definitions; definitions that they may then modify
+  further (e.g. to define different semantic mappings than the defaults
+  such as, for example, to have `(fg-heading-1 red-warmer)' instead of
+  what originally is `(fg-heading-1 fg-main)').
+
+  I have written extensive documentation in the manual, which includes a
+  complete example of a Solarized theme that is built on top of Modus.
+  If you have any questions, you are welcome to contact me.
+
+
+Convenience commands to select only dark or light themes
+────────────────────────────────────────────────────────
+
+  The commands `modus-themes-select-dark' and
+  `modus-themes-select-light' use minibuffer completion to load a
+  theme. The completion candidates are filtered to only dark or light
+  themes, respectively.
+
+  This is effectively the same as calling the command
+  `modus-themes-select' with a prefix argument (`C-u' by default).
+
+  Remember that we also have the commands `modus-themes-load-random',
+  `modus-themes-load-random-dark', and `modus-themes-load-random-light'.
+  Otherwise use the command `modus-themes-rotate'.
+
+
+Improved prompt for theme selection
+───────────────────────────────────
+
+  The minibuffer prompt used by the various Modus commands to select a
+  theme now has a grouping function in place: it shows the current theme
+  at the top and then all other themes grouped by their dark or light
+  background. This makes it easier to find a relevant theme, especially
+  if lots of them are present, such as when
+  `modus-themes-include-derivatives-mode' is enabled and relevant
+  packages/themes are available (e.g. my `ef-themes' and
+  `standard-themes').
+
+
+Semantic colours for `transient.el' (e.g. in Magit)
+───────────────────────────────────────────────────
+
+  The `transient.el' concept of "semantic colours" is now supported.
+  This is used by default in Magit to denote the different types of …  …
