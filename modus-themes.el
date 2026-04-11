@@ -3747,9 +3747,11 @@ Use `color-values-from-color-spec' (a C built-in since Emacs 28.1)
 instead of `color-name-to-rgb' to avoid dependence on a display
 connection.  This matters when loading a theme during early init on
 GUI Emacs, where `color-values' returns nil before the display is
-ready (per issue #198)."
-  (mapcar (lambda (x) (/ x 65535.0))
-          (color-values-from-color-spec hex-color)))
+ready (per <https://github.com/protesilaos/modus-themes/issues/198>)."
+  (mapcar
+   (lambda (x)
+     (/ x 65535.0))
+   (color-values-from-color-spec hex-color)))
 
 ;; This is the WCAG formula: https://www.w3.org/TR/WCAG20-TECHS/G18.html
 (defun modus-themes--wcag-contribution (channel weight)
@@ -3762,25 +3764,28 @@ ready (per issue #198)."
 (defun modus-themes-wcag-formula (hex-color)
   "Get WCAG value of color value HEX-COLOR.
 The value is defined in hexadecimal RGB notation, such #123456."
-  (let ((channels (modus-themes--hex-to-rgb hex-color))
-        (weights '(0.2126 0.7152 0.0722))
-        (contribution nil))
-    (while channels
-      (push (modus-themes--wcag-contribution (pop channels) (pop weights)) contribution))
-    (apply #'+ contribution)))
+  (when-let* ((channels (modus-themes--hex-to-rgb hex-color)))
+    (let ((weights '(0.2126 0.7152 0.0722))
+          (contribution nil))
+      (while channels
+        (push (modus-themes--wcag-contribution (pop channels) (pop weights)) contribution))
+      (apply #'+ contribution))))
 
 ;;;###autoload
 (defun modus-themes-contrast (hex-color-1 hex-color-2)
   "Measure WCAG contrast ratio between HEX-COLOR-1 and HEX-COLOR-2.
 HEX-COLOR-1 and HEX-COLOR-2 are color values written in hexadecimal RGB."
-  (let ((ct (/ (+ (modus-themes-wcag-formula hex-color-1) 0.05)
-               (+ (modus-themes-wcag-formula hex-color-2) 0.05))))
-    (max ct (/ ct))))
+  (if-let* ((hex1-weight (modus-themes-wcag-formula hex-color-1))
+            (hex2-weight (modus-themes-wcag-formula hex-color-2)))
+      (let ((contrast (/ (+ hex1-weight 0.05) (+ hex2-weight 0.05))))
+        (max contrast (/ contrast)))
+    (error "Both `%s' and `%s' must be valid hexadecimal RGB colors" hex-color-1 hex-color-2)))
 
-(defun modus-themes--color-six-digits (hex-color)
-  "Reduce representation of hexadecimal RGB HEX-COLOR to six digits."
+(defun modus-themes--color-eight-to-six-digits (hex-color)
+  "Reduce representation of hexadecimal RGB HEX-COLOR from eight to six digits.
+If HEX-COLOR is three or six digits, then return it as is."
   (let ((color-no-hash (substring hex-color 1)))
-    (if (= (length color-no-hash) 6)
+    (if (memq (length color-no-hash) '(3 6))
         hex-color
       (let* ((triplets (seq-split color-no-hash 4))
              (triplets-shortened (mapcar
@@ -3791,12 +3796,14 @@ HEX-COLOR-1 and HEX-COLOR-2 are color values written in hexadecimal RGB."
 
 (defun modus-themes-adjust-value (hex-rgb percentage)
   "Adjust value of HEX-RGB colour by PERCENTAGE."
-  (pcase-let* ((`(,r ,g ,b) (color-name-to-rgb hex-rgb))
-               (fn (if (color-dark-p (list r g b))
-                       #'color-lighten-name
-                     #'color-darken-name))
-               (value (funcall fn hex-rgb percentage)))
-    (modus-themes--color-six-digits value)))
+  (if-let* ((rgb (modus-themes--hex-to-rgb hex-rgb)))
+      (pcase-let* ((`(,r ,g ,b) rgb)
+                   (fn (if (color-dark-p (list r g b))
+                           #'color-lighten-name
+                         #'color-darken-name))
+                   (value (funcall fn hex-rgb percentage)))
+        (modus-themes--color-eight-to-six-digits value))
+    (error "The `%s' has to be a valid hexadecimal RGB color" hex-rgb)))
 
 (defvar modus-themes-registered-items nil
   "List of defined themes.
@@ -7656,7 +7663,7 @@ inclusive."
                      (modus-themes--hex-to-rgb blended-with-hex)
                      alpha))
          (blend-hex (apply #'color-rgb-to-hex blend-rgb)))
-    (modus-themes--color-six-digits blend-hex)))
+    (modus-themes--color-eight-to-six-digits blend-hex)))
 
 (defun modus-themes-generate-color-warmer (color alpha)
   "Return warmer COLOR by ALPHA, per `modus-themes-generate-color-blend'."
@@ -7669,7 +7676,7 @@ inclusive."
 (defun modus-themes-generate-gradient (color percent)
   "Adjust value of COLOR by PERCENT."
   (let ((gradient (color-lighten-name color percent)))
-    (modus-themes--color-six-digits gradient)))
+    (modus-themes--color-eight-to-six-digits gradient)))
 
 (defun modus-themes-color-warm-p (color)
   "Return non-nil if COLOR is warm.
