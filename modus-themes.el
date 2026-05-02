@@ -3741,17 +3741,30 @@ Info node `(modus-themes) Option for palette overrides'.")
 
 ;;;; Helper functions for theme setup
 
-(defun modus-themes--hex-to-rgb (hex-color)
-  "Convert HEX-COLOR to a list of normalized RGB values.
-Use `color-values-from-color-spec' (a C built-in since Emacs 28.1)
-instead of `color-name-to-rgb' to avoid dependence on a display
-connection.  This matters when loading a theme during early init on
-GUI Emacs, where `color-values' returns nil before the display is
-ready (per <https://github.com/protesilaos/modus-themes/issues/198>)."
-  (mapcar
-   (lambda (x)
-     (/ x 65535.0))
-   (color-values-from-color-spec hex-color)))
+(defvar modus-themes--hex-regexp
+  (concat
+   "\\`#"
+   "\\(?:[[:xdigit:]]\\{3\\}"
+   "\\|"
+   "[[:xdigit:]]\\{6\\}\\)"
+   "\\'")
+  "Regular expression to match a color in hexadecimal RGB notation.")
+
+(defun modus-themes--color-hex-p (color)
+  "Return non-nil if COLOR is hexadecimal RGB."
+  (and (stringp color) (string-match-p modus-themes--hex-regexp color)))
+
+(defun modus-themes--hex-or-name-to-rgb (color)
+  "Convert COLOR to a list of normalized RGB values.
+COLOR can be a hexadecimal RGB value like #123456 or a named color
+like those produced by `list-colors-display'."
+  (cond
+   ((modus-themes--color-hex-p color)
+    (when-let* ((spec (color-values-from-color-spec color)))
+      (mapcar (lambda (x) (/ x 65535.0)) spec)))
+   ((color-name-to-rgb color))
+   (t
+    (error "The color `%s' cannot be resolved" color))))
 
 ;; This is the WCAG formula: https://www.w3.org/TR/WCAG20-TECHS/G18.html
 (defun modus-themes--wcag-contribution (channel weight)
@@ -3761,10 +3774,11 @@ ready (per <https://github.com/protesilaos/modus-themes/issues/198>)."
          (/ channel 12.92)
        (expt (/ (+ channel 0.055) 1.055) 2.4))))
 
-(defun modus-themes-wcag-formula (hex-color)
-  "Get WCAG value of color value HEX-COLOR.
-The value is defined in hexadecimal RGB notation, such #123456."
-  (when-let* ((channels (modus-themes--hex-to-rgb hex-color)))
+(defun modus-themes-wcag-formula (color)
+  "Get WCAG value of color value COLOR.
+The value is defined in hexadecimal RGB notation, such #123456, or
+as a named color like those of `list-colors-display'."
+  (when-let* ((channels (modus-themes--hex-or-name-to-rgb color)))
     (let ((weights '(0.2126 0.7152 0.0722))
           (contribution nil))
       (while channels
@@ -3772,38 +3786,38 @@ The value is defined in hexadecimal RGB notation, such #123456."
       (apply #'+ contribution))))
 
 ;;;###autoload
-(defun modus-themes-contrast (hex-color-1 hex-color-2)
-  "Measure WCAG contrast ratio between HEX-COLOR-1 and HEX-COLOR-2.
-HEX-COLOR-1 and HEX-COLOR-2 are color values written in hexadecimal RGB."
-  (if-let* ((hex1-weight (modus-themes-wcag-formula hex-color-1))
-            (hex2-weight (modus-themes-wcag-formula hex-color-2)))
+(defun modus-themes-contrast (color-1 color-2)
+  "Measure WCAG contrast ratio between COLOR-1 and COLOR-2.
+Color values are of the form accepted by `modus-themes-wcag-formula'."
+  (if-let* ((hex1-weight (modus-themes-wcag-formula color-1))
+            (hex2-weight (modus-themes-wcag-formula color-2)))
       (let ((contrast (/ (+ hex1-weight 0.05) (+ hex2-weight 0.05))))
         (max contrast (/ contrast)))
-    (error "Both `%s' and `%s' must be valid hexadecimal RGB colors" hex-color-1 hex-color-2)))
+    (error "Both `%s' and `%s' must be valid hexadecimal RGB or named colors" color-1 color-2)))
 
 (defun modus-themes--color-eight-to-six-digits (hex-color)
   "Reduce representation of hexadecimal RGB HEX-COLOR from eight to six digits.
 If HEX-COLOR is three or six digits, then return it as is."
-  (let ((color-no-hash (substring hex-color 1)))
-    (if (memq (length color-no-hash) '(3 6))
-        hex-color
-      (let* ((triplets (seq-split color-no-hash 4))
-             (triplets-shortened (mapcar
-                                  (lambda (string)
-                                    (substring string 0 2))
-                                  triplets)))
-        (concat "#" (string-join triplets-shortened))))))
+  (if (modus-themes--color-hex-p hex-color)
+      hex-color
+    (let* ((color-no-hash (substring hex-color 1))
+           (triplets (seq-split color-no-hash 4))
+           (triplets-shortened (mapcar
+                                (lambda (string)
+                                  (substring string 0 2))
+                                triplets)))
+      (concat "#" (string-join triplets-shortened)))))
 
-(defun modus-themes-adjust-value (hex-rgb percentage)
-  "Adjust value of HEX-RGB colour by PERCENTAGE."
-  (if-let* ((rgb (modus-themes--hex-to-rgb hex-rgb)))
-      (pcase-let* ((`(,r ,g ,b) rgb)
-                   (fn (if (color-dark-p (list r g b))
-                           #'color-lighten-name
-                         #'color-darken-name))
-                   (value (funcall fn hex-rgb percentage)))
-        (modus-themes--color-eight-to-six-digits value))
-    (error "The `%s' has to be a valid hexadecimal RGB color" hex-rgb)))
+(defun modus-themes-adjust-value (color percentage)
+  "Adjust value of COLOR by PERCENTAGE.
+COLOR is either a hexadecimal RGB string or a named color."
+  (when-let* ((rgb (modus-themes--hex-or-name-to-rgb color)))
+    (pcase-let* ((`(,r ,g ,b) rgb)
+                 (`(,h ,s ,l) (color-rgb-to-hsl r g b))
+                 (adjusted (color-lighten-hsl h s l percentage))
+                 (adjusted-rgb (apply #'color-hsl-to-rgb adjusted))
+                 (value (apply #'color-rgb-to-hex adjusted-rgb)))
+      (modus-themes--color-eight-to-six-digits value))))
 
 (defvar modus-themes-registered-items nil
   "List of defined themes.
@@ -4248,15 +4262,15 @@ Run `modus-themes-after-load-theme-hook' after loading a theme."
 
 ;;;;; Preview a theme palette
 
-(defun modus-themes-color-dark-p (hex-color)
-  "Return non-nil if hexadecimal RGB HEX-COLOR is dark.
-Test that HEX-COLOR has more contrast against white than black."
-  (> (modus-themes-contrast hex-color "#ffffff")
-     (modus-themes-contrast hex-color "#000000")))
+(defun modus-themes-color-dark-p (color)
+  "Return non-nil if hexadecimal RGB COLOR is dark.
+Test that COLOR has more contrast against white than black."
+  (> (modus-themes-contrast color "#ffffff")
+     (modus-themes-contrast color "#000000")))
 
-(defun modus-themes-get-readable-foreground (hex-color)
-  "Get readable foreground for background hexadecimal RGB HEX-COLOR."
-  (if (modus-themes-color-dark-p hex-color)
+(defun modus-themes-get-readable-foreground (color)
+  "Get readable foreground for background hexadecimal RGB COLOR."
+  (if (modus-themes-color-dark-p color)
       "#ffffff"
     "#000000"))
 
@@ -7663,13 +7677,15 @@ For instance:
       (push (+ (* (nth i a) alpha) (* (nth i b) (- 1 alpha))) blend))
     (nreverse blend)))
 
-(defun modus-themes-generate-color-blend (hex-color blended-with-hex alpha)
-  "Return hexadecimal RGB of HEX-COLOR with BLENDED-WITH-HEX given ALPHA.
+(defun modus-themes-generate-color-blend (color blended-with-hex alpha)
+  "Return hexadecimal RGB of COLOR with BLENDED-WITH-HEX given ALPHA.
 BLENDED-WITH-HEX is commensurate with COLOR.  ALPHA is between 0.0 and 1.0,
-inclusive."
+inclusive.
+
+Color values are of the form accepted by `modus-themes-wcag-formula'."
   (let* ((blend-rgb (modus-themes-blend
-                     (modus-themes--hex-to-rgb hex-color)
-                     (modus-themes--hex-to-rgb blended-with-hex)
+                     (modus-themes--hex-or-name-to-rgb color)
+                     (modus-themes--hex-or-name-to-rgb blended-with-hex)
                      alpha))
          (blend-hex (apply #'color-rgb-to-hex blend-rgb)))
     (modus-themes--color-eight-to-six-digits blend-hex)))
@@ -7682,16 +7698,16 @@ inclusive."
   "Return cooler COLOR by ALPHA, per `modus-themes-generate-color-blend'."
   (modus-themes-generate-color-blend color "#0000ff" alpha))
 
-(defun modus-themes-generate-gradient (color percent)
-  "Adjust value of COLOR by PERCENT."
-  (let ((gradient (color-lighten-name color percent)))
-    (modus-themes--color-eight-to-six-digits gradient)))
+(define-obsolete-function-alias
+  'modus-themes-generate-gradient
+  'modus-themes-adjust-value
+  "5.3.0")
 
 (defun modus-themes-color-warm-p (color)
   "Return non-nil if COLOR is warm.
 A warm color has more contribution from the red channel of light than
 the blue one."
-  (pcase-let ((`(,r ,_ ,b) (modus-themes--hex-to-rgb color)))
+  (pcase-let ((`(,r ,_ ,b) (modus-themes--hex-or-name-to-rgb color)))
     (> r b)))
 
 (defun modus-themes-color-is-warm-or-cool-p (color)
@@ -7786,24 +7802,24 @@ rest come from CORE-PALETTE."
                               (unless (assq name mappings)
                                 (push (list name value) derived-mappings)))))
       ;; Base entries
-      (funcall push-derived-value-fn 'bg-dim (modus-themes-generate-gradient bg-main (if bg-main-dark-p 5 -5)))
-      (funcall push-derived-value-fn 'bg-active (modus-themes-generate-gradient bg-main (if bg-main-dark-p 10 -10)))
-      (funcall push-derived-value-fn 'bg-inactive (modus-themes-generate-gradient bg-main (if bg-main-dark-p 8 -8)))
-      (funcall push-derived-value-fn 'border (modus-themes-generate-gradient bg-main (if bg-main-dark-p 20 -20)))
-      (funcall push-derived-value-fn 'fg-dim (modus-themes-generate-gradient fg-main (if bg-main-dark-p -20 20)))
-      (funcall push-derived-value-fn 'fg-alt (modus-themes-generate-color-warmer-or-cooler (modus-themes-generate-gradient fg-main (if bg-main-dark-p -10 10)) 0.8 prefers-cool-p))
+      (funcall push-derived-value-fn 'bg-dim (modus-themes-adjust-value bg-main (if bg-main-dark-p 5 -5)))
+      (funcall push-derived-value-fn 'bg-active (modus-themes-adjust-value bg-main (if bg-main-dark-p 10 -10)))
+      (funcall push-derived-value-fn 'bg-inactive (modus-themes-adjust-value bg-main (if bg-main-dark-p 8 -8)))
+      (funcall push-derived-value-fn 'border (modus-themes-adjust-value bg-main (if bg-main-dark-p 20 -20)))
+      (funcall push-derived-value-fn 'fg-dim (modus-themes-adjust-value fg-main (if bg-main-dark-p -20 20)))
+      (funcall push-derived-value-fn 'fg-alt (modus-themes-generate-color-warmer-or-cooler (modus-themes-adjust-value fg-main (if bg-main-dark-p -10 10)) 0.8 prefers-cool-p))
       ;; Primary and secondary colors
       (pcase-dolist (`(,name ,value) six-colors)
-        (funcall push-derived-value-fn (intern (format "%s-warmer" name)) (modus-themes-generate-gradient (modus-themes-generate-color-warmer value 0.9) (if bg-main-dark-p 20 -20)))
-        (funcall push-derived-value-fn (intern (format "%s-cooler" name)) (modus-themes-generate-gradient (modus-themes-generate-color-cooler value 0.9) (if bg-main-dark-p 20 -20)))
-        (funcall push-derived-value-fn (intern (format "%s-faint" name)) (modus-themes-generate-gradient value (if bg-main-dark-p 10 -10)))
-        (funcall push-derived-value-fn (intern (format "%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -5 5)))
+        (funcall push-derived-value-fn (intern (format "%s-warmer" name)) (modus-themes-adjust-value (modus-themes-generate-color-warmer value 0.9) (if bg-main-dark-p 20 -20)))
+        (funcall push-derived-value-fn (intern (format "%s-cooler" name)) (modus-themes-adjust-value (modus-themes-generate-color-cooler value 0.9) (if bg-main-dark-p 20 -20)))
+        (funcall push-derived-value-fn (intern (format "%s-faint" name)) (modus-themes-adjust-value value (if bg-main-dark-p 10 -10)))
+        (funcall push-derived-value-fn (intern (format "%s-intense" name)) (modus-themes-adjust-value value (if bg-main-dark-p -5 5)))
         ;; TODO 2025-12-06: We should have a function here that adjusts the value also up to a
         ;; maximum distance from bg-main.  Basically, we want to avoid the scenario where a given
         ;; base value produces something that is virtually indistinguishable from bg-main.
-        (funcall push-derived-value-fn (intern (format "bg-%s-intense" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -40 40)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-subtle" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -60 60)))
-        (funcall push-derived-value-fn (intern (format "bg-%s-nuanced" name)) (modus-themes-generate-gradient value (if bg-main-dark-p -80 80))))
+        (funcall push-derived-value-fn (intern (format "bg-%s-intense" name)) (modus-themes-adjust-value value (if bg-main-dark-p -40 40)))
+        (funcall push-derived-value-fn (intern (format "bg-%s-subtle" name)) (modus-themes-adjust-value value (if bg-main-dark-p -60 60)))
+        (funcall push-derived-value-fn (intern (format "bg-%s-nuanced" name)) (modus-themes-adjust-value value (if bg-main-dark-p -80 80))))
       ;; Mappings
       (funcall push-mapping-fn 'bg-completion (if prefers-cool-p 'bg-cyan-subtle 'bg-yellow-subtle))
       (funcall push-mapping-fn 'bg-hover (if prefers-cool-p 'bg-green-intense 'bg-magenta-intense))
