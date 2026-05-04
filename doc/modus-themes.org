@@ -169,7 +169,7 @@ themes in {{{file(~/.emacs.d/modus-themes)}}}. If you are using Emacs
    snippet of Emacs Lisp in your init file (e.g. {{{file(init.el)}}}):
 
 #+begin_src emacs-lisp
-(add-to-list 'load-path "~/.emacs.d/modus-themes")
+(add-to-list 'load-path "~/.emacs.d/modus-themes/")
 #+end_src
 
 The themes are now ready to be used: [[#h:3f3c3728-1b34-437d-9d0c-b110f5b161a9][Enable and load]].
@@ -238,8 +238,8 @@ does not mean I am necessarily doing something wrong.
 #+cindex: use-package configuration
 #+cindex: sample configuration
 
-It is common for Emacs users to rely on ~use-package~ for declaring
-package configurations in their setup ([[#h:b66b128d-54a4-4265-b59f-4d1ea2feb073][The ~require-theme~ for built-in Emacs themes]]):
+It is common for Emacs users to rely on ~use-package~ to declare
+package configurations ([[#h:b66b128d-54a4-4265-b59f-4d1ea2feb073][The ~require-theme~ for built-in Emacs themes]]):
 
 #+begin_src emacs-lisp
 (use-package modus-themes
@@ -365,8 +365,8 @@ The commands ~modus-themes-toggle~, ~modus-themes-rotate~,
   accordingly.
 
 - ~modus-themes-load-random~ :: Loads a Modus theme at random. When
-  called with a prefix argument, it behaves like the aforementioned
-  ~modus-themes-select~.
+  called with a prefix argument, it prompts for the light or dark
+  subset to load a theme from.
 
 Convenience commands for loading only dark or light themes are:
 
@@ -388,12 +388,17 @@ Convenience commands for loading only dark or light themes are:
 :END:
 #+cindex: load-theme VS enable-theme
 
+#+findex: load-theme
+#+findex: enable-theme
 #+vindex: custom-enabled-themes
-Emacs differentiates between loading and enabling a theme. The former
-refers to the process of loading and evaluating the theme. While the
-latter is about moving the given theme to the front of the
-~custom-enabled-themes~. Concretely, loading a theme always aaccounts
-for the user options and updates the presentation accordingly
+Emacs differentiates between loading, per ~load-theme~, and enabling a
+theme per ~enable-theme~. The former refers to the process of loading
+and evaluating the theme. While the latter is about moving the given
+theme to the front of the ~custom-enabled-themes~, without evaluating
+it anew.
+
+Concretely, loading a theme always accounts for changes to user
+options and thus updates the relevant styles accordingly
 ([[#h:bf1c82f2-46c7-4eb2-ad00-dd11fdd8b53f][Customization Options]]). Whereas enabling a theme will not perform any
 further computations.
 
@@ -407,12 +412,15 @@ further computations.
 :END:
 
 The Modus themes are highly configurable, though they should work well
-without any further tweaks.  I provide a variety of user options.
-The following code block provides an overview.  In addition to those
-variables, the themes support a comprehensive system of overrides: it
-can be used to make thoroughgoing changes to the looks of the themes
-([[#h:34c7a691-19bb-4037-8d2f-67a07edab150][Option for palette overrides]]).  I document everything at length in
-the pages of this manual and also provide ready-to-use code samples.
+without any tweaks. I provide a variety of user options, making these
+perhaps the most customizable themes available. The following code
+block provides an overview.
+
+The Modus themes support palette overrides. Those can be used to make
+thoroughgoing changes to the looks of the themes, to the point where a
+given theme looks completely different from how I have designed it
+([[#h:34c7a691-19bb-4037-8d2f-67a07edab150][Option for palette overrides]]). I document everything at length in the
+pages of this manual and also provide ready-to-use code samples.
 
 Remember that all customization options must be evaluated before loading
 a theme ([[#h:3f3c3728-1b34-437d-9d0c-b110f5b161a9][Enable and load]]).  If the theme is already active, it must be
@@ -443,8 +451,6 @@ reloaded for changes to take effect.
       '((matches . (extrabold))
         (selection . (semibold italic text-also)))
 
-      modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
-
       ;; The `modus-themes-headings' is an alist: read the manual's
       ;; node about it or its docstring.  Basically, it supports
       ;; per-level configurations for the optional use of
@@ -457,8 +463,8 @@ reloaded for changes to take effect.
         (agenda-structure . (variable-pitch light 1.8))
         (t . (1.1))))
 
-;; Remember that more (MUCH MORE) can be done with overrides, which I
-;; document extensively in this manual.
+;; Remember that more (MUCH MORE) can be done with palette overrides,
+;; which I document extensively in this manual.
 #+end_src
 
 ** Option to disable other color themes when loading a Modus theme
@@ -467,39 +473,16 @@ reloaded for changes to take effect.
 :DESCRIPTION: Determine whether loading a Modus themes disables all others
 :CUSTOM_ID: h:adb0c49a-f1f9-4690-868b-013a080eed68
 :END:
+
 #+vindex: modus-themes-disable-other-themes
+The user option ~modus-themes-disable-other-themes~ makes Modus
+commands that load a theme automatically disable all other color
+themes ([[#h:3f3c3728-1b34-437d-9d0c-b110f5b161a9][Enable and load]]). This is to ensure that Emacs does not blend
+two or more color themes, which it will otherwise do. Blending
+different color themes seldom leads to good results.
 
-Brief: Disable all other color themes when loading a Modus theme.
-
-Symbol: ~modus-themes-disable-other-themes~ (=boolean= type)
-
-Possible values:
-
-1. ~nil~
-2. ~t~ (default)
-
-#+findex: modus-themes-toggle
-#+findex: modus-themes-rotate
-#+findex: modus-themes-load-random
-#+findex: modus-themes-select
-#+findex: modus-themes-load-theme
-When the value is non-~nil~, the commands ~modus-themes-toggle~,
-~modus-themes-rotate~, ~modus-themes-load-random~, and
-~modus-themes-select~, as well as the ~modus-themes-load-theme~
-function (and any related convenience wrappers like
-~modus-themes-load-random-dark~), will disable all other themes while
-loading the specified Modus theme ([[#h:4fbfed66-5a89-447a-a07d-a03f6819c5bd][Option for which themes to toggle]]).
-This is done to ensure that Emacs does not blend two or more themes:
-such blends lead to awkward results that undermine the work of the
-designer.
-
-When the value is ~nil~, the aforementioned commands and function will
-only disable other themes within the Modus collection.
-
-This option is provided because Emacs themes are not necessarily
-limited to colors/faces: they can consist of an arbitrary set of
-customizations.  Users who use such customization bundles must set
-this variable to a ~nil~ value.
+This user option is enabled by default. Set it to ~nil~ if you want to
+load and subsequently blend color themes.
 
 ** Option for more bold constructs
 :PROPERTIES:
@@ -507,29 +490,18 @@ this variable to a ~nil~ value.
 :DESCRIPTION: Toggle bold constructs in code
 :CUSTOM_ID: h:b25714f6-0fbe-41f6-89b5-6912d304091e
 :END:
+
 #+vindex: modus-themes-bold-constructs
+The user option ~modus-themes-bold-constructs~ controls whether
+several elements across different interfaces use a decorative bold
+weight. By default, when the value of this user option is set to
+~nil~, Modus themes use bold only where necessary.
 
-Brief: Use bold for code syntax highlighting and related.
-
-Symbol: ~modus-themes-bold-constructs~ (=boolean= type)
-
-Possible values:
-
-1. ~nil~ (default)
-2. ~t~
-
-The default is to use a bold typographic weight only when it is
-required.
-
-With a non-~nil~ value (~t~) display several syntactic constructs in
-bold weight.  This concerns keywords and other important aspects of
-code syntax.  It also affects certain mode line indicators and command
-prompts.
-
-Advanced users may also want to configure the exact attributes of the
-~bold~ face.
-
-[[#h:2793a224-2109-4f61-a106-721c57c01375][Configure bold and italic faces]].
+Modus is designed to apply the ~bold~ face in such cases. This means
+that users can modify that face directly, such as to make its weight
+heavier or use a different font family ([[#h:2793a224-2109-4f61-a106-721c57c01375][Configure bold and italic faces]]).
+Once that is done, everything that Modus renders in a bold weight will
+exhibit those exact styles.
 
 ** Option for more italic constructs
 :PROPERTIES:
@@ -537,74 +509,47 @@ Advanced users may also want to configure the exact attributes of the
 :DESCRIPTION: Toggle italic font constructs in code
 :CUSTOM_ID: h:977c900d-0d6d-4dbb-82d9-c2aae69543d6
 :END:
+
 #+vindex: modus-themes-italic-constructs
+The user option ~modus-themes-italic-constructs~ controls whether
+several elements across different interfaces use a decorative italic
+style, which typically is expressed as slanted text. By default, when
+the value of this user option is set to ~nil~, Modus themes use italic
+only where necessary.
 
-Brief: Use italics for code syntax highlighting and related.
-
-Symbol: ~modus-themes-italic-constructs~ (=boolean= type)
-
-Possible values:
-
-1. ~nil~ (default)
-2. ~t~
-
-The default is to not use slanted text forms (italics) unless it is
-absolutely necessary.
-
-With a non-~nil~ value (~t~) choose to render more faces in italics.  This
-typically affects documentation strings and code comments.
-
-Advanced users may also want to configure the exact attributes of the
-~italic~ face.
-
-[[#h:2793a224-2109-4f61-a106-721c57c01375][Configure bold and italic faces]].
+Modus is designed to apply the ~italic~ face in such cases. This means
+that users can modify that face directly, such as to change its slant,
+if that is supported by the underlying font family, or simply a
+different font family than the main font ([[#h:2793a224-2109-4f61-a106-721c57c01375][Configure italic and italic faces]]).
+Once that is done, everything that Modus renders in italics will
+exhibit those exact styles.
 
 ** Option for which themes to toggle
 :PROPERTIES:
 :CUSTOM_ID: h:4fbfed66-5a89-447a-a07d-a03f6819c5bd
 :END:
 
-#+findex: modus-themes-toggle
-Brief: Specify which two themes to toggle between when using the command
-~modus-themes-toggle~.
-
 #+vindex: modus-themes-to-toggle
-Symbol: ~modus-themes-to-toggle~ (=list= type)
-
-Default value: ='(modus-operandi modus-vivendi)=
-
+#+findex: modus-themes-toggle
 #+findex: modus-themes-get-themes
-Possible values include all themes returned by the function
-~modus-themes-get-themes~.
+The user option ~modus-themes-to-toggle~ controls which themes will
+the command ~modus-themes-toggle~ switch between. Possible values
+include all themes returned by the function ~modus-themes-get-themes~
+([[#h:86eb375b-9be4-43ce-879a-0686a524a63b][Build on top of the Modus themes]]).
 
 ** Option for which themes to rotate
 :PROPERTIES:
 :CUSTOM_ID: h:a10c0202-3683-4fad-9897-433c25e255f6
 :END:
 
-#+findex: modus-themes-rotate
-Brief: Specify which themes to rotate through when using the command
-~modus-themes-rotate~.
-
 #+vindex: modus-themes-to-rotate
-Symbol: ~modus-themes-to-rotate~ (=list= type)
-
-Default value: nil
-
-Possible values:
-
-#+vindex: modus-themes-items
-- Any of the themes listed in the value of the variable ~modus-themes-items~.
-#+findex: modus-themes-get-themes
-- Any of the themes returned by the function ~modus-themes-get-themes~
-  ([[#h:86eb375b-9be4-43ce-879a-0686a524a63b][Build on top of the Modus themes]]).
-
-#+findex: modus-themes-get-themes
-When the value is a list of themes, ~modus-themes-rotate~ will go
-through them from left to right. With an optional prefix argument
-({{{kbd(C-u)}}} by default), it will move in reverse. If the value is
-~nil~, the command will perform the same action for all the themes
-returned by the function ~modus-themes-get-themes~.
+#+findex: modus-themes-rotate
+The user option ~modus-themes-to-rotate~ controls which themes will
+the command ~modus-themes-rotate~ cycle between in rotation from left
+to right. When ~modus-themes-rotate~ is called with an optional prefix
+argument ({{{kbd(C-u)}}} by default), it will move from right to left.
+Possible values include all themes returned by the function
+~modus-themes-get-themes~ ([[#h:86eb375b-9be4-43ce-879a-0686a524a63b][Build on top of the Modus themes]]).
 
 ** Option for font mixing
 :PROPERTIES:
@@ -612,29 +557,24 @@ returned by the function ~modus-themes-get-themes~.
 :DESCRIPTION: Toggle mixing of font families
 :CUSTOM_ID: h:115e6c23-ee35-4a16-8cef-e2fcbb08e28b
 :END:
+
 #+vindex: modus-themes-mixed-fonts
+The user option ~modus-themes-mixed-fonts~ sets up Modus to render
+spacing-sensitive elements, such as Org tables and code blocks, in a
+monospaced font. It does so when it is set to a non-~nil~ value.
 
-Brief: Toggle the use of monospaced fonts for spacing-sensitive
-constructs (affects font families).
+Then, it is possible for users to rely on the built-in {{{kbd(M-x
+variable-pitch-mode)}}}. ~variable-pitch-mode~ sets the current buffer
+to a proportionately spaced font, but it will not affect the elements
+that Modus renders in an explicitly monospaced way.
 
-Symbol: ~modus-themes-mixed-fonts~ (=boolean= type)
+If ~modus-themes-mixed-fonts~ is set to ~nil~ (the default), buffers
+that have ~variable-pitch-mode~ enabled may appear broken wherever
+spacing-sensitive elements are present.
 
-Possible values:
-
-1. ~nil~ (default)
-2. ~t~
-
-When set to non-~nil~ (~t~), configure some spacing-sensitive faces like Org
-tables and code blocks to always inherit from the ~fixed-pitch~ face.
-This is to ensure that certain constructs like code blocks and tables
-remain monospaced even when users opt for a mode that remaps typeface
-families, such as the built-in {{{kbd(M-x variable-pitch-mode)}}}.  Otherwise
-the layout can appear broken, due to how spacing is done.
-
-For a consistent experience, user may need to specify the font family of
-the ~fixed-pitch~ face.
-
-[[#h:defcf4fc-8fa8-4c29-b12e-7119582cc929][Font configurations for Org and others]].
+For a consistent typographic experience, user may need to specify the
+font family of the ~default~, ~fixed-pitch~, and ~variable-pitch~
+faces ([[#h:defcf4fc-8fa8-4c29-b12e-7119582cc929][Font configurations for Org and others]]).
 
 ** Option for command prompt styles
 :PROPERTIES:
