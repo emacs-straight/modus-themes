@@ -109,8 +109,6 @@ Customization options
 * Option for which themes to toggle::
 * Option for which themes to rotate::
 * Mixed fonts::                  Toggle mixing of font families
-* Command prompts::              Control the style of command prompts
-* Completion UIs::               Choose among several styles for completion UIs
 * Org mode blocks::              Choose among plain, gray, or tinted backgrounds
 * Heading styles::               Choose among several styles, also per heading level
 * UI typeface::                  Toggle the use of variable-pitch across the User Interface
@@ -632,22 +630,6 @@ active, it must be reloaded for changes to take effect.
            modus-themes-variable-pitch-ui nil
            modus-themes-disable-other-themes t
 
-           ;; Options for `modus-themes-prompts' are either nil (the
-           ;; default), or a list of properties that may include any of those
-           ;; symbols: `italic', `WEIGHT'
-           modus-themes-prompts '(italic bold)
-
-           ;; The `modus-themes-completions' is an alist that reads two
-           ;; keys: `matches', `selection'.  Each accepts a nil value (or
-           ;; empty list) or a list of properties that can include any of
-           ;; the following (for WEIGHT read further below):
-           ;;
-           ;; `matches'   :: `underline', `italic', `WEIGHT'
-           ;; `selection' :: `underline', `italic', `WEIGHT'
-           modus-themes-completions
-           '((matches . (extrabold))
-             (selection . (semibold italic text-also)))
-
            ;; The `modus-themes-headings' is an alist: read the manual's
            ;; node about it or its docstring.  Basically, it supports
            ;; per-level configurations for the optional use of
@@ -671,8 +653,6 @@ active, it must be reloaded for changes to take effect.
 * Option for which themes to toggle::
 * Option for which themes to rotate::
 * Mixed fonts::                  Toggle mixing of font families
-* Command prompts::              Control the style of command prompts
-* Completion UIs::               Choose among several styles for completion UIs
 * Org mode blocks::              Choose among plain, gray, or tinted backgrounds
 * Heading styles::               Choose among several styles, also per heading level
 * UI typeface::                  Toggle the use of variable-pitch across the User Interface
@@ -757,7 +737,7 @@ values include all themes returned by the function
 ‘modus-themes-get-themes’ (*note Build on top of the Modus themes::).
 
 
-File: modus-themes.info,  Node: Mixed fonts,  Next: Command prompts,  Prev: Option for which themes to rotate,  Up: Customization options
+File: modus-themes.info,  Node: Mixed fonts,  Next: Org mode blocks,  Prev: Option for which themes to rotate,  Up: Customization options
 
 5.6 Option for font mixing
 ==========================
@@ -781,132 +761,9 @@ font family of the ‘default’, ‘fixed-pitch’, and ‘variable-pitch’ fa
 for Org and others.).
 
 
-File: modus-themes.info,  Node: Command prompts,  Next: Completion UIs,  Prev: Mixed fonts,  Up: Customization options
+File: modus-themes.info,  Node: Org mode blocks,  Next: Heading styles,  Prev: Mixed fonts,  Up: Customization options
 
-5.7 Option for command prompt styles
-====================================
-
-Brief: Control the style of command prompts (e.g.  minibuffer, shell,
-IRC clients).
-
-   Symbol: ‘modus-themes-prompts’ (‘choice’ type, list of properties)
-
-   Possible values are expressed as a list of properties (default is
-‘nil’ or an empty list).  The list can include any of the following
-symbols:
-
-   • ‘italic’
-   • ‘italic’
-   • A font weight, which must be supported by the underlying typeface:
-        • ‘thin’
-        • ‘ultralight’
-        • ‘extralight’
-        • ‘light’
-        • ‘semilight’
-        • ‘regular’
-        • ‘medium’
-        • ‘semibold’
-        • ‘bold’
-        • ‘heavy’
-        • ‘extrabold’
-        • ‘ultrabold’
-
-   The default (a ‘nil’ value or an empty list) means to only use a
-subtle colored foreground color.
-
-   The ‘italic’ property adds a slant to the font's forms (italic or
-oblique forms, depending on the typeface).
-
-   The symbol of a font weight attribute such as ‘light’, ‘semibold’, et
-cetera, adds the given weight to links.  Valid symbols are defined in
-the variable ‘modus-themes-weights’.  The absence of a weight means that
-the one of the underlying text will be used.
-
-   Combinations of any of those properties are expressed as a list, like
-in these examples:
-
-     (bold italic)
-     (italic semibold)
-
-   The order in which the properties are set is not significant.
-
-   In user configuration files the form may look like this:
-
-     (setq modus-themes-prompts '(extrabold italic))
-
-   *note Make prompts more or less colorful: DIY Make prompts more or
-less colorful.
-
-
-File: modus-themes.info,  Node: Completion UIs,  Next: Org mode blocks,  Prev: Command prompts,  Up: Customization options
-
-5.8 Option for completion framework aesthetics
-==============================================
-
-Brief: Set the overall style of completion framework interfaces.
-
-   Symbol: ‘modus-themes-completions’ (‘alist’ type properties)
-
-   This affects Company, Corfu, Flx, Icomplete/Fido, Ido, Ivy,
-Orderless, Vertico, and the standard ‘*Completions*’ buffer.  The value
-is an alist of expressions, each of which takes the form of ‘(KEY .
-LIST-OF-PROPERTIES)’.  ‘KEY’ is a symbol, while ‘PROPERTIES’ is a list.
-Here is a sample, followed by a description of the particularities:
-
-     (setq modus-themes-completions
-           '((matches . (extrabold underline))
-             (selection . (semibold italic))))
-
-   The ‘matches’ key refers to the highlighted characters that
-correspond to the user's input.  When its properties are ‘nil’ or an
-empty list, matching characters in the user interface will have a bold
-weight and a colored foreground.  The list of properties may include any
-of the following symbols regardless of the order they may appear in:
-
-   • ‘underline’ to draw a line below the characters;
-
-   • ‘italic’ to use a slanted font (italic or oblique forms);
-
-   • The symbol of a font weight attribute such as ‘light’, ‘semibold’,
-     et cetera.  Valid symbols are defined in the variable
-     ‘modus-themes-weights’.  The absence of a weight means that bold
-     will be used.
-
-   The ‘selection’ key applies to the current line or currently matched
-candidate, depending on the specifics of the user interface.  When its
-properties are ‘nil’ or an empty list, it has a subtle gray background,
-a bold weight, and the base foreground value for the text.  The list of
-properties it accepts is as follows (order is not significant):
-
-   • ‘underline’ to draw a line below the characters;
-
-   • ‘italic’ to use a slanted font (italic or oblique forms);
-
-   • The symbol of a font weight attribute such as ‘light’, ‘semibold’,
-     et cetera.  Valid symbols are defined in the variable
-     ‘modus-themes-weights’.  The absence of a weight means that bold
-     will be used.
-
-   Apart from specifying each key separately, a catch-all list is
-accepted.  This is only useful when the desired aesthetic is the same
-across all keys that are not explicitly referenced.  For example, this:
-
-     (setq modus-themes-completions
-           '((t . (extrabold underline))))
-
-   Is the same as:
-
-     (setq modus-themes-completions
-           '((matches . (extrabold underline))
-             (selection . (extrabold underline))))
-
-   *note Make completion matches more or less colorful: DIY Make
-completion matches more or less colorful.
-
-
-File: modus-themes.info,  Node: Org mode blocks,  Next: Heading styles,  Prev: Completion UIs,  Up: Customization options
-
-5.9 Option for org-mode block styles
+5.7 Option for org-mode block styles
 ====================================
 
 As part of version ‘4.4.0’, the ‘modus-themes-org-blocks’ is no more.
@@ -921,8 +778,8 @@ language::).
 
 File: modus-themes.info,  Node: Heading styles,  Next: UI typeface,  Prev: Org mode blocks,  Up: Customization options
 
-5.10 Option for the headings' overall style
-===========================================
+5.8 Option for the headings' overall style
+==========================================
 
 Brief: Heading styles with optional list of values per heading level.
 
@@ -1034,8 +891,8 @@ less colorful.
 
 File: modus-themes.info,  Node: UI typeface,  Next: Palette overrides,  Prev: Heading styles,  Up: Customization options
 
-5.11 Option for variable-pitch font in UI elements
-==================================================
+5.9 Option for variable-pitch font in UI elements
+=================================================
 
 Brief: Toggle the use of proportionately spaced (‘variable-pitch’) fonts
 in the User Interface.
@@ -1064,7 +921,7 @@ for Org and others.
 
 File: modus-themes.info,  Node: Palette overrides,  Next: Palette extension,  Prev: UI typeface,  Up: Customization options
 
-5.12 Option for palette overrides
+5.10 Option for palette overrides
 =================================
 
 This section describes palette overrides in detail.  For a simpler
@@ -1182,7 +1039,7 @@ watch:
 
 File: modus-themes.info,  Node: Palette extension,  Prev: Palette overrides,  Up: Customization options
 
-5.13 Option to extend the palette
+5.11 Option to extend the palette
 =================================
 
 It is possible to extend the palette of each theme.  For example, the
@@ -1921,8 +1778,6 @@ This section contains practical examples of overriding the palette of
 the themes (*note Option for palette overrides: Palette overrides.).  In
 the following code block I show how to add or remove color from prompts.
 
-   *note Option for command prompt styles: Command prompts.
-
      ;; Keep the background unspecified (like the default), but use a faint
      ;; foreground color.
      (setq modus-themes-common-palette-overrides
@@ -1951,8 +1806,6 @@ This section contains practical examples of overriding the palette of
 the themes (*note Option for palette overrides: Palette overrides.).
 Here I demonstrate how to activate background coloration for completion
 matches.  I show three different degrees of intensity.
-
-   *note Option for completion framework aesthetics: Completion UIs.
 
      ;; Add a nuanced background color to completion matches, while keeping
      ;; their foreground intact (foregrounds do not need to be specified in
@@ -6744,14 +6597,14 @@ Ideas and user feedback
      Giraud, Manuel Uberti, Mark Bestley, Mark Burton, Mark Simpson,
      Marko Kocic, Markus Beppler, Matt Armstrong, Matthias Fuchs,
      Mattias Engdegård, Mauro Aranda, Maxime Tréca, Michael Goldenberg,
-     Morgan Smith, Morgan Willcock, Morten Kjeldgaard, Murilo Pereira,
-     Nicky van Foreest, Nicolas De Jaeghere, Nicolas Semrau, Olaf
-     Meeuwissen, Oliver Epper, Pablo Stafforini, Paul Poloskov, Pengji
-     Zhang, Pete Kazmier, Peter Wu, Philip Kaludercic, Pierre
-     Téchoueyres, Pranshu Sharma, Przemysław Kryger, Robert Hepple,
-     Roman Rudakov, Roshan Shariff, Russell Sim, Ryan Phillips, Rytis
-     Paškauskas, Rudolf Adamkovič, Sam Kleinman, Samuel Culpepper, Saša
-     Janiška, Shreyas Ragavan, Simon Pugnet, Stéphane Marks, Steve
+     Mike Crowe, Morgan Smith, Morgan Willcock, Morten Kjeldgaard,
+     Murilo Pereira, Nicky van Foreest, Nicolas De Jaeghere, Nicolas
+     Semrau, Olaf Meeuwissen, Oliver Epper, Pablo Stafforini, Paul
+     Poloskov, Pengji Zhang, Pete Kazmier, Peter Wu, Philip Kaludercic,
+     Pierre Téchoueyres, Pranshu Sharma, Przemysław Kryger, Robert
+     Hepple, Roman Rudakov, Roshan Shariff, Russell Sim, Ryan Phillips,
+     Rytis Paškauskas, Rudolf Adamkovič, Sam Kleinman, Samuel Culpepper,
+     Saša Janiška, Shreyas Ragavan, Simon Pugnet, Stéphane Marks, Steve
      Downey, Tassilo Horn, Thanos Apollo, Thibaut Verron, Thomas
      Heartman, Togan Muftuoglu, Tony Zorman, Trey Merkley, Tomasz
      Hołubowicz, Toon Claes, Troy Brown, Uri Sharf, Utkarsh Singh,
@@ -7368,7 +7221,6 @@ B.2 Variable index
 * modus-themes-bold-constructs:          Bold constructs.      (line  6)
 * modus-themes-common-palette-overrides: Palette overrides.    (line 22)
 * modus-themes-common-palette-user:      Palette extension.    (line 16)
-* modus-themes-completions:              Completion UIs.       (line  6)
 * modus-themes-custom-variables:         Build on top of the Modus themes.
                                                                (line 68)
 * modus-themes-disable-other-themes:     Disable other themes. (line  6)
@@ -7391,7 +7243,6 @@ B.2 Variable index
                                                                (line 29)
 * modus-themes-preview-mode-map:         Commands for the preview palette buffer.
                                                                (line  6)
-* modus-themes-prompts:                  Command prompts.      (line  6)
 * modus-themes-registered-items:         Build on top of the Modus themes.
                                                                (line 20)
 * modus-themes-to-rotate:                Option for which themes to rotate.
@@ -7482,141 +7333,139 @@ B.3 Concept index
 
 Tag Table:
 Node: Top872
-Node: Overview9159
-Node: How do the themes look like11970
-Node: Learn about the latest changes12329
-Node: Installation12716
-Node: Install manually from source13315
-Node: Install from source with package-vc-install14274
-Node: Install from GNU ELPA15038
-Node: Dealing with byte compilation errors15641
-Node: Sample configuration16764
-Node: The require-theme for built-in Emacs themes18411
-Node: Enable and load19923
-Node: Difference between loading and enabling21904
-Node: Customization options22767
-Node: Disable other themes26548
-Node: Bold constructs27245
-Node: Italic constructs28074
-Node: Option for which themes to toggle29037
-Node: Option for which themes to rotate29541
-Node: Mixed fonts30201
-Node: Command prompts31314
-Node: Completion UIs33155
-Node: Org mode blocks36004
-Node: Heading styles36646
-Node: UI typeface41071
-Node: Palette overrides42044
-Node: Palette extension46400
-Node: Preview theme colors48875
-Node: Commands for the preview palette buffer50530
-Node: Use colors from the Modus themes palette52608
-Node: Get a single color from the palette with modus-themes-get-color-value53472
-Node: Use theme colors in code with modus-themes-with-colors55832
-Node: Advanced customization58084
-Node: DIY Palette override presets59898
-Node: DIY Add support for vc-annotate62726
-Node: DIY Add support for engrave-faces64208
-Node: DIY Stylistic variants using palette overrides74191
-Node: DIY Make the mode line borderless76249
-Node: DIY Make the active mode line colorful77622
-Node: DIY Make the tab bar more or less colorful79838
-Node: DIY Make the fringe invisible or another color81773
-Node: DIY Make links use subtle or no underlines82968
-Node: DIY Make prompts more or less colorful84084
-Node: DIY Make completion matches more or less colorful85406
-Node: DIY Make comments yellow and strings green88962
-Node: DIY Make code syntax use the old alt-syntax style90666
-Node: DIY Make use of alternative styles for code syntax93775
-Node: DIY Make matching parenthesis more or less intense97236
-Node: DIY Make box buttons more or less gray98605
-Node: DIY Make TODO and DONE more or less intense99617
-Node: DIY Make headings more or less colorful101114
-Node: DIY Make Org block colors more or less colorful103228
-Node: DIY Make Org agenda more or less colorful107597
-Node: DIY Make inline code in prose use alternative styles110769
-Node: DIY Make mail citations and headers more or less colorful113005
-Node: DIY Make the region preserve text colors plus other styles115369
-Node: DIY Make mouse highlights more or less colorful116923
-Node: DIY Make language underlines less colorful117934
-Node: DIY Make line numbers use alternative styles119084
-Node: DIY Make diffs use only a foreground120725
-Node: DIY Make deuteranopia diffs red and blue instead of yellow and blue123606
-Node: DIY More accurate colors in terminal emulators126076
-Node: DIY Range of color with terminal emulators127384
-Node: DIY Per-theme customization settings130155
-Node: DIY Do not extend the region background131588
-Node: DIY Add padding to the mode line132385
-Node: DIY Remap face with local value135310
-Node: DIY Font configurations for Org and others137842
-Ref: DIY Font configurations for Org and others-Footnote-1140824
-Node: DIY Configure bold and italic faces141011
-Node: DIY Custom Org todo keyword and priority faces145629
-Node: DIY Custom Org emphasis faces149369
-Node: DIY Use colored Org source blocks per language154240
-Node: DIY Measure color contrast158879
-Node: DIY Load theme depending on time of day161596
-Node: DIY Backdrop for pdf-tools162623
-Node: DIY Toggle themes without reloading them165779
-Node: DIY Use more spacious margins or padding in Emacs frames167087
-Node: DIY Custom hl-todo colors171319
-Node: DIY Add support for solaire-mode173134
-Node: DIY Add support for meow-mode176219
-Node: DIY Add support for combobulate178029
-Node: DIY Use a hook at the post-load-theme phase181652
-Node: DIY A theme-agnostic hook for theme loading183879
-Node: Build on top of the Modus themes186506
-Node: Complete example of a Modus derivative theme192725
-Node: Complete example of a package that is derived from Modus193729
-Node: Complete example of a private theme derived from Modus196723
-Node: Complete example of a custom theme with its own palette198343
-Node: Complete example that also uses modus-themes-generate-palette203004
-Node: Determine what counts as a Modus theme219725
-Node: Create convenience commands to load a derivative theme223133
-Node: Arrange to activate your derivative themes225400
-Node: Face coverage227454
-Node: Supported packages227918
-Node: Indirectly covered packages234010
-Node: Notes on individual packages235368
-Node: Note on calendarel weekday and weekend colors236470
-Node: Note on git-gutter in Doom Emacs237620
-Node: Note on php-mode multiline comments240120
-Node: Note on underlines in compilation buffers240882
-Node: Note on inline Latex in Org buffers241756
-Node: Note on dimmerel242367
-Node: Note on display-fill-column-indicator-mode243852
-Node: Note on highlight-parenthesesel245303
-Node: Note on mmm-modeel background colors251360
-Node: Note for prism253711
-Node: Note on company-mode overlay pop-up256922
-Ref: Note on company-mode overlay pop-up-Footnote-1257652
-Ref: Note on company-mode overlay pop-up-Footnote-2257719
-Node: Note on ERC escaped color sequences257774
-Ref: Note on ERC escaped color sequences-Footnote-1259202
-Node: Note on powerline or spaceline259312
-Node: Note on SHR colors259728
-Node: Note on SHR fonts260149
-Node: Note on Ement colors and fonts260838
-Node: Note on pdf-tools link hints262340
-Node: Note on the Notmuch logo264798
-Node: Note on goto-address-mode faces265332
-Node: Frequently Asked Questions266452
-Node: Is the contrast ratio about adjacent colors?267082
-Node: What does it mean to avoid exaggerations?268587
-Node: Why are colors mostly variants of blue magenta cyan?270437
-Node: What is the best setup for legibility?274762
-Node: Are these color schemes?277403
-Node: Port the Modus themes to other platforms?281046
-Node: Contributing283880
-Node: Sources of the themes284279
-Node: Issues you can help with285020
-Node: Patches require copyright assignment to the FSF286411
-Node: Acknowledgements288624
-Node: GNU Free Documentation License293453
-Node: Indices318616
-Node: Function index318795
-Node: Variable index323404
-Node: Concept index328127
+Node: Overview9009
+Node: How do the themes look like11820
+Node: Learn about the latest changes12179
+Node: Installation12566
+Node: Install manually from source13165
+Node: Install from source with package-vc-install14124
+Node: Install from GNU ELPA14888
+Node: Dealing with byte compilation errors15491
+Node: Sample configuration16614
+Node: The require-theme for built-in Emacs themes18261
+Node: Enable and load19773
+Node: Difference between loading and enabling21754
+Node: Customization options22617
+Node: Disable other themes25464
+Node: Bold constructs26161
+Node: Italic constructs26990
+Node: Option for which themes to toggle27953
+Node: Option for which themes to rotate28457
+Node: Mixed fonts29117
+Node: Org mode blocks30230
+Node: Heading styles30869
+Node: UI typeface35292
+Node: Palette overrides36263
+Node: Palette extension40619
+Node: Preview theme colors43094
+Node: Commands for the preview palette buffer44749
+Node: Use colors from the Modus themes palette46827
+Node: Get a single color from the palette with modus-themes-get-color-value47691
+Node: Use theme colors in code with modus-themes-with-colors50051
+Node: Advanced customization52303
+Node: DIY Palette override presets54117
+Node: DIY Add support for vc-annotate56945
+Node: DIY Add support for engrave-faces58427
+Node: DIY Stylistic variants using palette overrides68410
+Node: DIY Make the mode line borderless70468
+Node: DIY Make the active mode line colorful71841
+Node: DIY Make the tab bar more or less colorful74057
+Node: DIY Make the fringe invisible or another color75992
+Node: DIY Make links use subtle or no underlines77187
+Node: DIY Make prompts more or less colorful78303
+Node: DIY Make completion matches more or less colorful79564
+Node: DIY Make comments yellow and strings green83050
+Node: DIY Make code syntax use the old alt-syntax style84754
+Node: DIY Make use of alternative styles for code syntax87863
+Node: DIY Make matching parenthesis more or less intense91324
+Node: DIY Make box buttons more or less gray92693
+Node: DIY Make TODO and DONE more or less intense93705
+Node: DIY Make headings more or less colorful95202
+Node: DIY Make Org block colors more or less colorful97316
+Node: DIY Make Org agenda more or less colorful101685
+Node: DIY Make inline code in prose use alternative styles104857
+Node: DIY Make mail citations and headers more or less colorful107093
+Node: DIY Make the region preserve text colors plus other styles109457
+Node: DIY Make mouse highlights more or less colorful111011
+Node: DIY Make language underlines less colorful112022
+Node: DIY Make line numbers use alternative styles113172
+Node: DIY Make diffs use only a foreground114813
+Node: DIY Make deuteranopia diffs red and blue instead of yellow and blue117694
+Node: DIY More accurate colors in terminal emulators120164
+Node: DIY Range of color with terminal emulators121472
+Node: DIY Per-theme customization settings124243
+Node: DIY Do not extend the region background125676
+Node: DIY Add padding to the mode line126473
+Node: DIY Remap face with local value129398
+Node: DIY Font configurations for Org and others131930
+Ref: DIY Font configurations for Org and others-Footnote-1134912
+Node: DIY Configure bold and italic faces135099
+Node: DIY Custom Org todo keyword and priority faces139717
+Node: DIY Custom Org emphasis faces143457
+Node: DIY Use colored Org source blocks per language148328
+Node: DIY Measure color contrast152967
+Node: DIY Load theme depending on time of day155684
+Node: DIY Backdrop for pdf-tools156711
+Node: DIY Toggle themes without reloading them159867
+Node: DIY Use more spacious margins or padding in Emacs frames161175
+Node: DIY Custom hl-todo colors165407
+Node: DIY Add support for solaire-mode167222
+Node: DIY Add support for meow-mode170307
+Node: DIY Add support for combobulate172117
+Node: DIY Use a hook at the post-load-theme phase175740
+Node: DIY A theme-agnostic hook for theme loading177967
+Node: Build on top of the Modus themes180594
+Node: Complete example of a Modus derivative theme186813
+Node: Complete example of a package that is derived from Modus187817
+Node: Complete example of a private theme derived from Modus190811
+Node: Complete example of a custom theme with its own palette192431
+Node: Complete example that also uses modus-themes-generate-palette197092
+Node: Determine what counts as a Modus theme213813
+Node: Create convenience commands to load a derivative theme217221
+Node: Arrange to activate your derivative themes219488
+Node: Face coverage221542
+Node: Supported packages222006
+Node: Indirectly covered packages228098
+Node: Notes on individual packages229456
+Node: Note on calendarel weekday and weekend colors230558
+Node: Note on git-gutter in Doom Emacs231708
+Node: Note on php-mode multiline comments234208
+Node: Note on underlines in compilation buffers234970
+Node: Note on inline Latex in Org buffers235844
+Node: Note on dimmerel236455
+Node: Note on display-fill-column-indicator-mode237940
+Node: Note on highlight-parenthesesel239391
+Node: Note on mmm-modeel background colors245448
+Node: Note for prism247799
+Node: Note on company-mode overlay pop-up251010
+Ref: Note on company-mode overlay pop-up-Footnote-1251740
+Ref: Note on company-mode overlay pop-up-Footnote-2251807
+Node: Note on ERC escaped color sequences251862
+Ref: Note on ERC escaped color sequences-Footnote-1253290
+Node: Note on powerline or spaceline253400
+Node: Note on SHR colors253816
+Node: Note on SHR fonts254237
+Node: Note on Ement colors and fonts254926
+Node: Note on pdf-tools link hints256428
+Node: Note on the Notmuch logo258886
+Node: Note on goto-address-mode faces259420
+Node: Frequently Asked Questions260540
+Node: Is the contrast ratio about adjacent colors?261170
+Node: What does it mean to avoid exaggerations?262675
+Node: Why are colors mostly variants of blue magenta cyan?264525
+Node: What is the best setup for legibility?268850
+Node: Are these color schemes?271491
+Node: Port the Modus themes to other platforms?275134
+Node: Contributing277968
+Node: Sources of the themes278367
+Node: Issues you can help with279108
+Node: Patches require copyright assignment to the FSF280499
+Node: Acknowledgements282712
+Node: GNU Free Documentation License287553
+Node: Indices312716
+Node: Function index312895
+Node: Variable index317504
+Node: Concept index322081
 
 End Tag Table
 

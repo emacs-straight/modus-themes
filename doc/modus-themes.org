@@ -435,22 +435,6 @@ reloaded for changes to take effect.
       modus-themes-variable-pitch-ui nil
       modus-themes-disable-other-themes t
 
-      ;; Options for `modus-themes-prompts' are either nil (the
-      ;; default), or a list of properties that may include any of those
-      ;; symbols: `italic', `WEIGHT'
-      modus-themes-prompts '(italic bold)
-
-      ;; The `modus-themes-completions' is an alist that reads two
-      ;; keys: `matches', `selection'.  Each accepts a nil value (or
-      ;; empty list) or a list of properties that can include any of
-      ;; the following (for WEIGHT read further below):
-      ;;
-      ;; `matches'   :: `underline', `italic', `WEIGHT'
-      ;; `selection' :: `underline', `italic', `WEIGHT'
-      modus-themes-completions
-      '((matches . (extrabold))
-        (selection . (semibold italic text-also)))
-
       ;; The `modus-themes-headings' is an alist: read the manual's
       ;; node about it or its docstring.  Basically, it supports
       ;; per-level configurations for the optional use of
@@ -575,141 +559,6 @@ spacing-sensitive elements are present.
 For a consistent typographic experience, user may need to specify the
 font family of the ~default~, ~fixed-pitch~, and ~variable-pitch~
 faces ([[#h:defcf4fc-8fa8-4c29-b12e-7119582cc929][Font configurations for Org and others]]).
-
-** Option for command prompt styles
-:PROPERTIES:
-:ALT_TITLE: Command prompts
-:DESCRIPTION: Control the style of command prompts
-:CUSTOM_ID: h:db5a9a7c-2928-4a28-b0f0-6f2b9bd52ba1
-:END:
-#+vindex: modus-themes-prompts
-
-Brief: Control the style of command prompts (e.g. minibuffer, shell, IRC
-clients).
-
-Symbol: ~modus-themes-prompts~ (=choice= type, list of properties)
-
-Possible values are expressed as a list of properties (default is ~nil~ or
-an empty list).  The list can include any of the following symbols:
-
-+ ~italic~
-+ ~italic~
-+ A font weight, which must be supported by the underlying typeface:
-  - ~thin~
-  - ~ultralight~
-  - ~extralight~
-  - ~light~
-  - ~semilight~
-  - ~regular~
-  - ~medium~
-  - ~semibold~
-  - ~bold~
-  - ~heavy~
-  - ~extrabold~
-  - ~ultrabold~
-
-The default (a ~nil~ value or an empty list) means to only use a subtle
-colored foreground color.
-
-The ~italic~ property adds a slant to the font's forms (italic or
-oblique forms, depending on the typeface).
-
-The symbol of a font weight attribute such as ~light~, ~semibold~, et
-cetera, adds the given weight to links.  Valid symbols are defined in
-the variable ~modus-themes-weights~.  The absence of a weight means
-that the one of the underlying text will be used.
-
-Combinations of any of those properties are expressed as a list, like in
-these examples:
-
-#+begin_src emacs-lisp
-(bold italic)
-(italic semibold)
-#+end_src
-
-The order in which the properties are set is not significant.
-
-In user configuration files the form may look like this:
-
-#+begin_src emacs-lisp
-(setq modus-themes-prompts '(extrabold italic))
-#+end_src
-
-[[#h:bd75b43a-0bf1-45e7-b8b4-20944ca8b7f8][Make prompts more or less colorful]].
-
-** Option for completion framework aesthetics
-:PROPERTIES:
-:ALT_TITLE: Completion UIs
-:DESCRIPTION: Choose among several styles for completion UIs
-:CUSTOM_ID: h:f1c20c02-7b34-4c35-9c65-99170efb2882
-:END:
-#+vindex: modus-themes-completions
-
-Brief: Set the overall style of completion framework interfaces.
-
-Symbol: ~modus-themes-completions~ (=alist= type properties)
-
-This affects Company, Corfu, Flx, Icomplete/Fido, Ido, Ivy, Orderless,
-Vertico, and the standard =*Completions*= buffer.  The value is an
-alist of expressions, each of which takes the form of =(KEY . LIST-OF-PROPERTIES)=.
-=KEY= is a symbol, while =PROPERTIES= is a list.  Here is a sample,
-followed by a description of the particularities:
-
-#+begin_src emacs-lisp
-(setq modus-themes-completions
-      '((matches . (extrabold underline))
-        (selection . (semibold italic))))
-#+end_src
-
-The ~matches~ key refers to the highlighted characters that correspond
-to the user's input.  When its properties are ~nil~ or an empty list,
-matching characters in the user interface will have a bold weight and
-a colored foreground.  The list of properties may include any of the
-following symbols regardless of the order they may appear in:
-
-- ~underline~ to draw a line below the characters;
-
-- ~italic~ to use a slanted font (italic or oblique forms);
-
-- The symbol of a font weight attribute such as ~light~,
-  ~semibold~, et cetera.  Valid symbols are defined in the
-  variable ~modus-themes-weights~.  The absence of a weight means
-  that bold will be used.
-
-The ~selection~ key applies to the current line or currently matched
-candidate, depending on the specifics of the user interface.  When its
-properties are ~nil~ or an empty list, it has a subtle gray background,
-a bold weight, and the base foreground value for the text.  The list
-of properties it accepts is as follows (order is not significant):
-
-- ~underline~ to draw a line below the characters;
-
-- ~italic~ to use a slanted font (italic or oblique forms);
-
-- The symbol of a font weight attribute such as ~light~,
-  ~semibold~, et cetera.  Valid symbols are defined in the
-  variable ~modus-themes-weights~.  The absence of a weight means
-  that bold will be used.
-
-Apart from specifying each key separately, a catch-all list is
-accepted.  This is only useful when the desired aesthetic is the same
-across all keys that are not explicitly referenced.  For example,
-this:
-
-#+begin_src emacs-lisp
-(setq modus-themes-completions
-      '((t . (extrabold underline))))
-#+end_src
-
-Is the same as:
-
-#+begin_src emacs-lisp
-(setq modus-themes-completions
-      '((matches . (extrabold underline))
-        (selection . (extrabold underline))))
-#+end_src
-
-[[#h:d959f789-0517-4636-8780-18123f936f91][Make completion matches more or less colorful]].
 
 ** Option for org-mode block styles
 :PROPERTIES:
@@ -1709,8 +1558,6 @@ This section contains practical examples of overriding the palette of
 the themes ([[#h:34c7a691-19bb-4037-8d2f-67a07edab150][Option for palette overrides]]).  In the following code
 block I show how to add or remove color from prompts.
 
-[[#h:db5a9a7c-2928-4a28-b0f0-6f2b9bd52ba1][Option for command prompt styles]].
-
 #+begin_src emacs-lisp
 ;; Keep the background unspecified (like the default), but use a faint
 ;; foreground color.
@@ -1740,8 +1587,6 @@ This section contains practical examples of overriding the palette of
 the themes ([[#h:34c7a691-19bb-4037-8d2f-67a07edab150][Option for palette overrides]]).   Here I demonstrate how
 to activate background coloration for completion matches.  I show
 three different degrees of intensity.
-
-[[#h:f1c20c02-7b34-4c35-9c65-99170efb2882][Option for completion framework aesthetics]].
 
 #+begin_src emacs-lisp
 ;; Add a nuanced background color to completion matches, while keeping
@@ -6573,24 +6418,24 @@ The Modus themes are a collective effort.  Every bit of work matters.
   Miguel Castañeda, Magne Hov, Manuel Giraud, Manuel Uberti, Mark
   Bestley, Mark Burton, Mark Simpson, Marko Kocic, Markus Beppler,
   Matt Armstrong, Matthias Fuchs, Mattias Engdegård, Mauro Aranda,
-  Maxime Tréca, Michael Goldenberg, Morgan Smith, Morgan Willcock,
-  Morten Kjeldgaard, Murilo Pereira, Nicky van Foreest, Nicolas De
-  Jaeghere, Nicolas Semrau, Olaf Meeuwissen, Oliver Epper, Pablo
-  Stafforini, Paul Poloskov, Pengji Zhang, Pete Kazmier, Peter Wu,
-  Philip Kaludercic, Pierre Téchoueyres, Pranshu Sharma, Przemysław
-  Kryger, Robert Hepple, Roman Rudakov, Roshan Shariff, Russell Sim,
-  Ryan Phillips, Rytis Paškauskas, Rudolf Adamkovič, Sam Kleinman,
-  Samuel Culpepper, Saša Janiška, Shreyas Ragavan, Simon Pugnet,
-  Stéphane Marks, Steve Downey, Tassilo Horn, Thanos Apollo, Thibaut
-  Verron, Thomas Heartman, Togan Muftuoglu, Tony Zorman, Trey Merkley,
-  Tomasz Hołubowicz, Toon Claes, Troy Brown, Uri Sharf, Utkarsh Singh,
-  Vincent Foley, Zoltan Kiraly. As well as users: Ben, CsBigDataHub1,
-  Emacs Contrib, Eugene, Fourchaux, Fredrik, Moesasji, Nick, Summer
-  Emacs, TheBlob42, TitusMu, Trey, aikrahguzar, amano-kenji, baconabo,
-  bangedorrunt, bepolymathe, bit9tream, case-lambda, chainedghost,
-  derek-upham, doolio, fleimgruber, gitrj95, iSeeU, jixiuf, ltmsyvag,
-  okamsn, pedro-nonfree, pRot0ta1p, realazy, shimeike, shipmints,
-  soaringbird, tumashu, wakamenod.
+  Maxime Tréca, Michael Goldenberg, Mike Crowe, Morgan Smith, Morgan
+  Willcock, Morten Kjeldgaard, Murilo Pereira, Nicky van Foreest,
+  Nicolas De Jaeghere, Nicolas Semrau, Olaf Meeuwissen, Oliver Epper,
+  Pablo Stafforini, Paul Poloskov, Pengji Zhang, Pete Kazmier, Peter
+  Wu, Philip Kaludercic, Pierre Téchoueyres, Pranshu Sharma,
+  Przemysław Kryger, Robert Hepple, Roman Rudakov, Roshan Shariff,
+  Russell Sim, Ryan Phillips, Rytis Paškauskas, Rudolf Adamkovič, Sam
+  Kleinman, Samuel Culpepper, Saša Janiška, Shreyas Ragavan, Simon
+  Pugnet, Stéphane Marks, Steve Downey, Tassilo Horn, Thanos Apollo,
+  Thibaut Verron, Thomas Heartman, Togan Muftuoglu, Tony Zorman, Trey
+  Merkley, Tomasz Hołubowicz, Toon Claes, Troy Brown, Uri Sharf,
+  Utkarsh Singh, Vincent Foley, Zoltan Kiraly. As well as users: Ben,
+  CsBigDataHub1, Emacs Contrib, Eugene, Fourchaux, Fredrik, Moesasji,
+  Nick, Summer Emacs, TheBlob42, TitusMu, Trey, aikrahguzar,
+  amano-kenji, baconabo, bangedorrunt, bepolymathe, bit9tream,
+  case-lambda, chainedghost, derek-upham, doolio, fleimgruber,
+  gitrj95, iSeeU, jixiuf, ltmsyvag, okamsn, pedro-nonfree, pRot0ta1p,
+  realazy, shimeike, shipmints, soaringbird, tumashu, wakamenod.
 
 + Packaging :: Basil L.{{{space()}}} Contovounesios, Eli Zaretskii,
   Glenn Morris, Mauro Aranda, Richard Stallman, Stefan Kangas (core
