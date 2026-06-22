@@ -18,93 +18,88 @@ Screenshots
       <https://protesilaos.com/emacs/modus-themes-pictures>
 
 
-DEVELOPMENT
-═══════════
-
-`modus-themes-with-colors' improved again
-─────────────────────────────────────────
-
-  The recently introduced `let'-based method exhibits a subtle bug:
-  since it sorts real colors prior to "mapped" colors, an override from
-  the latter to the former would be lost.
-
-
-5.2.0 on 2025-12-31
+5.3.0 on 2026-06-21
 ═══════════════════
 
-  This version fixes some bugs, adds a new feature for those who want to
-  derive a theme from Modus, and makes other small quality-of-life
-  refinements.
+  The Modus themes are in a stable state. To my mind, they provide the
+  best "default theme" experience across the 40+ original themes I have
+  carefully designed.
+
+  Modus is also a platform for making themes for Emacs. There are plenty
+  of derivatives already. I am linking to them through the project's
+  README.md and am always happy to mention more packages—just let me
+  know.
+
+  This version does not include many user-facing changes. Most of my
+  work focused on making internal refinements.
 
 
-The `modus-themes-with-colors' should work at all times
-───────────────────────────────────────────────────────
+Load the themes through the `early-init.el'
+───────────────────────────────────────────
 
-  In the transition to version `5.0.0', I inadvertently introduced
-  regressions to the behaviour of the `modus-themes-with-colors' macro.
-  This macro `let' binds the current theme's palette around arbitrary
-  Elisp expressions, which allows users to access the named colours
-  therein. In versions `5.0.0' and `5.1.0' the macro could not read
-  variables defined outside its scope. Users needed to write an `eval'
-  around it, which I did not like. Now the macro should not require such
-  workarounds: it basically is a `let' that should work as expected
-  everywhere.
+  The Modus themes can now be loaded through the `early-init.el' file.
+  The idea is to avoid the flash of light that occurs under certain
+  conditions during startup.
 
-  This was fixed over a series of Git commits related to issue 170:
-  <https://github.com/protesilaos/modus-themes/issues/170>. Thanks to
-  Alexandr Semenov and realazy for reporting the problems and testing my
-  revisions.
+  This feature is the result of several changes to helper functions,
+  especially those contributing to the `modus-themes-generate-palette'
+  function that Modus derivatives may be relying on.
 
+  Thanks to Steven Allen for an intermediate refinement in pull request
+  194 and to Mike Olson for another relevant tweak in pull request 199:
 
-The `modus-themes-generate-palette' function to quickly get a palette
-─────────────────────────────────────────────────────────────────────
+  • <https://github.com/protesilaos/modus-themes/pull/194>
+  • <https://github.com/protesilaos/modus-themes/pull/199>
 
-  Users or package developers who want to create a theme on top of Modus
-  can now get a kickstart by defining their palette with the help of the
-  new `modus-themes-generate-palette' function. This function is meant
-  to return a complete palette, given a list of basic colours. Users can
-  thus experiment with their new theme while knowing that what they got
-  contains all the definitions; definitions that they may then modify
-  further (e.g. to define different semantic mappings than the defaults
-  such as, for example, to have `(fg-heading-1 red-warmer)' instead of
-  what originally is `(fg-heading-1 fg-main)').
+  Steven's contribution no longer exists in the code base due to other
+  changes I made, but was still useful at the time.
 
-  I have written extensive documentation in the manual, which includes a
-  complete example of a Solarized theme that is built on top of Modus.
-  If you have any questions, you are welcome to contact me.
+  Both changes are small, meaning that their authors do not need to
+  assign copyright to the Free Software Foundation.
+
+  Also thanks to Jacod "Jake" Gordon for reminding me to apply one of
+  the new functions to the `org-habit' faces. This was done in issue
+  197: <https://github.com/protesilaos/modus-themes/issues/197>.
 
 
-Convenience commands to select only dark or light themes
-────────────────────────────────────────────────────────
+The underline for widget fields has the correct colour
+──────────────────────────────────────────────────────
 
-  The commands `modus-themes-select-dark' and
-  `modus-themes-select-light' use minibuffer completion to load a
-  theme. The completion candidates are filtered to only dark or light
-  themes, respectively.
+  Relevant faces use the palette entry for `border' (invoke the command
+  `modus-themes-preview-colors' or `modus-themes-preview-colors-current'
+  to view the entries in a theme's palette).
 
-  This is effectively the same as calling the command
-  `modus-themes-select' with a prefix argument (`C-u' by default).
+  A popular package that makes use of `widget.el' widgets is `notmuch'.
 
-  Remember that we also have the commands `modus-themes-load-random',
-  `modus-themes-load-random-dark', and `modus-themes-load-random-light'.
-  Otherwise use the command `modus-themes-rotate'.
-
-
-Improved prompt for theme selection
-───────────────────────────────────
-
-  The minibuffer prompt used by the various Modus commands to select a
-  theme now has a grouping function in place: it shows the current theme
-  at the top and then all other themes grouped by their dark or light
-  background. This makes it easier to find a relevant theme, especially
-  if lots of them are present, such as when
-  `modus-themes-include-derivatives-mode' is enabled and relevant
-  packages/themes are available (e.g. my `ef-themes' and
-  `standard-themes').
+  Thanks to ukiran03 for the contribution, which was done in pull
+  request 193: <https://github.com/protesilaos/modus-themes/pull/193>.
+  The change is small, meaning that ukiran03 does not need to assign
+  copyright to the Free Software Foundation.
 
 
-Semantic colours for `transient.el' (e.g. in Magit)
-───────────────────────────────────────────────────
+A palette can now have a `bg-popup' entry
+─────────────────────────────────────────
 
-  The `transient.el' concept of "semantic colours" is now supported.
-  This is used by default in Magit to denote the different types of …  …
+  This gives users and derivative themes the option to pick a suitable
+  value for popup interfaces, such as those of the `company' and `corfu'
+  packages.
+
+  Thanks to aikrahguzar for making this suggestion in issue 70 of my
+  `ef-themes' repository (the `ef-themes' are built on top of the
+  `modus-themes' since Modus version `5.0.0', Ef version `2.0.0'):
+  <https://github.com/protesilaos/ef-themes/issues/70>.
+
+
+Support for faces or packages
+─────────────────────────────
+
+  • `lin' by Protesilaos.
+  • `pulsar' by Protesilaos.
+  • `institution-calendar' by Protesilaos.
+  • `markdown-ts-mode' by Rahul Martim Juliato and Stéphane Marks.
+  • `trust-manager' by Eshel Yaron.
+  • `typst-ts-mode' by Ziqi Yang. Thanks to Pranshu Sharma for
+    suggesting its inclusion in issue 208:
+    <https://github.com/protesilaos/modus-themes/issues/208>.
+  • new `elfeed' faces since the maintenance of the project was assumed
+  …  …
