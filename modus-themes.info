@@ -6460,9 +6460,7 @@ File: modus-themes.info,  Node: Issues you can help with,  Next: Patches require
 13.2 Issues you can help with
 =============================
 
-A few tasks you can help with by sending an email to the general
-modus-themes public mailing list
-(https://lists.sr.ht/~protesilaos/modus-themes).
+A few tasks you can help with.
 
    • Suggest refinements to packages that are covered.
    • Report packages not covered thus far.
@@ -6610,14 +6608,14 @@ Ideas and user feedback
      Downey, Tassilo Horn, Thanos Apollo, Thibaut Verron, Thomas
      Heartman, Togan Muftuoglu, Tony Zorman, Trey Merkley, Tomasz
      Hołubowicz, Toon Claes, Troy Brown, Uri Sharf, Utkarsh Singh,
-     Vincent Foley, Zoltan Kiraly.  As well as users: Ben,
-     CsBigDataHub1, Emacs Contrib, Eugene, Fourchaux, Fredrik, Moesasji,
-     Nick, Summer Emacs, TheBlob42, TitusMu, Trey, aikrahguzar,
-     amano-kenji, baconabo, bangedorrunt, bepolymathe, bit9tream,
-     case-lambda, chainedghost, derek-upham, doolio, fleimgruber,
-     gitrj95, iSeeU, jixiuf, ltmsyvag, okamsn, pedro-nonfree, pRot0ta1p,
-     realazy, shimeike, shipmints, soaringbird, tumashu, vpxyz,
-     wakamenod.
+     Vincent Foley, Yuta Yamamoto, Zoltan Kiraly.  As well as users:
+     Ben, CsBigDataHub1, Emacs Contrib, Eugene, Fourchaux, Fredrik,
+     Moesasji, Nick, Summer Emacs, TheBlob42, TitusMu, Trey,
+     aikrahguzar, amano-kenji, baconabo, bangedorrunt, bepolymathe,
+     bit9tream, case-lambda, chainedghost, derek-upham, doolio,
+     fleimgruber, gitrj95, iSeeU, jixiuf, ltmsyvag, okamsn,
+     pedro-nonfree, pRot0ta1p, realazy, shimeike, shipmints,
+     soaringbird, tumashu, vpxyz, wakamenod.
 
 Packaging
      Basil L. Contovounesios, Eli Zaretskii, Glenn Morris, Mauro Aranda,
@@ -7463,13 +7461,13 @@ Node: Port the Modus themes to other platforms?275000
 Node: Contributing277834
 Node: Sources of the themes278233
 Node: Issues you can help with278974
-Node: Patches require copyright assignment to the FSF280365
-Node: Acknowledgements282579
-Node: GNU Free Documentation License287448
-Node: Indices312611
-Node: Function index312790
-Node: Variable index317399
-Node: Concept index321976
+Node: Patches require copyright assignment to the FSF280249
+Node: Acknowledgements282463
+Node: GNU Free Documentation License287347
+Node: Indices312510
+Node: Function index312689
+Node: Variable index317298
+Node: Concept index321875
 
 End Tag Table
 
