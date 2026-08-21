@@ -4138,7 +4138,7 @@ entirely custom list of face definitions and customization options.
 This mirrors the style of ‘modus-themes-faces’ and
 ‘modus-themes-custom-variables’, as already noted.  For example, the
 ‘standard-themes’ have a pseudo-3D style for their active mode line.
-They are declared in this way:
+They are declared this way:
 
      (modus-themes-theme
        'standard-dark
@@ -4158,9 +4158,9 @@ of face definitions like this:
        '(
          `(mode-line ((,c :box (:style released-button :color ,border-mode-line-active))))))
 
-   Custom faces passed in this way can still define their semantic
-palette mappings, as illustrated herein where ‘border-mode-line-active’
-corresponds to some named color in the palette of the active theme.
+   Custom faces can still rely on semantic palette mappings, as
+illustrated herein where ‘border-mode-line-active’ corresponds to some
+named color in the palette of the active theme.
 
 * Menu:
 
@@ -7418,57 +7418,57 @@ Node: DIY Add support for combobulate172120
 Node: DIY Use a hook at the post-load-theme phase175743
 Node: DIY A theme-agnostic hook for theme loading177970
 Node: Build on top of the Modus themes180597
-Node: Complete example of a Modus derivative theme186816
-Node: Complete example of a package that is derived from Modus187820
-Node: Complete example of a private theme derived from Modus190814
-Node: Complete example of a custom theme with its own palette192434
-Node: Complete example that also uses modus-themes-generate-palette197095
-Node: Determine what counts as a Modus theme213816
-Node: Create convenience commands to load a derivative theme217224
-Node: Arrange to activate your derivative themes219491
-Node: Face coverage221545
-Node: Supported packages222009
-Node: Indirectly covered packages227999
-Node: Notes on individual packages229357
-Node: Note on calendarel weekday and weekend colors230459
-Node: Note on git-gutter in Doom Emacs231609
-Node: Note on php-mode multiline comments234109
-Node: Note on underlines in compilation buffers234871
-Node: Note on inline Latex in Org buffers235745
-Node: Note on dimmerel236356
-Node: Note on display-fill-column-indicator-mode237841
-Node: Note on highlight-parenthesesel239292
-Node: Note on mmm-modeel background colors245349
-Node: Note for prism247700
-Node: Note on company-mode overlay pop-up250911
-Ref: Note on company-mode overlay pop-up-Footnote-1251641
-Ref: Note on company-mode overlay pop-up-Footnote-2251708
-Node: Note on ERC escaped color sequences251763
-Ref: Note on ERC escaped color sequences-Footnote-1253191
-Node: Note on powerline or spaceline253301
-Node: Note on SHR colors253717
-Node: Note on SHR fonts254138
-Node: Note on Ement colors and fonts254827
-Node: Note on pdf-tools link hints256329
-Node: Note on the Notmuch logo258787
-Node: Note on goto-address-mode faces259321
-Node: Frequently Asked Questions260441
-Node: Is the contrast ratio about adjacent colors?261071
-Node: What does it mean to avoid exaggerations?262576
-Node: Why are colors mostly variants of blue magenta cyan?264426
-Node: What is the best setup for legibility?268751
-Node: Are these color schemes?271392
-Node: Port the Modus themes to other platforms?275035
-Node: Contributing277869
-Node: Sources of the themes278268
-Node: Issues you can help with279009
-Node: Patches require copyright assignment to the FSF280284
-Node: Acknowledgements282498
-Node: GNU Free Documentation License287413
-Node: Indices312576
-Node: Function index312755
-Node: Variable index317364
-Node: Concept index321941
+Node: Complete example of a Modus derivative theme186789
+Node: Complete example of a package that is derived from Modus187793
+Node: Complete example of a private theme derived from Modus190787
+Node: Complete example of a custom theme with its own palette192407
+Node: Complete example that also uses modus-themes-generate-palette197068
+Node: Determine what counts as a Modus theme213789
+Node: Create convenience commands to load a derivative theme217197
+Node: Arrange to activate your derivative themes219464
+Node: Face coverage221518
+Node: Supported packages221982
+Node: Indirectly covered packages227972
+Node: Notes on individual packages229330
+Node: Note on calendarel weekday and weekend colors230432
+Node: Note on git-gutter in Doom Emacs231582
+Node: Note on php-mode multiline comments234082
+Node: Note on underlines in compilation buffers234844
+Node: Note on inline Latex in Org buffers235718
+Node: Note on dimmerel236329
+Node: Note on display-fill-column-indicator-mode237814
+Node: Note on highlight-parenthesesel239265
+Node: Note on mmm-modeel background colors245322
+Node: Note for prism247673
+Node: Note on company-mode overlay pop-up250884
+Ref: Note on company-mode overlay pop-up-Footnote-1251614
+Ref: Note on company-mode overlay pop-up-Footnote-2251681
+Node: Note on ERC escaped color sequences251736
+Ref: Note on ERC escaped color sequences-Footnote-1253164
+Node: Note on powerline or spaceline253274
+Node: Note on SHR colors253690
+Node: Note on SHR fonts254111
+Node: Note on Ement colors and fonts254800
+Node: Note on pdf-tools link hints256302
+Node: Note on the Notmuch logo258760
+Node: Note on goto-address-mode faces259294
+Node: Frequently Asked Questions260414
+Node: Is the contrast ratio about adjacent colors?261044
+Node: What does it mean to avoid exaggerations?262549
+Node: Why are colors mostly variants of blue magenta cyan?264399
+Node: What is the best setup for legibility?268724
+Node: Are these color schemes?271365
+Node: Port the Modus themes to other platforms?275008
+Node: Contributing277842
+Node: Sources of the themes278241
+Node: Issues you can help with278982
+Node: Patches require copyright assignment to the FSF280257
+Node: Acknowledgements282471
+Node: GNU Free Documentation License287386
+Node: Indices312549
+Node: Function index312728
+Node: Variable index317337
+Node: Concept index321914
 
 End Tag Table
 
