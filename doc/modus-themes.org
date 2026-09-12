@@ -535,6 +535,13 @@ argument ({{{kbd(C-u)}}} by default), it will move from right to left.
 Possible values include all themes returned by the function
 ~modus-themes-get-themes~ ([[#h:86eb375b-9be4-43ce-879a-0686a524a63b][Build on top of the Modus themes]]).
 
+#+findex: modus-themes-rotate-dark
+#+findex: modus-themes-rotate-light
+Same principle for the commands ~modus-themes-rotate-dark~ and
+~modus-themes-rotate-light~ which will also skip any theme that is not
+part of the background mode they are targetting. [ These two commands
+are introduced as part of {{{development-version}}}. ]
+
 ** Option for font mixing
 :PROPERTIES:
 :ALT_TITLE: Mixed fonts
@@ -602,9 +609,14 @@ command ~modus-themes-select~ does. [ The =section-minibuffer= is part
 of {{{development-version}}}. ]
 
 The named key =section-other= refers to any other heading that is
-conceptually not like the aforementioned. This includes sections for
-diffs and files in the various Magit buffers. [ The =section-other= is
-part of {{{development-version}}}. ]
+conceptually not like the aforementioned. This includes sections the
+path to the current Dired directory or any subdirectory that is
+inserted in that buffer, as well as diffs and files in the various
+Magit buffers. [ The =section-other= is part of {{{development-version}}}. ]
+
+The named key =commit-summary= refers to the first line of a commit
+message in version control systems, as used by VC and Magit. [ The
+=commit-summary= is part of {{{development-version}}}. ]
 
 Level 0 is a special heading: it is used for what counts as a document
 title or equivalent, such as the =#+title= construct I find in Org
@@ -620,6 +632,9 @@ combinations, followed by a presentation of all available properties:
         (2 . (1.3))
         (agenda-date . (1.3))
         (agenda-structure . (variable-pitch light 1.8))
+        (section-minibuffer . (variable-pitch light 0.9))
+        (section-other . (regular 1.3))
+        (commit-summary . (bold 1.1))
         (t . (1.1))))
 #+end_src
 
@@ -690,14 +705,9 @@ original aesthetic for that level.  For example:
 
 #+begin_src emacs-lisp
 (setq modus-themes-headings
-      '((1 . t)           ; keep the default style
+      '((1 . t) ; keep the default style for this level
         (2 . (semibold 1.2))
-        (t . (rainbow)))) ; style for all other headings
-
-(setq modus-themes-headings
-      '((1 . (variable-pitch 1.5))
-        (2 . (semibold))
-        (t . t))) ; default style for all other levels
+        (t . t))) ; default style for all other headings
 #+end_src
 
 Note that the text color of headings, of their background, and

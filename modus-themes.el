@@ -422,8 +422,13 @@ what various commands of the Consult package do as well as what the
 command `modus-themes-select' does.
 
 The named key `section-other' refers to any other heading that is
-conceptually not like the aforementioned.  This includes sections for
-diffs and files in the various Magit buffers.
+conceptually not like the aforementioned.  This includes sections the
+path to the current Dired directory or any subdirectory that is inserted
+in that buffer, as well as diffs and files in the various Magit
+buffers.
+
+The named key `commit-summary' refers to the first line of a commit
+message in version control systems, as used by VC and Magit.
 
 Level 0 is used for what counts as a document title or
 equivalent, such as the #+title construct we find in Org files.
@@ -439,6 +444,9 @@ available properties:
                   (2 . (1.3))
                   (agenda-date . (1.3))
                   (agenda-structure . (variable-pitch light 1.8))
+                  (section-minibuffer . (variable-pitch light 0.9))
+                  (section-other . (regular 1.3))
+                  (commit-summary . (bold 1.1))
                   (t . (1.1)))))
 
 By default (a nil value for this variable), all headings have a
@@ -484,6 +492,7 @@ In user configuration files the form may look like this:
                   (agenda-structure . (variable-pitch light 1.8))
                   (section-minibuffer . (variable-pitch light 0.9))
                   (section-other . (regular 1.3))
+                  (commit-summary . (bold 1.1))
                   (t . (1.1)))))
 
 When defining the styles per heading level, it is possible to
@@ -519,6 +528,7 @@ and related user options."
                      '( 0 1 2 3 4 5 6 7 8
                         section-minibuffer section-other
                         agenda-date agenda-structure
+                        commit-summary
                         t))
           :key-type symbol
           :value-type ,modus-themes--headings-widget)
@@ -4001,14 +4011,13 @@ symbol, which is safe when used as a face attribute's value."
   "Minibuffer history of `modus-themes-select-prompt'.")
 
 (defun modus-themes--annotate-theme (theme)
-  "Return description of THEME ."
+  "Return THEME description."
   (when-let* ((symbol (intern-soft theme))
               (properties (get symbol 'theme-properties))
-              (doc-string (or (get symbol 'theme-documentation)
-                              (plist-get properties :modus-documentation))))
-    (format " %s"
-            (propertize (concat "-- " (car (split-string doc-string "\\.")))
-                        'face 'completions-annotations))))
+              (doc-string (or (get symbol 'theme-documentation) (plist-get properties :modus-documentation)))
+              (doc-no-newlines (replace-regexp-in-string "\n" " " doc-string))
+              (doc-first-line (replace-regexp-in-string "\\(.*?\\)\\.\\(.*\\)" "\\1" doc-no-newlines)))
+    (propertize (format " -- %s" doc-first-line) 'face 'completions-annotations)))
 
 (defun modus-themes--group-themes (theme transform)
   "Group THEME by its background for minibuffer completion.
@@ -4024,7 +4033,7 @@ If TRANSFORM is non-nil, return THEME as-is."
         (capitalize (format "%s" background)))))))
 
 (defun modus-themes--display-sort (themes)
-  "Put the current theme before other THEMES for minibuffer completion."
+  "Sort THEMES by putting the current one before the rest."
   (let* ((current (modus-themes-get-current-theme))
          (current-theme-p (lambda (theme) (eq (intern-soft theme) current))))
     (nconc
@@ -4142,6 +4151,26 @@ modify THEMES in the process."
     (message "Rotating to `%s'" theme)
     (modus-themes-load-theme theme)))
 
+;;;###autoload
+(defun modus-themes-rotate-dark (&optional reverse)
+  "Like `modus-themes-rotate' with optional REVERSE argument for dark themes only."
+  (declare (interactive-only t))
+  (interactive "P")
+  (if-let* ((themes (or modus-themes-to-rotate (modus-themes-get-themes)))
+            (dark-themes (modus-themes-filter-by-background-mode themes 'dark)))
+      (modus-themes-rotate dark-themes reverse)
+    (error "No dark themes found")))
+
+;;;###autoload
+(defun modus-themes-rotate-light (&optional reverse)
+  "Like `modus-themes-rotate' with optional REVERSE argument for light themes only."
+  (declare (interactive-only t))
+  (interactive "P")
+  (if-let* ((themes (or modus-themes-to-rotate (modus-themes-get-themes)))
+            (light-themes (modus-themes-filter-by-background-mode themes 'light)))
+      (modus-themes-rotate light-themes reverse)
+    (error "No light themes found")))
+
 ;;;;; Load a random theme
 
 (defun modus-themes-filter-by-background-mode (themes background-mode)
@@ -4200,14 +4229,14 @@ Run `modus-themes-after-load-theme-hook' after loading a theme."
 
 ;;;###autoload
 (defun modus-themes-load-random-dark ()
-  "Load a random dark theme."
+  "Like `modus-themes-load-random' but only for dark themes."
   (declare (interactive-only t))
   (interactive)
   (modus-themes-load-random 'dark))
 
 ;;;###autoload
 (defun modus-themes-load-random-light ()
-  "Load a random light theme."
+  "Like `modus-themes-load-random' but only for light themes."
   (declare (interactive-only t))
   (interactive)
   (modus-themes-load-random 'light))
@@ -4876,7 +4905,7 @@ If COLOR is unspecified, then return :box unspecified."
         :foreground ,border :strike-through t)
        (t
         :height 1 :background ,border :foreground ,border)))
-    `(log-edit-summary ((,c :inherit modus-themes-bold :foreground ,info)))
+    `(log-edit-summary ((,c ,@(modus-themes--heading 'commit-summary info))))
     `(log-edit-unknown-header ((,c :foreground ,fg-dim)))
     `(log-view-commit-body (( )))
     `(log-view-file ((,c :inherit modus-themes-bold)))
@@ -5101,7 +5130,7 @@ If COLOR is unspecified, then return :box unspecified."
     `(dired-broken-symlink ((,c :foreground ,err :underline t)))
     `(dired-directory ((,c :foreground ,accent-0)))
     `(dired-flagged ((,c :inherit modus-themes-mark-delete)))
-    `(dired-header ((,c :inherit modus-themes-bold)))
+    `(dired-header ((,c ,@(modus-themes--heading 'section-other fg-main))))
     `(dired-ignored ((,c :foreground ,fg-dim)))
     `(dired-mark ((,c :inherit modus-themes-bold)))
     `(dired-marked ((,c :inherit modus-themes-mark-select)))
@@ -5137,7 +5166,7 @@ If COLOR is unspecified, then return :box unspecified."
     `(diredfl-date-time ((,c :foreground ,date-common)))
     `(diredfl-deletion ((,c :inherit modus-themes-mark-delete)))
     `(diredfl-deletion-file-name ((,c :inherit modus-themes-mark-delete)))
-    `(diredfl-dir-heading ((,c :inherit modus-themes-bold)))
+    `(diredfl-dir-heading ((,c ,@(modus-themes--heading 'section-other fg-main))))
     `(diredfl-dir-name ((,c :foreground ,accent-0)))
     `(diredfl-dir-priv ((,c :foreground ,accent-0)))
     `(diredfl-exec-priv ((,c :foreground ,accent-1)))
@@ -5541,8 +5570,8 @@ If COLOR is unspecified, then return :box unspecified."
     `(git-commit-comment-file ((,c :inherit modus-themes-slant :foreground ,accent-2))) ; like `magit-filename'
     `(git-commit-keyword ((,c :foreground ,keyword)))
     `(git-commit-nonempty-second-line ((,c :foreground ,err)))
-    `(git-commit-overlong-summary ((,c :foreground ,warning)))
-    `(git-commit-summary ((,c :inherit modus-themes-bold :foreground ,info)))
+    `(git-commit-overlong-summary ((,c :inherit git-commit-summary :foreground ,warning)))
+    `(git-commit-summary ((,c ,@(modus-themes--heading 'commit-summary info))))
 ;;;;; git-gutter
     `(git-gutter:added ((,c :background ,bg-added-fringe)))
     `(git-gutter:deleted ((,c :background ,bg-removed-fringe)))
@@ -7015,6 +7044,11 @@ If COLOR is unspecified, then return :box unspecified."
     (list 'transient-argument `((,c :inherit modus-themes-bold :background ,bg-active-argument :foreground ,fg-active-argument)))
     `(transient-disabled-suffix ((,c :inherit modus-themes-mark-delete)))
     `(transient-enabled-suffix ((,c :inherit modus-themes-mark-select)))
+    ;; NOTE 2026-09-11: I experimented with this:
+    ;;
+    ;;     `(transient-heading ,@(modus-themes--heading 'section-other fg-main))
+    ;;
+    ;; It is not viable because it can lead to misalignments.
     `(transient-heading ((,c :inherit bold :foreground ,fg-main)))
     `(transient-inactive-argument ((,c :foreground ,fg-dim)))
     `(transient-inactive-value ((,c :foreground ,fg-dim)))
@@ -7604,9 +7638,10 @@ accordingly."
 ;;;; Let derivative themes create commands to load only their themes
 
 (defvar modus-themes-define-derivative-command-known-suffixes
-  '( toggle rotate select select-dark select-light
-     load-random load-random-dark load-random-light
-     list-colors list-colors-current)
+  '( toggle list-colors list-colors-current
+     rotate rotate-light rotate-dark
+     select select-dark select-light
+     load-random load-random-dark load-random-light)
   "Command suffixes accepted by `modus-themes-define-derivative-command'.")
 
 (defmacro modus-themes-define-derivative-command (family suffix)
