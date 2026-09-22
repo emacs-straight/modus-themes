@@ -6635,8 +6635,8 @@ Ideas and user feedback
      Ben, CsBigDataHub1, Emacs Contrib, Eugene, Fourchaux, Fredrik,
      Moesasji, Nick, Summer Emacs, TheBlob42, TitusMu, Trey,
      aikrahguzar, amano-kenji, baconabo, bangedorrunt, bepolymathe,
-     bit9tream, case-lambda, chainedghost, derek-upham, doolio,
-     fleimgruber, gitrj95, iSeeU, jixiuf, ltmsyvag, okamsn,
+     bit9tream, case-lambda, catweazle9, chainedghost, derek-upham,
+     doolio, fleimgruber, gitrj95, iSeeU, jixiuf, ltmsyvag, okamsn,
      pedro-nonfree, pRot0ta1p, realazy, shimeike, shipmints,
      soaringbird, tumashu, vpxyz, wakamenod.
 
@@ -7490,11 +7490,11 @@ Node: Sources of the themes279385
 Node: Issues you can help with280126
 Node: Patches require copyright assignment to the FSF281401
 Node: Acknowledgements283615
-Node: GNU Free Documentation License288560
-Node: Indices313723
-Node: Function index313902
-Node: Variable index318809
-Node: Concept index323386
+Node: GNU Free Documentation License288572
+Node: Indices313735
+Node: Function index313914
+Node: Variable index318821
+Node: Concept index323398
 
 End Tag Table
 
